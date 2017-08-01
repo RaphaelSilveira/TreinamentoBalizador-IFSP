@@ -1,6 +1,6 @@
 ﻿namespace TreinamentoBalizador_IFSP
 {
-    partial class Form1
+    partial class CaptureParametersView
     {
         /// <summary>
         /// Variável de designer necessária.
@@ -28,9 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // CaptureParametersView
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Name = "CaptureParametersView";
+            this.Text = "Captura de Parâmetros";
+            this.ResumeLayout(false);
+
         }
 
         #endregion

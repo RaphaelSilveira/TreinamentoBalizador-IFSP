@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace TreinamentoBalizador_IFSP
 {
-    public partial class Form1 : Form
+    public partial class CaptureParametersView : Form
     {
-        public Form1()
+        public CaptureParametersView()
         {
             InitializeComponent();
         }
