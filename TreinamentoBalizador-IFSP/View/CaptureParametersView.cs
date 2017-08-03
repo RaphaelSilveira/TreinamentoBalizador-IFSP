@@ -78,8 +78,13 @@ namespace TreinamentoBalizador_IFSP
                 captureParameters.FramesPerSecond = int.Parse(cbxFramesPerSecond.Text);
                 Console.WriteLine(mtbCaptureTime.Text);
                 DateTime duration = DateTime.ParseExact(mtbCaptureTime.Text, "mm:ss", System.Globalization.CultureInfo.InvariantCulture);
-                captureParameters.CaptureDuration = duration;
-                Console.WriteLine(duration.ToString());
+
+                Double minutes = duration.Minute;
+                Double seconds = duration.Second;
+                Double totalMileseconds = ((minutes * 60) + seconds) * 1000;
+                Console.WriteLine(totalMileseconds);
+
+                captureParameters.CaptureDuration = totalMileseconds;
                 captureParameters.Delimitator = tbxDelimitator.Text;
                 captureParameters.FilePath = tbxPathFile.Text;
 

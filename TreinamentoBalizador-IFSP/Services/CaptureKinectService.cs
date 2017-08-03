@@ -24,9 +24,8 @@ namespace TreinamentoBalizador_IFSP.Services
         public CaptureKinectService(CaptureParameters captureParameters)
         {
             this.captureParameters = captureParameters;
-
-            Double time = DateUtils.ConvertToUnixTimestamp(this.captureParameters.CaptureDuration);
-            temporalService = new TemporalService(time);
+            
+            temporalService = new TemporalService(this.captureParameters.CaptureDuration);
             temporal = new Thread(temporalService.Execute);
         }
 
