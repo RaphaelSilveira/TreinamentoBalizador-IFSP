@@ -18,7 +18,8 @@ namespace TreinamentoBalizador_IFSP.Services
 
         public void Execute()
         {
-            Thread.Sleep(Convert.ToInt32(time));
+            Console.WriteLine("Number to convert: " + time);
+            Thread.Sleep(10000);
         }
     }
 }

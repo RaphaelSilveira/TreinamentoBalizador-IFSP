@@ -35,6 +35,8 @@ namespace TreinamentoBalizador_IFSP.Services
          */
         public void InitCapture()
         {
+            Console.WriteLine("Init capture");
+
             kinectSensor = KinectSensor.KinectSensors.Where(s => s.Status == KinectStatus.Connected).FirstOrDefault();
 
             if (kinectSensor != null)
@@ -42,10 +44,12 @@ namespace TreinamentoBalizador_IFSP.Services
                 Thread keepAlive = new Thread(KeepCapturing);
 
                 kinectSensor.SkeletonStream.Enable();
+                kinectSensor.Start();
 
                 temporal.Start();
                 keepAlive.Start();
 
+                Console.WriteLine("Call kinect sensor");
                 kinectSensor.AllFramesReady += Sensor_AllFramesReady;
             }
 
@@ -70,19 +74,24 @@ namespace TreinamentoBalizador_IFSP.Services
          */
         private void Sensor_AllFramesReady(object sender, AllFramesReadyEventArgs e)
         {
+            Console.WriteLine("Init using");
             using (var frame = e.OpenSkeletonFrame())
             {
                 if (frame != null)
                 {
+                    Console.WriteLine("Copy skeleton");
                     frame.CopySkeletonDataTo(skeleton);
 
                     foreach (var body in skeleton)
                     {
+                        Console.WriteLine("Body iterator");
                         if (body.TrackingState == SkeletonTrackingState.Tracked)
                         {
                             foreach (Joint joint in body.Joints)
                             {
                                 SkeletonPoint skeletonPoint = joint.Position;
+                                Console.WriteLine("Call save");
+                                
                                 Save(skeletonPoint);
                             }
                         }
@@ -103,8 +112,13 @@ namespace TreinamentoBalizador_IFSP.Services
             coordinate.Y = skeletonPoint.Y;
             coordinate.Z = skeletonPoint.Z;
 
+            Console.WriteLine("X: " + coordinate.X);
+            Console.WriteLine("Y: " + coordinate.X);
+            Console.WriteLine("Z: " + coordinate.X);
+
+
             saveCoordinatesService.Save(
-                captureParameters.FilePath + "coordinates.txt",
+                captureParameters.FilePath + "\\coordinates.txt",
                 captureParameters.Delimitator,
                 coordinate
             );
