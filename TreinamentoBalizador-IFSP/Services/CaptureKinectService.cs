@@ -7,6 +7,7 @@ using Microsoft.Kinect;
 using TreinamentoBalizador_IFSP.Utils;
 using System.Threading;
 using TreinamentoBalizador_IFSP.Models;
+using System.Collections;
 
 namespace TreinamentoBalizador_IFSP.Services
 {
@@ -17,6 +18,7 @@ namespace TreinamentoBalizador_IFSP.Services
         private CaptureParameters captureParameters;
         private TemporalService temporalService;
         private Thread temporal;
+        private List<Skeleton> saveSkeletons;
 
         /**
          * Construtor 
@@ -27,6 +29,8 @@ namespace TreinamentoBalizador_IFSP.Services
             
             temporalService = new TemporalService(this.captureParameters.CaptureDuration);
             temporal = new Thread(temporalService.Execute);
+
+            saveSkeletons = new List<Skeleton>();
         }
 
         /**
@@ -47,13 +51,12 @@ namespace TreinamentoBalizador_IFSP.Services
 
                 temporal.Start();
                 keepAlive.Start();
-
-                Console.WriteLine("Call kinect sensor");
+                
                 kinectSensor.AllFramesReady += Sensor_AllFramesReady;
             }
 
         }
-
+        
         /**
          * Mantém a captura de movimentos ativa durante o tempo estipulado 
          */
@@ -62,8 +65,9 @@ namespace TreinamentoBalizador_IFSP.Services
             while (temporal.IsAlive) ;
 
             if (kinectSensor != null)
-            {
+            {   
                 kinectSensor.Stop();
+                Save();
             }
         }
 
@@ -72,27 +76,18 @@ namespace TreinamentoBalizador_IFSP.Services
          * para salvar os dados no arquivo
          */
         private void Sensor_AllFramesReady(object sender, AllFramesReadyEventArgs e)
-        {
-            Console.WriteLine("Init using");
+        {            
             using (var frame = e.OpenSkeletonFrame())
             {
                 if (frame != null)
                 {
-                    Console.WriteLine("Copy skeleton");
                     frame.CopySkeletonDataTo(skeleton);
 
-                    foreach (var body in skeleton)
+                    foreach (Skeleton body in skeleton)
                     {
-                        Console.WriteLine("Body iterator");
                         if (body.TrackingState == SkeletonTrackingState.Tracked)
                         {
-                            foreach (Joint joint in body.Joints)
-                            {
-                                SkeletonPoint skeletonPoint = joint.Position;
-                                Console.WriteLine("Call save");
-                                
-                                Save(skeletonPoint);
-                            }
+                            saveSkeletons.Add(body);
                         }
                     }
                 }
@@ -102,25 +97,10 @@ namespace TreinamentoBalizador_IFSP.Services
         /**
          * Organiza as informações antes de elas serem efetivamente salvas
          */
-        private void Save(SkeletonPoint skeletonPoint)
+        private void Save()
         {
-            Coordinates coordinate = new Coordinates();
             SaveCoordinatesService saveCoordinatesService = new SaveCoordinatesService();
-
-            coordinate.X = skeletonPoint.X;
-            coordinate.Y = skeletonPoint.Y;
-            coordinate.Z = skeletonPoint.Z;
-
-            Console.WriteLine("X: " + coordinate.X);
-            Console.WriteLine("Y: " + coordinate.X);
-            Console.WriteLine("Z: " + coordinate.X);
-
-
-            saveCoordinatesService.Save(
-                captureParameters.FilePath + "\\coordinates.txt",
-                captureParameters.Delimitator,
-                coordinate
-            );
+            saveCoordinatesService.Save(saveSkeletons, captureParameters);
         }
     }
 }
