@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\CaptureParameters.cs" />
+    <Compile Include="Models\KinectJoint.cs" />
     <Compile Include="Services\CaptureKinectService.cs" />
     <Compile Include="Services\SaveCoordinatesService.cs" />
     <Compile Include="Services\TemporalService.cs" />

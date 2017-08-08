@@ -18,7 +18,8 @@ namespace TreinamentoBalizador_IFSP.Services
         private CaptureParameters captureParameters;
         private TemporalService temporalService;
         private Thread temporal;
-        private List<Skeleton> saveSkeletons;
+        private List<KinectJoint> kinectJoints = new List<KinectJoint>();
+        private int moment;
 
         /**
          * Construtor 
@@ -30,7 +31,7 @@ namespace TreinamentoBalizador_IFSP.Services
             temporalService = new TemporalService(this.captureParameters.CaptureDuration);
             temporal = new Thread(temporalService.Execute);
 
-            saveSkeletons = new List<Skeleton>();
+            moment = 1;
         }
 
         /**
@@ -83,15 +84,30 @@ namespace TreinamentoBalizador_IFSP.Services
                 {
                     frame.CopySkeletonDataTo(skeleton);
 
-                    foreach (Skeleton body in skeleton)
+                    foreach (var body in skeleton)
                     {
                         if (body.TrackingState == SkeletonTrackingState.Tracked)
                         {
-                            saveSkeletons.Add(body);
+                            foreach (Joint joint in body.Joints)
+                            {                                
+                                SkeletonPoint skeletonPoint = joint.Position;
+
+                                KinectJoint kinectJoint = new KinectJoint();
+
+                                kinectJoint.Position = joint.JointType.ToString();
+                                kinectJoint.Moment = moment;
+                                kinectJoint.X = skeletonPoint.X;
+                                kinectJoint.Y = skeletonPoint.Y;
+                                kinectJoint.Z = skeletonPoint.Z;
+
+                                kinectJoints.Add(kinectJoint);
+                            }
                         }
                     }
                 }
             }
+
+            moment++;
         }
 
         /**
@@ -100,7 +116,9 @@ namespace TreinamentoBalizador_IFSP.Services
         private void Save()
         {
             SaveCoordinatesService saveCoordinatesService = new SaveCoordinatesService();
-            saveCoordinatesService.Save(saveSkeletons, captureParameters);
+            Console.WriteLine("Call save");
+
+            saveCoordinatesService.Save(kinectJoints, captureParameters);
         }
     }
 }

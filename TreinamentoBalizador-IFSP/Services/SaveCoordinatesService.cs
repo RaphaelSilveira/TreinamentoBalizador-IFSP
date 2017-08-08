@@ -12,25 +12,19 @@ namespace TreinamentoBalizador_IFSP.Services
 {
     class SaveCoordinatesService
     {
-        public void Save(List<Skeleton> bodys, CaptureParameters captureParameters)
+        public void Save(List<KinectJoint> kinectJoints, CaptureParameters captureParameters)
         {
-            Console.WriteLine("Lenght of skeletons: " + bodys.Count);
+            Console.WriteLine("Frames per second: " + captureParameters.FramesPerSecond);
+            Console.WriteLine("Joints: " + kinectJoints.Count);
 
             int index = 1;
-            int moment = 1;
 
-            foreach(var body in bodys)
+            foreach(KinectJoint kinectJoint in kinectJoints)
             {
-                Console.WriteLine("Capting body");
                 if (captureParameters.FramesPerSecond < index)
                 {
-                    foreach (Joint joint in body.Joints)
-                    {
-                        SkeletonPoint skeletonPoint = joint.Position;
-                        SaveInFile(joint, skeletonPoint, captureParameters, moment);
-
-                        moment++;
-                    }  
+                    Console.WriteLine("Save in file called");
+                    SaveInFile(kinectJoint, captureParameters); 
                 }
 
                 if (index == 30)
@@ -42,15 +36,10 @@ namespace TreinamentoBalizador_IFSP.Services
             }
         }
 
-        private void SaveInFile(Joint joint, SkeletonPoint skeleton, CaptureParameters parameters, int moment)
+        private void SaveInFile(KinectJoint kinectJoint, CaptureParameters captureParameters)
         {
-            Console.WriteLine("Call saves");
-
-            Console.WriteLine(Convert.ToString(skeleton.X));
-            Console.WriteLine(Convert.ToString(skeleton.Y));
-            Console.WriteLine(Convert.ToString(skeleton.Z));
-
-            String path = parameters.FilePath + "coordinates.txt";
+            Console.WriteLine("Saving");
+            String path = captureParameters.FilePath + "\\coordinates.txt";
 
             if (!File.Exists(path))
             {
@@ -58,17 +47,15 @@ namespace TreinamentoBalizador_IFSP.Services
             }
 
             String line = String.Concat(
-                moment,
-                parameters.Delimitator,
-                joint.JointType,
-                parameters.Delimitator,
-                joint.TrackingState,
-                parameters.Delimitator,
-                Convert.ToString(skeleton.X),
-                parameters.Delimitator,
-                Convert.ToString(skeleton.Y),
-                parameters.Delimitator,
-                Convert.ToString(skeleton.Z)
+                kinectJoint.Moment,
+                captureParameters.Delimitator,
+                kinectJoint.Position,
+                captureParameters.Delimitator,
+                Convert.ToString(kinectJoint.X),
+                captureParameters.Delimitator,
+                Convert.ToString(kinectJoint.X),
+                captureParameters.Delimitator,
+                Convert.ToString(kinectJoint.X)
             );
 
             using (StreamWriter streamWriter = File.AppendText(path))
