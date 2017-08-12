@@ -43,10 +43,10 @@ namespace TreinamentoBalizador_IFSP
         }
 
         private String FormValidation()
-        {
-            if (cbxFramesPerSecond.Text == "")
+        {  
+            if (jointsCBxL.CheckedItems.Count == 0)
             {
-                return "Insira um valor para Frames por segundo.";
+                return "Selecione no mínimo um joint.";
             }
             if (mtbCaptureTime.Text.Replace(" ", string.Empty) == ":")
             {
@@ -75,18 +75,25 @@ namespace TreinamentoBalizador_IFSP
             }
             else
             {
-                captureParameters.FramesPerSecond = int.Parse(cbxFramesPerSecond.Text);
-                Console.WriteLine(mtbCaptureTime.Text);
+                Console.WriteLine(jointsCBxL.SelectedItems.Count);
                 DateTime duration = DateTime.ParseExact(mtbCaptureTime.Text, "mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+
+                List<string> jointList = new List<string>();
+
+                foreach (String item in jointsCBxL.CheckedItems)
+                {
+                    Console.WriteLine("view" + item);
+                    jointList.Add(item);
+                }
 
                 Double minutes = duration.Minute;
                 Double seconds = duration.Second;
                 Double totalMileseconds = ((minutes * 60) + seconds) * 1000;
-                Console.WriteLine(totalMileseconds);
 
                 captureParameters.CaptureDuration = totalMileseconds;
                 captureParameters.Delimitator = tbxDelimitator.Text;
                 captureParameters.FilePath = tbxPathFile.Text;
+                captureParameters.SetSelectedJoints(jointList);
 
                 CaptureKinectService captureKinectService = new CaptureKinectService(captureParameters);
                 captureKinectService.InitCapture();

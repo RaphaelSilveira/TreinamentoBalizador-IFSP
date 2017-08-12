@@ -8,14 +8,27 @@ namespace TreinamentoBalizador_IFSP.Models
 {
     class CaptureParameters
     {
-        private int framesPerSecond;
+        private List<string> selectedJoints;
         private Double captureDuration;
         private String filePath;
         private String delimitator;
-
-        public int FramesPerSecond { get; set; }
+        
         public Double CaptureDuration { get; set; }
         public String FilePath { get; set; }
         public String Delimitator { get; set; }
+
+        public List<string> GetSelectedJoints() {
+            return this.selectedJoints;
+        }
+
+        public void SetSelectedJoints(List<string> selectedJoints)
+        {
+            this.selectedJoints = selectedJoints;
+        }
+
+        public void AddJoint(String joint)
+        {
+            selectedJoints.Add(joint);
+        }
     }
 }

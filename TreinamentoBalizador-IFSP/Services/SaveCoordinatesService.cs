@@ -7,6 +7,7 @@ using System.IO;
 using TreinamentoBalizador_IFSP.Models;
 using System.Collections;
 using Microsoft.Kinect;
+using System.Windows.Forms;
 
 namespace TreinamentoBalizador_IFSP.Services
 {
@@ -14,18 +15,16 @@ namespace TreinamentoBalizador_IFSP.Services
     {
         public void Save(List<KinectJoint> kinectJoints, CaptureParameters captureParameters)
         {
-            Console.WriteLine("Frames per second: " + captureParameters.FramesPerSecond);
             Console.WriteLine("Joints: " + kinectJoints.Count);
 
             int index = 1;
 
-            foreach(KinectJoint kinectJoint in kinectJoints)
+            List<KinectJoint> kinectJointsToSave;
+
+            foreach (KinectJoint kinectJoint in kinectJoints)
             {
-                if (captureParameters.FramesPerSecond < index)
-                {
-                    Console.WriteLine("Save in file called");
-                    SaveInFile(kinectJoint, captureParameters); 
-                }
+                Console.WriteLine("Save in file called");
+                SaveInFile(kinectJoint, captureParameters);
 
                 if (index == 30)
                 {
@@ -34,6 +33,10 @@ namespace TreinamentoBalizador_IFSP.Services
                 
                 index++;
             }
+
+
+            MessageBox.Show("Movimentos capturados com sucesso!", "Fim da captura",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void SaveInFile(KinectJoint kinectJoint, CaptureParameters captureParameters)
@@ -49,18 +52,19 @@ namespace TreinamentoBalizador_IFSP.Services
             String line = String.Concat(
                 kinectJoint.Moment,
                 captureParameters.Delimitator,
-                kinectJoint.Position,
+                kinectJoint.Type,
                 captureParameters.Delimitator,
                 Convert.ToString(kinectJoint.X),
                 captureParameters.Delimitator,
-                Convert.ToString(kinectJoint.X),
+                Convert.ToString(kinectJoint.Y),
                 captureParameters.Delimitator,
-                Convert.ToString(kinectJoint.X)
+                Convert.ToString(kinectJoint.Z)
             );
 
             using (StreamWriter streamWriter = File.AppendText(path))
             {
                 streamWriter.WriteLine(line);
+                streamWriter.Close();
             }
         }
     }

@@ -94,13 +94,15 @@ namespace TreinamentoBalizador_IFSP.Services
 
                                 KinectJoint kinectJoint = new KinectJoint();
 
-                                kinectJoint.Position = joint.JointType.ToString();
-                                kinectJoint.Moment = moment;
-                                kinectJoint.X = skeletonPoint.X;
-                                kinectJoint.Y = skeletonPoint.Y;
-                                kinectJoint.Z = skeletonPoint.Z;
-
-                                kinectJoints.Add(kinectJoint);
+                                if (captureParameters.GetSelectedJoints().Contains(joint.JointType.ToString())) {
+                                    kinectJoint.Type = joint.JointType.ToString();
+                                    kinectJoint.Moment = moment;
+                                    kinectJoint.X = skeletonPoint.X;
+                                    kinectJoint.Y = skeletonPoint.Y;
+                                    kinectJoint.Z = skeletonPoint.Z;
+                                    Console.WriteLine(kinectJoint.Type);
+                                    kinectJoints.Add(kinectJoint);
+                                }
                             }
                         }
                     }

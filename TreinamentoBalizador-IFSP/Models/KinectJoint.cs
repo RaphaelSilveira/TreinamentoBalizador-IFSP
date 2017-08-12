@@ -9,14 +9,14 @@ namespace TreinamentoBalizador_IFSP.Models
     class KinectJoint
     {
         private int moment;
-        private String position;
+        private String type;
         private Double x;
         private Double y;
         private Double z;
 
         public int Moment { get; set; }
 
-        public String Position { get; set; }
+        public String Type { get; set; }
 
         public Double X { get; set; }
 
