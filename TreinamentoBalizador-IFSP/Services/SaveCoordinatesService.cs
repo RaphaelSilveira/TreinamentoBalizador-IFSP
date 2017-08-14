@@ -13,25 +13,20 @@ namespace TreinamentoBalizador_IFSP.Services
 {
     class SaveCoordinatesService
     {
-        public void Save(List<KinectJoint> kinectJoints, CaptureParameters captureParameters)
+        public void Save(Dictionary<string, List<KinectJoint>> jointsInMoment,
+            CaptureParameters captureParameters)
         {
-            Console.WriteLine("Joints: " + kinectJoints.Count);
+            int first = int.Parse(jointsInMoment.First().Key);
+            int last = int.Parse(jointsInMoment.Last().Key);
 
-            int index = 1;
-
-            List<KinectJoint> kinectJointsToSave;
-
-            foreach (KinectJoint kinectJoint in kinectJoints)
+            for (int i = first; i < last; i = i + 4)
             {
-                Console.WriteLine("Save in file called");
-                SaveInFile(kinectJoint, captureParameters);
+                List<KinectJoint> kinectJoints = jointsInMoment[i.ToString()];
 
-                if (index == 30)
+                foreach(KinectJoint kinectJoint in kinectJoints)
                 {
-                    index = 0;
+                    SaveInFile(kinectJoint, captureParameters);
                 }
-                
-                index++;
             }
 
 

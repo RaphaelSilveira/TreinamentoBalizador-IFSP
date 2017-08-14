@@ -82,7 +82,6 @@ namespace TreinamentoBalizador_IFSP
 
                 foreach (String item in jointsCBxL.CheckedItems)
                 {
-                    Console.WriteLine("view" + item);
                     jointList.Add(item);
                 }
 

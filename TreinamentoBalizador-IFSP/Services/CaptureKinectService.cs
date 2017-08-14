@@ -18,8 +18,10 @@ namespace TreinamentoBalizador_IFSP.Services
         private CaptureParameters captureParameters;
         private TemporalService temporalService;
         private Thread temporal;
-        private List<KinectJoint> kinectJoints = new List<KinectJoint>();
+        private List<KinectJoint> kinectJoints;
         private int moment;
+        private Dictionary<string, List<KinectJoint>> jointsInMoment =
+            new Dictionary<string, List<KinectJoint>>();
 
         /**
          * Construtor 
@@ -63,7 +65,7 @@ namespace TreinamentoBalizador_IFSP.Services
          */
         private void KeepCapturing()
         {
-            while (temporal.IsAlive) ;
+            while (temporal.IsAlive);
 
             if (kinectSensor != null)
             {   
@@ -83,6 +85,7 @@ namespace TreinamentoBalizador_IFSP.Services
                 if (frame != null)
                 {
                     frame.CopySkeletonDataTo(skeleton);
+                    kinectJoints = new List<KinectJoint>();
 
                     foreach (var body in skeleton)
                     {
@@ -100,15 +103,14 @@ namespace TreinamentoBalizador_IFSP.Services
                                     kinectJoint.X = skeletonPoint.X;
                                     kinectJoint.Y = skeletonPoint.Y;
                                     kinectJoint.Z = skeletonPoint.Z;
-                                    Console.WriteLine(kinectJoint.Type);
                                     kinectJoints.Add(kinectJoint);
                                 }
                             }
+                            jointsInMoment.Add(moment.ToString(), kinectJoints);
                         }
                     }
                 }
             }
-
             moment++;
         }
 
@@ -120,7 +122,7 @@ namespace TreinamentoBalizador_IFSP.Services
             SaveCoordinatesService saveCoordinatesService = new SaveCoordinatesService();
             Console.WriteLine("Call save");
 
-            saveCoordinatesService.Save(kinectJoints, captureParameters);
+            saveCoordinatesService.Save(jointsInMoment, captureParameters);
         }
     }
 }
