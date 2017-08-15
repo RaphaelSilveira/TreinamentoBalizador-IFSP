@@ -53,6 +53,7 @@
     <Compile Include="Models\KinectJoint.cs" />
     <Compile Include="Services\CaptureKinectService.cs" />
     <Compile Include="Services\SaveCoordinatesService.cs" />
+    <Compile Include="Services\SaveHeaderService.cs" />
     <Compile Include="Services\TemporalService.cs" />
     <Compile Include="Utils\DateUtils.cs" />
     <Compile Include="View\CaptureParametersView.cs">
