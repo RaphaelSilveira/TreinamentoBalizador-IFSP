@@ -27,21 +27,6 @@ namespace TreinamentoBalizador_IFSP
 
         }
 
-        private void ChooseFolder()
-        {
-            if (fbdFilePath.ShowDialog() == DialogResult.OK)
-            {
-                Console.WriteLine(fbdFilePath.SelectedPath);
-                tbxPathFile.Text = fbdFilePath.SelectedPath;
-                Console.WriteLine(captureParameters.FilePath);
-            }
-        }
-
-        private void btnPathFile_Click(object sender, EventArgs e)
-        {
-            ChooseFolder();
-        }
-
         private String FormValidation()
         {  
             if (jointsCBxL.CheckedItems.Count == 0)
@@ -52,13 +37,9 @@ namespace TreinamentoBalizador_IFSP
             {
                 return "Insira um valor para Tempo de captura.";
             }
-            if (tbxDelimitator.Text == "")
+            if (cbxMovement.Text == "")
             {
-                return "Insira um valor para Delimitador.";
-            }
-            if (tbxPathFile.Text == "")
-            {
-                return "Selecione um local para o arquivo.";
+                return "Declare o nome do movimento";
             }
 
             return "";
@@ -90,8 +71,7 @@ namespace TreinamentoBalizador_IFSP
                 Double totalMileseconds = ((minutes * 60) + seconds) * 1000;
 
                 captureParameters.CaptureDuration = totalMileseconds;
-                captureParameters.Delimitator = tbxDelimitator.Text;
-                captureParameters.FilePath = tbxPathFile.Text;
+                captureParameters.Movement = cbxMovement.Text;
                 captureParameters.SetSelectedJoints(jointList);
 
                 CaptureKinectService captureKinectService = new CaptureKinectService(captureParameters);

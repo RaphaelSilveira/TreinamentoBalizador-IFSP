@@ -10,12 +10,10 @@ namespace TreinamentoBalizador_IFSP.Models
     {
         private List<string> selectedJoints;
         private Double captureDuration;
-        private String filePath;
-        private String delimitator;
+        private String movement;
         
         public Double CaptureDuration { get; set; }
-        public String FilePath { get; set; }
-        public String Delimitator { get; set; }
+        public String Movement { get; set; }
 
         public List<string> GetSelectedJoints() {
             return this.selectedJoints;

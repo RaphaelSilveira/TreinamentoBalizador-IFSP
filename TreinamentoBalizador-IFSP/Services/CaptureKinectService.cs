@@ -107,11 +107,11 @@ namespace TreinamentoBalizador_IFSP.Services
                                 }
                             }
                             jointsInMoment.Add(moment.ToString(), kinectJoints);
+                            moment++;
                         }
                     }
                 }
             }
-            moment++;
         }
 
         /**

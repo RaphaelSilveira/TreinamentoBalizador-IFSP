@@ -30,30 +30,26 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CaptureParametersView));
             this.gbxParameterCapture = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblJoints = new System.Windows.Forms.Label();
             this.jointsCBxL = new System.Windows.Forms.CheckedListBox();
-            this.tbxPathFile = new System.Windows.Forms.TextBox();
-            this.btnPathFile = new System.Windows.Forms.Button();
-            this.tbxDelimitator = new System.Windows.Forms.TextBox();
             this.mtbCaptureTime = new System.Windows.Forms.MaskedTextBox();
             this.lblMinutesSeconds = new System.Windows.Forms.Label();
-            this.lblDelimitator = new System.Windows.Forms.Label();
             this.lblCaptureTime = new System.Windows.Forms.Label();
             this.btnStartCapture = new System.Windows.Forms.Button();
             this.fbdFilePath = new System.Windows.Forms.FolderBrowserDialog();
+            this.lblMovements = new System.Windows.Forms.Label();
+            this.cbxMovement = new System.Windows.Forms.ComboBox();
             this.gbxParameterCapture.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbxParameterCapture
             // 
-            this.gbxParameterCapture.Controls.Add(this.label1);
+            this.gbxParameterCapture.Controls.Add(this.cbxMovement);
+            this.gbxParameterCapture.Controls.Add(this.lblMovements);
+            this.gbxParameterCapture.Controls.Add(this.lblJoints);
             this.gbxParameterCapture.Controls.Add(this.jointsCBxL);
-            this.gbxParameterCapture.Controls.Add(this.tbxPathFile);
-            this.gbxParameterCapture.Controls.Add(this.btnPathFile);
-            this.gbxParameterCapture.Controls.Add(this.tbxDelimitator);
             this.gbxParameterCapture.Controls.Add(this.mtbCaptureTime);
             this.gbxParameterCapture.Controls.Add(this.lblMinutesSeconds);
-            this.gbxParameterCapture.Controls.Add(this.lblDelimitator);
             this.gbxParameterCapture.Controls.Add(this.lblCaptureTime);
             this.gbxParameterCapture.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbxParameterCapture.Location = new System.Drawing.Point(13, 9);
@@ -63,14 +59,14 @@
             this.gbxParameterCapture.TabStop = false;
             this.gbxParameterCapture.Text = "Parâmetros de captura";
             // 
-            // label1
+            // lblJoints
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 106);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 16);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Selecionar joints";
+            this.lblJoints.AutoSize = true;
+            this.lblJoints.Location = new System.Drawing.Point(24, 140);
+            this.lblJoints.Name = "lblJoints";
+            this.lblJoints.Size = new System.Drawing.Size(107, 16);
+            this.lblJoints.TabIndex = 10;
+            this.lblJoints.Text = "Selecionar joints";
             // 
             // jointsCBxL
             // 
@@ -96,34 +92,10 @@
             "KneeRight",
             "AnkleRight",
             "FootRight"});
-            this.jointsCBxL.Location = new System.Drawing.Point(27, 125);
+            this.jointsCBxL.Location = new System.Drawing.Point(27, 159);
             this.jointsCBxL.Name = "jointsCBxL";
-            this.jointsCBxL.Size = new System.Drawing.Size(703, 327);
+            this.jointsCBxL.Size = new System.Drawing.Size(703, 293);
             this.jointsCBxL.TabIndex = 0;
-            // 
-            // tbxPathFile
-            // 
-            this.tbxPathFile.Location = new System.Drawing.Point(254, 461);
-            this.tbxPathFile.Name = "tbxPathFile";
-            this.tbxPathFile.Size = new System.Drawing.Size(476, 22);
-            this.tbxPathFile.TabIndex = 9;
-            // 
-            // btnPathFile
-            // 
-            this.btnPathFile.Location = new System.Drawing.Point(27, 460);
-            this.btnPathFile.Name = "btnPathFile";
-            this.btnPathFile.Size = new System.Drawing.Size(221, 23);
-            this.btnPathFile.TabIndex = 8;
-            this.btnPathFile.Text = "Salvar arquivo onde";
-            this.btnPathFile.UseVisualStyleBackColor = true;
-            this.btnPathFile.Click += new System.EventHandler(this.btnPathFile_Click);
-            // 
-            // tbxDelimitator
-            // 
-            this.tbxDelimitator.Location = new System.Drawing.Point(140, 62);
-            this.tbxDelimitator.Name = "tbxDelimitator";
-            this.tbxDelimitator.Size = new System.Drawing.Size(64, 22);
-            this.tbxDelimitator.TabIndex = 7;
             // 
             // mtbCaptureTime
             // 
@@ -142,15 +114,6 @@
             this.lblMinutesSeconds.Size = new System.Drawing.Size(47, 16);
             this.lblMinutesSeconds.TabIndex = 4;
             this.lblMinutesSeconds.Text = "mm:ss";
-            // 
-            // lblDelimitator
-            // 
-            this.lblDelimitator.AutoSize = true;
-            this.lblDelimitator.Location = new System.Drawing.Point(24, 68);
-            this.lblDelimitator.Name = "lblDelimitator";
-            this.lblDelimitator.Size = new System.Drawing.Size(77, 16);
-            this.lblDelimitator.TabIndex = 3;
-            this.lblDelimitator.Text = "Delimitador";
             // 
             // lblCaptureTime
             // 
@@ -171,6 +134,64 @@
             this.btnStartCapture.Text = "Iniciar captura";
             this.btnStartCapture.UseVisualStyleBackColor = true;
             this.btnStartCapture.Click += new System.EventHandler(this.btnStartCapture_Click);
+            // 
+            // lblMovements
+            // 
+            this.lblMovements.AutoSize = true;
+            this.lblMovements.Location = new System.Drawing.Point(24, 73);
+            this.lblMovements.Name = "lblMovements";
+            this.lblMovements.Size = new System.Drawing.Size(74, 16);
+            this.lblMovements.TabIndex = 11;
+            this.lblMovements.Text = "Movimento";
+            // 
+            // cbxMovement
+            // 
+            this.cbxMovement.DropDownHeight = 80;
+            this.cbxMovement.FormattingEnabled = true;
+            this.cbxMovement.IntegralHeight = false;
+            this.cbxMovement.ItemHeight = 16;
+            this.cbxMovement.Items.AddRange(new object[] {
+            "Sinaleiro ",
+            "IdentificacaoRampa ",
+            "ProsseguirParaProximoSinaleiroComoOrientadoPelaTorreControle ",
+            "ProsseguirFrente ",
+            "GirarParaEsquerda ",
+            "GirarParaDireita ",
+            "ParadaNormal ",
+            "ParadaEmergencia ",
+            "AcionarFreios ",
+            "SoltarFreios ",
+            "CalcosColocados ",
+            "CalcosRetirados ",
+            "AcionamentoMotores ",
+            "CortarMotores ",
+            "ReduzirVelocidade ",
+            "ReduzirVelocidadeMotorDireita ",
+            "ReduzirVelocidadeMotorEsquerda ",
+            "Recuar ",
+            "VirarEnquantoRecuandoDireita ",
+            "VirarEnquantoRecuandoEsquerda ",
+            "Afirmativo ",
+            "VooPairado ",
+            "Subida ",
+            "Descida ",
+            "DeslocamentoHorizontalParaDireita ",
+            "DeslocamentoHorizontalParaEsquerda ",
+            "Pouso ",
+            "Fogo ",
+            "ManterPosicao ",
+            "DespachoAeronave ",
+            "NaoToqueComandos ",
+            "ConectarAlimentacaoEletricaSolo ",
+            "DesconectarAlimentacaoEletrica ",
+            "Negativo ",
+            "EstabelecerComunicacaoInterfone ",
+            "AbrirFecharEscadas"});
+            this.cbxMovement.Location = new System.Drawing.Point(164, 65);
+            this.cbxMovement.MaxDropDownItems = 5;
+            this.cbxMovement.Name = "cbxMovement";
+            this.cbxMovement.Size = new System.Drawing.Size(286, 24);
+            this.cbxMovement.TabIndex = 13;
             // 
             // CaptureParametersView
             // 
@@ -193,16 +214,14 @@
 
         private System.Windows.Forms.GroupBox gbxParameterCapture;
         private System.Windows.Forms.Label lblMinutesSeconds;
-        private System.Windows.Forms.Label lblDelimitator;
         private System.Windows.Forms.Label lblCaptureTime;
-        private System.Windows.Forms.TextBox tbxPathFile;
-        private System.Windows.Forms.Button btnPathFile;
-        private System.Windows.Forms.TextBox tbxDelimitator;
         private System.Windows.Forms.MaskedTextBox mtbCaptureTime;
         private System.Windows.Forms.Button btnStartCapture;
         private System.Windows.Forms.FolderBrowserDialog fbdFilePath;
         private System.Windows.Forms.CheckedListBox jointsCBxL;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblJoints;
+        private System.Windows.Forms.Label lblMovements;
+        private System.Windows.Forms.ComboBox cbxMovement;
     }
 }
 
