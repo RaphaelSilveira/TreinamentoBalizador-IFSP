@@ -135,11 +135,11 @@ namespace TreinamentoBalizador_IFSP.Services
                 "coordinates-",
                 date,
                 "-",
-                new DateTime().Hour,
+                DateTime.Now.Hour,
                 "-",
-                new DateTime().Minute,
+                DateTime.Now.Minute,
                 "-",
-                new DateTime().Second,
+                DateTime.Now.Second,
                 ".arff"
             );
         }
