@@ -10,7 +10,7 @@ namespace TreinamentoBalizador_IFSP.Services
 {
     class SaveHeaderService
     {
-        private List<String> movements;
+        private List<String> movements = new List<String>();
 
         public SaveHeaderService()
         {
@@ -52,11 +52,11 @@ namespace TreinamentoBalizador_IFSP.Services
             movements.Add("AbrirFecharEscadas");
         }
 
-        public void Create (int joints)
+        public String Create (int joints)
         {
             String path = GeneratePath();
 
-            File.Create(path);
+            File.Create("coordinates/" + path);
 
             String relation = "@relation TreinamentoBalizador-IFSP";
 
@@ -79,6 +79,8 @@ namespace TreinamentoBalizador_IFSP.Services
 
                 streamWriter.Close();
             }
+
+            return path;
         }
 
         private String CreateAttributeCoordinates(int joints)
@@ -129,7 +131,7 @@ namespace TreinamentoBalizador_IFSP.Services
             String date = new DateTime().ToString("yyyy-MM-dd");
 
             return String.Concat(
-                "coodinates/coordinates-",
+                "coordinates-",
                 date,
                 "-",
                 new DateTime().Hour,
