@@ -128,7 +128,8 @@ namespace TreinamentoBalizador_IFSP.Services
 
         private String GeneratePath()
         {
-            String date = new DateTime().ToString("yyyy-MM-dd");
+
+            String date = DateTime.Now.ToString("yyyy-MM-dd");
 
             return String.Concat(
                 "coordinates-",
