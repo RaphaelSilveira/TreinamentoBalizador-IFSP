@@ -54,9 +54,12 @@ namespace TreinamentoBalizador_IFSP.Services
 
         public String Create (int joints)
         {
-            String path = GeneratePath();
+            String path = @"Coordinates\\" + GeneratePath();
 
-            File.Create("coordinates/" + path);
+            Console.WriteLine(path);
+
+            var create = File.Create(path);
+            create.Close();
 
             String relation = "@relation TreinamentoBalizador-IFSP";
 

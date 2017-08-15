@@ -14,10 +14,10 @@ namespace TreinamentoBalizador_IFSP.Services
     class SaveCoordinatesService
     {
         private String movementLine;
-        private String path = System.AppDomain.CurrentDomain.BaseDirectory;
+        SaveHeaderService saveHeaderService = new SaveHeaderService();
 
         public void Save(Dictionary<string, List<KinectJoint>> jointsInMoment,
-            CaptureParameters captureParameters)
+            CaptureParameters captureParameters, int jointCount)
         {
             int first = int.Parse(jointsInMoment.First().Key);
             int last = int.Parse(jointsInMoment.Last().Key);
@@ -32,20 +32,20 @@ namespace TreinamentoBalizador_IFSP.Services
                 }
             }
 
-            SaveInFile(captureParameters.Movement);
+            SaveInFile(captureParameters.Movement, jointCount);
 
             MessageBox.Show("Movimentos capturados com sucesso!", "Fim da captura",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void SaveInFile(String movement)
+        private void SaveInFile(String movement, int jointCount)
         {
-            path = path + "coordinates\\coordinates.arff";
+            String filePath = saveHeaderService.Create(jointCount);
 
-            Console.WriteLine("path" + path);
+            Console.WriteLine(filePath);
             Console.WriteLine(movementLine);
 
-            using (StreamWriter streamWriter = File.AppendText(path))
+            using (StreamWriter streamWriter = File.AppendText(filePath))
             {
                 movementLine = movementLine + movement;
                 streamWriter.Write(movementLine);
