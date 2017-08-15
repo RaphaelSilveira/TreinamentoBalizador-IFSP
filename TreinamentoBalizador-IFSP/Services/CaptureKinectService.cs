@@ -20,6 +20,7 @@ namespace TreinamentoBalizador_IFSP.Services
         private Thread temporal;
         private List<KinectJoint> kinectJoints;
         private int moment;
+        private int jointCount = 0;
         private Dictionary<string, List<KinectJoint>> jointsInMoment =
             new Dictionary<string, List<KinectJoint>>();
 
@@ -104,6 +105,7 @@ namespace TreinamentoBalizador_IFSP.Services
                                     kinectJoint.Y = skeletonPoint.Y;
                                     kinectJoint.Z = skeletonPoint.Z;
                                     kinectJoints.Add(kinectJoint);
+                                    jointCount++;
                                 }
                             }
                             jointsInMoment.Add(moment.ToString(), kinectJoints);
@@ -122,7 +124,7 @@ namespace TreinamentoBalizador_IFSP.Services
             SaveCoordinatesService saveCoordinatesService = new SaveCoordinatesService();
             Console.WriteLine("Call save");
 
-            saveCoordinatesService.Save(jointsInMoment, captureParameters);
+            saveCoordinatesService.Save(jointsInMoment, captureParameters, jointCount);
         }
     }
 }
