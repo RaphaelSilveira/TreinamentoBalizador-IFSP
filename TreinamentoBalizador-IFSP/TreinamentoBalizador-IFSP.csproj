@@ -92,5 +92,8 @@
   <ItemGroup>
     <Content Include="Assets\favicon.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Coordinates\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
