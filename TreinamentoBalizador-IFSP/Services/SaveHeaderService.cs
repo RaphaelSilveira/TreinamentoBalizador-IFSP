@@ -69,7 +69,7 @@ namespace TreinamentoBalizador_IFSP.Services
 
             String data = "@data";
 
-            using (StreamWriter streamWriter = File.AppendText(path))
+            using (var streamWriter = new StreamWriter(path, true, Encoding.UTF8))
             {
                 streamWriter.WriteLine(relation);
                 streamWriter.WriteLine("");
