@@ -33,10 +33,10 @@ namespace TreinamentoBalizador_IFSP
             {
                 return "Selecione no mínimo um joint.";
             }
-            if (mtbCaptureTime.Text.Replace(" ", string.Empty) == ":")
-            {
-                return "Insira um valor para Tempo de captura.";
-            }
+            //if (mtbCaptureTime.Text.Replace(" ", string.Empty) == ":")
+            //{
+            //    return "Insira um valor para Tempo de captura.";
+            //}
             if (cbxMovement.Text == "")
             {
                 return "Declare o nome do movimento";
@@ -57,7 +57,7 @@ namespace TreinamentoBalizador_IFSP
             else
             {
                 Console.WriteLine(jointsCBxL.SelectedItems.Count);
-                DateTime duration = DateTime.ParseExact(mtbCaptureTime.Text, "mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                // DateTime duration = DateTime.ParseExact(mtbCaptureTime.Text, "mm:ss", System.Globalization.CultureInfo.InvariantCulture);
 
                 List<string> jointList = new List<string>();
 
@@ -66,9 +66,9 @@ namespace TreinamentoBalizador_IFSP
                     jointList.Add(item);
                 }
 
-                Double minutes = duration.Minute;
-                Double seconds = duration.Second;
-                Double totalMileseconds = ((minutes * 60) + seconds) * 1000;
+                // Double minutes = duration.Minute;
+                // Double seconds = duration.Second;
+                Double totalMileseconds = (12) * 1000;
 
                 captureParameters.CaptureDuration = totalMileseconds;
                 captureParameters.Movement = cbxMovement.Text;

@@ -22,7 +22,7 @@ namespace TreinamentoBalizador_IFSP.Services
             int first = int.Parse(jointsInMoment.First().Key);
             int last = int.Parse(jointsInMoment.Last().Key);
 
-            for (int i = first; i < last; i = i + 4)
+            for (int i = first; i < last; i = i + 10)
             {
                 List<KinectJoint> kinectJoints = jointsInMoment[i.ToString()];
 
