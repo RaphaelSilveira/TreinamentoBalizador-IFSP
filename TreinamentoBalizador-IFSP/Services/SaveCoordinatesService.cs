@@ -22,6 +22,8 @@ namespace TreinamentoBalizador_IFSP.Services
             int first = int.Parse(jointsInMoment.First().Key);
             int last = int.Parse(jointsInMoment.Last().Key);
 
+            int count = 0;
+
             for (int i = first; i < last; i = i + 10)
             {
                 List<KinectJoint> kinectJoints = jointsInMoment[i.ToString()];
@@ -30,37 +32,40 @@ namespace TreinamentoBalizador_IFSP.Services
                 {
                     WriteLine(kinectJoint);
                 }
+                count++;
+
+                if (count == 30) break;
             }
 
             SaveInFile(captureParameters.Movement, jointCount);
 
-            MessageBox.Show("Movimentos capturados com sucesso!", "Fim da captura",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Movimentos capturados com sucesso!", "Fim da captura", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void SaveInFile(String movement, int jointCount)
         {
-            String filePath = saveHeaderService.Create(jointCount);
-
-            Console.WriteLine(filePath);
-            Console.WriteLine(movementLine);
-
+            String filePath = "coordinates-0.0.1.arff";
+            
             using (StreamWriter streamWriter = File.AppendText(filePath))
             {
                 movementLine = movementLine + movement;
-                streamWriter.Write(movementLine);
+                streamWriter.WriteLine(movementLine);
                 streamWriter.Close();
             }
         }
 
         private void WriteLine(KinectJoint kinectJoint)
         {
+            String x = Convert.ToString(kinectJoint.X).Replace(",", ".");
+            String y = Convert.ToString(kinectJoint.Y).Replace(",", ".");
+            String z = Convert.ToString(kinectJoint.Z).Replace(",", ".");
+
             movementLine = movementLine + String.Concat(
-                Convert.ToString(kinectJoint.X),
+                x,
                 ",",
-                Convert.ToString(kinectJoint.Y),
+                y,
                 ",",
-                Convert.ToString(kinectJoint.Z),
+                z,
                 ","
             );
         }
