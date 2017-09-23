@@ -68,7 +68,7 @@ namespace TreinamentoBalizador_IFSP
 
                 // Double minutes = duration.Minute;
                 // Double seconds = duration.Second;
-                Double totalMileseconds = (12) * 1000;
+                Double totalMileseconds = (10) * 1000;
 
                 captureParameters.CaptureDuration = totalMileseconds;
                 captureParameters.Movement = cbxMovement.Text;

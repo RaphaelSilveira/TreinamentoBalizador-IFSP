@@ -19,32 +19,39 @@ namespace TreinamentoBalizador_IFSP.Services
         public void Save(Dictionary<string, List<KinectJoint>> jointsInMoment,
             CaptureParameters captureParameters, int jointCount)
         {
-            int first = int.Parse(jointsInMoment.First().Key);
-            int last = int.Parse(jointsInMoment.Last().Key);
-
-            int count = 0;
-
-            for (int i = first; i < last; i = i + 10)
+            Console.WriteLine("Number of frames: " + jointsInMoment.Count);
+            if(jointsInMoment.Count >= 210)
             {
-                List<KinectJoint> kinectJoints = jointsInMoment[i.ToString()];
+                int first = int.Parse(jointsInMoment.First().Key);
+                int last = int.Parse(jointsInMoment.Last().Key);
 
-                foreach(KinectJoint kinectJoint in kinectJoints)
+                int count = 0;
+
+                for (int i = first; i < last; i++)
                 {
-                    WriteLine(kinectJoint);
+                    List<KinectJoint> kinectJoints = jointsInMoment[i.ToString()];
+
+                    foreach (KinectJoint kinectJoint in kinectJoints)
+                    {
+                        WriteLine(kinectJoint);
+                    }
+                    count++;
+
+                    if (count == 210) break;
                 }
-                count++;
 
-                if (count == 30) break;
+                SaveInFile(captureParameters.Movement, jointCount);
+
+                MessageBox.Show("Movimentos capturados com sucesso!", "Fim da captura", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            } else
+            {
+                MessageBox.Show("Tá pegando fogo bixo", "Erroooooou!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
-            SaveInFile(captureParameters.Movement, jointCount);
-
-            MessageBox.Show("Movimentos capturados com sucesso!", "Fim da captura", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void SaveInFile(String movement, int jointCount)
         {
-            String filePath = "coordinates-0.0.1.arff";
+            String filePath = "coordinates-0.0.2.arff";
             
             using (StreamWriter streamWriter = File.AppendText(filePath))
             {

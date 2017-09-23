@@ -53,8 +53,11 @@ namespace TreinamentoBalizador_IFSP.Services
                 kinectSensor.SkeletonStream.Enable();
                 kinectSensor.Start();
 
-                temporal.Start();
-                keepAlive.Start();
+                if(kinectSensor.IsRunning)
+                {
+                    temporal.Start();
+                    keepAlive.Start();
+                }
                 
                 kinectSensor.AllFramesReady += Sensor_AllFramesReady;
             }
@@ -106,6 +109,7 @@ namespace TreinamentoBalizador_IFSP.Services
                                     kinectJoint.Z = skeletonPoint.Z;
                                     kinectJoints.Add(kinectJoint);
                                     jointCount++;
+                                    Console.WriteLine("pronto");
                                 }
                             }
                             jointsInMoment.Add(moment.ToString(), kinectJoints);

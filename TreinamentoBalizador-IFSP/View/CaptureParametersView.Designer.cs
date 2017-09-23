@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CaptureParametersView));
             this.gbxParameterCapture = new System.Windows.Forms.GroupBox();
+            this.cbxMovement = new System.Windows.Forms.ComboBox();
+            this.lblMovements = new System.Windows.Forms.Label();
             this.lblJoints = new System.Windows.Forms.Label();
             this.jointsCBxL = new System.Windows.Forms.CheckedListBox();
             this.mtbCaptureTime = new System.Windows.Forms.MaskedTextBox();
@@ -37,8 +39,6 @@
             this.lblCaptureTime = new System.Windows.Forms.Label();
             this.btnStartCapture = new System.Windows.Forms.Button();
             this.fbdFilePath = new System.Windows.Forms.FolderBrowserDialog();
-            this.lblMovements = new System.Windows.Forms.Label();
-            this.cbxMovement = new System.Windows.Forms.ComboBox();
             this.gbxParameterCapture.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,6 +59,63 @@
             this.gbxParameterCapture.TabStop = false;
             this.gbxParameterCapture.Text = "Parâmetros de captura";
             // 
+            // cbxMovement
+            // 
+            this.cbxMovement.DropDownHeight = 400;
+            this.cbxMovement.FormattingEnabled = true;
+            this.cbxMovement.IntegralHeight = false;
+            this.cbxMovement.ItemHeight = 16;
+            this.cbxMovement.Items.AddRange(new object[] {
+            "Sinaleiro ",
+            "IdentificacaoRampa ",
+            "ProsseguirParaProximoSinaleiroComoOrientadoPelaTorreControleDireita",
+            "ProsseguirParaProximoSinaleiroComoOrientadoPelaTorreControleEsquerda",
+            "ProsseguirFrente ",
+            "GirarParaEsquerda ",
+            "GirarParaDireita ",
+            "ParadaNormal ",
+            "ParadaEmergencia ",
+            "AcionarOuSoltarFreios",
+            "CalcosColocadosOuRetirados",
+            "AcionamentoMotores ",
+            "CortarMotores ",
+            "ReduzirVelocidade ",
+            "ReduzirVelocidadeMotorDireita ",
+            "ReduzirVelocidadeMotorEsquerda ",
+            "Recuar ",
+            "VirarEnquantoRecuandoDireita ",
+            "VirarEnquantoRecuandoEsquerda ",
+            "Afirmativo ",
+            "VooPairado ",
+            "Subida ",
+            "Descida ",
+            "DeslocamentoHorizontalParaDireita ",
+            "DeslocamentoHorizontalParaEsquerda ",
+            "Pouso ",
+            "Fogo ",
+            "ManterPosicao ",
+            "DespachoAeronave ",
+            "NaoToqueComandos ",
+            "ConectarAlimentacaoEletricaSolo ",
+            "DesconectarAlimentacaoEletrica ",
+            "Negativo ",
+            "EstabelecerComunicacaoInterfone ",
+            "AbrirFecharEscadas"});
+            this.cbxMovement.Location = new System.Drawing.Point(164, 65);
+            this.cbxMovement.MaxDropDownItems = 5;
+            this.cbxMovement.Name = "cbxMovement";
+            this.cbxMovement.Size = new System.Drawing.Size(566, 24);
+            this.cbxMovement.TabIndex = 13;
+            // 
+            // lblMovements
+            // 
+            this.lblMovements.AutoSize = true;
+            this.lblMovements.Location = new System.Drawing.Point(24, 73);
+            this.lblMovements.Name = "lblMovements";
+            this.lblMovements.Size = new System.Drawing.Size(74, 16);
+            this.lblMovements.TabIndex = 11;
+            this.lblMovements.Text = "Movimento";
+            // 
             // lblJoints
             // 
             this.lblJoints.AutoSize = true;
@@ -72,26 +129,8 @@
             // 
             this.jointsCBxL.FormattingEnabled = true;
             this.jointsCBxL.Items.AddRange(new object[] {
-            "HipCenter",
-            "Spine",
-            "ShoulderCenter",
-            "Head",
-            "ShoulderLeft",
-            "ElbowLeft",
-            "WristLeft",
             "HandLeft",
-            "ShoulderRight",
-            "ElbowRight",
-            "WristRight",
-            "HandRight",
-            "HipLeft",
-            "KneeLeft",
-            "AnkleLeft",
-            "FootLeft",
-            "HipRight",
-            "KneeRight",
-            "AnkleRight",
-            "FootRight"});
+            "HandRight"});
             this.jointsCBxL.Location = new System.Drawing.Point(27, 159);
             this.jointsCBxL.Name = "jointsCBxL";
             this.jointsCBxL.Size = new System.Drawing.Size(703, 293);
@@ -134,64 +173,6 @@
             this.btnStartCapture.Text = "Iniciar captura";
             this.btnStartCapture.UseVisualStyleBackColor = true;
             this.btnStartCapture.Click += new System.EventHandler(this.btnStartCapture_Click);
-            // 
-            // lblMovements
-            // 
-            this.lblMovements.AutoSize = true;
-            this.lblMovements.Location = new System.Drawing.Point(24, 73);
-            this.lblMovements.Name = "lblMovements";
-            this.lblMovements.Size = new System.Drawing.Size(74, 16);
-            this.lblMovements.TabIndex = 11;
-            this.lblMovements.Text = "Movimento";
-            // 
-            // cbxMovement
-            // 
-            this.cbxMovement.DropDownHeight = 80;
-            this.cbxMovement.FormattingEnabled = true;
-            this.cbxMovement.IntegralHeight = false;
-            this.cbxMovement.ItemHeight = 16;
-            this.cbxMovement.Items.AddRange(new object[] {
-            "Sinaleiro ",
-            "IdentificacaoRampa ",
-            "ProsseguirParaProximoSinaleiroComoOrientadoPelaTorreControle ",
-            "ProsseguirFrente ",
-            "GirarParaEsquerda ",
-            "GirarParaDireita ",
-            "ParadaNormal ",
-            "ParadaEmergencia ",
-            "AcionarFreios ",
-            "SoltarFreios ",
-            "CalcosColocados ",
-            "CalcosRetirados ",
-            "AcionamentoMotores ",
-            "CortarMotores ",
-            "ReduzirVelocidade ",
-            "ReduzirVelocidadeMotorDireita ",
-            "ReduzirVelocidadeMotorEsquerda ",
-            "Recuar ",
-            "VirarEnquantoRecuandoDireita ",
-            "VirarEnquantoRecuandoEsquerda ",
-            "Afirmativo ",
-            "VooPairado ",
-            "Subida ",
-            "Descida ",
-            "DeslocamentoHorizontalParaDireita ",
-            "DeslocamentoHorizontalParaEsquerda ",
-            "Pouso ",
-            "Fogo ",
-            "ManterPosicao ",
-            "DespachoAeronave ",
-            "NaoToqueComandos ",
-            "ConectarAlimentacaoEletricaSolo ",
-            "DesconectarAlimentacaoEletrica ",
-            "Negativo ",
-            "EstabelecerComunicacaoInterfone ",
-            "AbrirFecharEscadas"});
-            this.cbxMovement.Location = new System.Drawing.Point(164, 65);
-            this.cbxMovement.MaxDropDownItems = 5;
-            this.cbxMovement.Name = "cbxMovement";
-            this.cbxMovement.Size = new System.Drawing.Size(286, 24);
-            this.cbxMovement.TabIndex = 13;
             // 
             // CaptureParametersView
             // 
