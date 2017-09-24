@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TreinamentoBalizador_IFSP.View;
 
 namespace TreinamentoBalizador_IFSP
 {
@@ -16,7 +17,7 @@ namespace TreinamentoBalizador_IFSP
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CaptureParametersView());
+            Application.Run(new MainFormView());
         }
     }
 }
