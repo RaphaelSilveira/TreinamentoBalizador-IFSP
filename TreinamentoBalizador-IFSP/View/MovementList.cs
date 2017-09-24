@@ -12,9 +12,7 @@ namespace TreinamentoBalizador_IFSP.View
 {
     public partial class MovementList : Form
     {
-
-        String _videoUrl;
-    
+ 
         public MovementList()
         {
             InitializeComponent();
@@ -22,7 +20,8 @@ namespace TreinamentoBalizador_IFSP.View
 
         private void cbxSelectMovement_SelectedIndexChanged(object sender, EventArgs e)
         {
-            wbMovement.Navigate("https://www.youtube.com/embed/Nbb-En_UFYc");
+            wmpMovement.URL = @"videos\\sinaleiro.mp4";
+            wmpMovement.Ctlcontrols.play();
         }
     }
 }

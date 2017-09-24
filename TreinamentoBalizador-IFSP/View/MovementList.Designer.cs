@@ -33,9 +33,10 @@
             this.gbxSelectMovement = new System.Windows.Forms.GroupBox();
             this.lblSelect = new System.Windows.Forms.Label();
             this.cbxSelectMovement = new System.Windows.Forms.ComboBox();
-            this.wbMovement = new System.Windows.Forms.WebBrowser();
+            this.wmpMovement = new AxWMPLib.AxWindowsMediaPlayer();
             this.pnlMovementsList.SuspendLayout();
             this.gbxSelectMovement.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.wmpMovement)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMovementsList
@@ -49,7 +50,7 @@
             // 
             // gbxSelectMovement
             // 
-            this.gbxSelectMovement.Controls.Add(this.wbMovement);
+            this.gbxSelectMovement.Controls.Add(this.wmpMovement);
             this.gbxSelectMovement.Controls.Add(this.lblSelect);
             this.gbxSelectMovement.Controls.Add(this.cbxSelectMovement);
             this.gbxSelectMovement.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -114,13 +115,14 @@
             this.cbxSelectMovement.TabIndex = 0;
             this.cbxSelectMovement.SelectedIndexChanged += new System.EventHandler(this.cbxSelectMovement_SelectedIndexChanged);
             // 
-            // wbMovement
+            // wmpMovement
             // 
-            this.wbMovement.Location = new System.Drawing.Point(19, 98);
-            this.wbMovement.MinimumSize = new System.Drawing.Size(20, 20);
-            this.wbMovement.Name = "wbMovement";
-            this.wbMovement.Size = new System.Drawing.Size(702, 307);
-            this.wbMovement.TabIndex = 2;
+            this.wmpMovement.Enabled = true;
+            this.wmpMovement.Location = new System.Drawing.Point(21, 75);
+            this.wmpMovement.Name = "wmpMovement";
+            this.wmpMovement.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("wmpMovement.OcxState")));
+            this.wmpMovement.Size = new System.Drawing.Size(701, 324);
+            this.wmpMovement.TabIndex = 2;
             // 
             // MovementList
             // 
@@ -134,6 +136,7 @@
             this.pnlMovementsList.ResumeLayout(false);
             this.gbxSelectMovement.ResumeLayout(false);
             this.gbxSelectMovement.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.wmpMovement)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -144,6 +147,6 @@
         private System.Windows.Forms.GroupBox gbxSelectMovement;
         private System.Windows.Forms.Label lblSelect;
         private System.Windows.Forms.ComboBox cbxSelectMovement;
-        private System.Windows.Forms.WebBrowser wbMovement;
+        private AxWMPLib.AxWindowsMediaPlayer wmpMovement;
     }
 }
