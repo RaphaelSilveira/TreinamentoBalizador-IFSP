@@ -1,4 +1,7 @@
-﻿namespace TreinamentoBalizador_IFSP.View
+﻿using System.Drawing;
+using System.Windows.Forms;
+
+namespace TreinamentoBalizador_IFSP.View
 {
     partial class MainFormView
     {
@@ -34,6 +37,8 @@
             this.msMainMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.msOpenCaptureParametersForm = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.msOpenTestForm = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.msOpenGroundSignalsListForm = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.msOpenAboutForm = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,6 +73,8 @@
             this.msMainMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.msOpenCaptureParametersForm,
             this.toolStripSeparator1,
+            this.msOpenTestForm,
+            this.toolStripSeparator4,
             this.msOpenGroundSignalsListForm,
             this.toolStripSeparator2,
             this.msOpenAboutForm,
@@ -88,6 +95,18 @@
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(187, 6);
+            // 
+            // msOpenTestForm
+            // 
+            this.msOpenTestForm.Name = "msOpenTestForm";
+            this.msOpenTestForm.Size = new System.Drawing.Size(190, 22);
+            this.msOpenTestForm.Text = "Prova";
+            this.msOpenTestForm.Click += new System.EventHandler(this.msOpenTestForm_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(187, 6);
             // 
             // msOpenGroundSignalsListForm
             // 
@@ -121,6 +140,8 @@
             // 
             // pnlBaseForm
             // 
+            this.pnlBaseForm.BackgroundImage = global::TreinamentoBalizador_IFSP.Properties.Resources.logo;
+            this.pnlBaseForm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pnlBaseForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlBaseForm.Location = new System.Drawing.Point(0, 25);
             this.pnlBaseForm.Name = "pnlBaseForm";
@@ -159,5 +180,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.Panel pnlBaseForm;
+        private System.Windows.Forms.ToolStripMenuItem msOpenTestForm;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
     }
 }

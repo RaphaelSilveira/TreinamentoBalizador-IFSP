@@ -26,23 +26,24 @@ namespace TreinamentoBalizador_IFSP.View
 
         private void msOpenCaptureParametersForm_Click(object sender, EventArgs e)
         {
-            _objForm?.Close();
-
-            _objForm = new MovementList {
-                TopLevel = false,
-                FormBorderStyle = FormBorderStyle.None,
-                Dock = DockStyle.Fill
-            };
-
-            pnlBaseForm.Controls.Add(_objForm);
-            _objForm.Show();
+            RenderForm("training");
         }
 
         private void msOpenGroundSignalsListForm_Click(object sender, EventArgs e)
         {
+            RenderForm("addMovement");
+        }
+
+        private void msOpenTestForm_Click(object sender, EventArgs e)
+        {
+            RenderForm("test");
+        }
+
+        public void RenderForm(String flow)
+        {
             _objForm?.Close();
 
-            _objForm = new CaptureParametersView
+            _objForm = new KinectConfigurationInfo(flow)
             {
                 TopLevel = false,
                 FormBorderStyle = FormBorderStyle.None,
