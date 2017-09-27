@@ -1,6 +1,6 @@
 ﻿namespace TreinamentoBalizador_IFSP.View
 {
-    partial class MovementList
+    partial class TrainingFormView
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MovementList));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrainingFormView));
             this.pnlMovementsList = new System.Windows.Forms.Panel();
             this.gbxSelectMovement = new System.Windows.Forms.GroupBox();
+            this.wmpMovement = new AxWMPLib.AxWindowsMediaPlayer();
             this.lblSelect = new System.Windows.Forms.Label();
             this.cbxSelectMovement = new System.Windows.Forms.ComboBox();
-            this.wmpMovement = new AxWMPLib.AxWindowsMediaPlayer();
             this.pnlMovementsList.SuspendLayout();
             this.gbxSelectMovement.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wmpMovement)).BeginInit();
@@ -61,6 +61,15 @@
             this.gbxSelectMovement.TabStop = false;
             this.gbxSelectMovement.Text = "Selecionar movimento";
             // 
+            // wmpMovement
+            // 
+            this.wmpMovement.Enabled = true;
+            this.wmpMovement.Location = new System.Drawing.Point(21, 75);
+            this.wmpMovement.Name = "wmpMovement";
+            this.wmpMovement.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("wmpMovement.OcxState")));
+            this.wmpMovement.Size = new System.Drawing.Size(701, 324);
+            this.wmpMovement.TabIndex = 2;
+            // 
             // lblSelect
             // 
             this.lblSelect.AutoSize = true;
@@ -73,65 +82,20 @@
             // cbxSelectMovement
             // 
             this.cbxSelectMovement.FormattingEnabled = true;
-            this.cbxSelectMovement.Items.AddRange(new object[] {
-            "Sinaleiro ",
-            "IdentificacaoRampa ",
-            "ProsseguirParaProximoSinaleiroComoOrientadoPelaTorreControleDireita",
-            "ProsseguirParaProximoSinaleiroComoOrientadoPelaTorreControleEsquerda",
-            "ProsseguirFrente ",
-            "GirarParaEsquerda ",
-            "GirarParaDireita ",
-            "ParadaNormal ",
-            "ParadaEmergencia ",
-            "AcionarOuSoltarFreios",
-            "CalcosColocadosOuRetirados",
-            "AcionamentoMotores ",
-            "CortarMotores ",
-            "ReduzirVelocidade ",
-            "ReduzirVelocidadeMotorDireita ",
-            "ReduzirVelocidadeMotorEsquerda ",
-            "Recuar ",
-            "VirarEnquantoRecuandoDireita ",
-            "VirarEnquantoRecuandoEsquerda ",
-            "Afirmativo ",
-            "VooPairado ",
-            "Subida ",
-            "Descida ",
-            "DeslocamentoHorizontalParaDireita ",
-            "DeslocamentoHorizontalParaEsquerda ",
-            "Pouso ",
-            "Fogo ",
-            "ManterPosicao ",
-            "DespachoAeronave ",
-            "NaoToqueComandos ",
-            "ConectarAlimentacaoEletricaSolo ",
-            "DesconectarAlimentacaoEletrica ",
-            "Negativo ",
-            "EstabelecerComunicacaoInterfone ",
-            "AbrirFecharEscadas"});
             this.cbxSelectMovement.Location = new System.Drawing.Point(114, 34);
             this.cbxSelectMovement.Name = "cbxSelectMovement";
             this.cbxSelectMovement.Size = new System.Drawing.Size(608, 24);
             this.cbxSelectMovement.TabIndex = 0;
             this.cbxSelectMovement.SelectedIndexChanged += new System.EventHandler(this.cbxSelectMovement_SelectedIndexChanged);
             // 
-            // wmpMovement
-            // 
-            this.wmpMovement.Enabled = true;
-            this.wmpMovement.Location = new System.Drawing.Point(21, 75);
-            this.wmpMovement.Name = "wmpMovement";
-            this.wmpMovement.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("wmpMovement.OcxState")));
-            this.wmpMovement.Size = new System.Drawing.Size(701, 324);
-            this.wmpMovement.TabIndex = 2;
-            // 
-            // MovementList
+            // TrainingFormView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(777, 571);
             this.Controls.Add(this.pnlMovementsList);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "MovementList";
+            this.Name = "TrainingFormView";
             this.Text = "Lista de sinais";
             this.pnlMovementsList.ResumeLayout(false);
             this.gbxSelectMovement.ResumeLayout(false);

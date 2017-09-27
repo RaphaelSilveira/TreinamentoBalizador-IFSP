@@ -50,7 +50,7 @@ namespace TreinamentoBalizador_IFSP.View
                     RenderForm(form);
                     break;
                 case TRAINIG:
-                    form = new MovementList()
+                    form = new TrainingFormView()
                     {
                         TopLevel = false,
                         FormBorderStyle = FormBorderStyle.None,
