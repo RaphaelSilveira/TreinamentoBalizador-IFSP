@@ -66,9 +66,7 @@ namespace TreinamentoBalizador_IFSP.View
 
         private void btnTraining_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(cbxSelectMovement.SelectedValue);
-            Console.WriteLine(cbxSelectMovement.SelectedValue);
-            CaptureForm captureForm = new CaptureForm(cbxSelectMovement.Text);
+            CaptureForm captureForm = new CaptureForm(cbxSelectMovement.Text, cbxSelectMovement.SelectedValue.ToString());
             captureForm.Show();
         }
     }
