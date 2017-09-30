@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrainingFormView));
             this.pnlMovementsList = new System.Windows.Forms.Panel();
+            this.btnTraining = new System.Windows.Forms.Button();
             this.gbxSelectMovement = new System.Windows.Forms.GroupBox();
             this.wmpMovement = new AxWMPLib.AxWindowsMediaPlayer();
             this.lblSelect = new System.Windows.Forms.Label();
@@ -41,12 +42,23 @@
             // 
             // pnlMovementsList
             // 
+            this.pnlMovementsList.Controls.Add(this.btnTraining);
             this.pnlMovementsList.Controls.Add(this.gbxSelectMovement);
             this.pnlMovementsList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMovementsList.Location = new System.Drawing.Point(0, 0);
             this.pnlMovementsList.Name = "pnlMovementsList";
             this.pnlMovementsList.Size = new System.Drawing.Size(777, 571);
             this.pnlMovementsList.TabIndex = 0;
+            // 
+            // btnTraining
+            // 
+            this.btnTraining.Location = new System.Drawing.Point(627, 529);
+            this.btnTraining.Name = "btnTraining";
+            this.btnTraining.Size = new System.Drawing.Size(138, 30);
+            this.btnTraining.TabIndex = 3;
+            this.btnTraining.Text = "Treinar movimento";
+            this.btnTraining.UseVisualStyleBackColor = true;
+            this.btnTraining.Click += new System.EventHandler(this.btnTraining_Click);
             // 
             // gbxSelectMovement
             // 
@@ -112,5 +124,6 @@
         private System.Windows.Forms.Label lblSelect;
         private System.Windows.Forms.ComboBox cbxSelectMovement;
         private AxWMPLib.AxWindowsMediaPlayer wmpMovement;
+        private System.Windows.Forms.Button btnTraining;
     }
 }

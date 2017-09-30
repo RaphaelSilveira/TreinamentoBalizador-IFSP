@@ -66,7 +66,7 @@ namespace TreinamentoBalizador_IFSP.View
             _objForm?.Close();
 
             _objForm = form;
-
+            
             pnlKinectConfigInfo.Controls.Add(_objForm);
             _objForm.Show();
         }

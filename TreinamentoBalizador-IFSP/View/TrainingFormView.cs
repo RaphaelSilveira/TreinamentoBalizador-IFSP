@@ -8,33 +8,47 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using TreinamentoBalizador_IFSP.Data;
+using TreinamentoBalizador_IFSP.Models;
+
 namespace TreinamentoBalizador_IFSP.View
 {
     public partial class TrainingFormView : Form
     {
-        private Dictionary<String, String> movments = new Dictionary<string, string>();
+        private Dictionary<String, String> movements = new Dictionary<string, string>();
+        Movements movementData = Movements.Instance;
+
  
         public TrainingFormView()
         {
             InitializeComponent();
+            movements = movementData.movments;
             PopulateCombobox();
         }
 
         private void cbxSelectMovement_SelectedIndexChanged(object sender, EventArgs e)
         {
             Console.WriteLine(cbxSelectMovement.SelectedValue);
-            wmpMovement.URL = @"videos\\sinaleiro.mp4";
+            wmpMovement.URL = @"videos\\"+ cbxSelectMovement.SelectedValue + ".mp4";
             wmpMovement.Ctlcontrols.play();
         }
 
         private void PopulateCombobox()
         {
-            ReadFile();
-            foreach (KeyValuePair<string, string> pair in movments)
+
+            var dataSource = new List<MovementItem>();
+            
+            //Setup data binding
+            
+
+            foreach (KeyValuePair<string, string> pair in movements)
             {
-                Console.WriteLine(pair.Value);
-                cbxSelectMovement.Items.Add(Text = pair.Value.Replace(',', ' '));
+                dataSource.Add(new MovementItem() { Text = pair.Value.Replace(',', ' '), Key = pair.Key });
             }
+
+            this.cbxSelectMovement.DataSource = dataSource;
+            this.cbxSelectMovement.DisplayMember = "Text";
+            this.cbxSelectMovement.ValueMember = "Key";
         }
 
         private void ReadFile()
@@ -44,10 +58,18 @@ namespace TreinamentoBalizador_IFSP.View
             while ((line = file.ReadLine()) != null)
             {
                 string[] lineSplited = line.Split(';');
-                movments.Add(lineSplited[0], lineSplited[1]);
+                movements.Add(lineSplited[0], lineSplited[1]);
             }
 
             file.Close();
+        }
+
+        private void btnTraining_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine(cbxSelectMovement.SelectedValue);
+            Console.WriteLine(cbxSelectMovement.SelectedValue);
+            CaptureForm captureForm = new CaptureForm(cbxSelectMovement.Text);
+            captureForm.Show();
         }
     }
 }
