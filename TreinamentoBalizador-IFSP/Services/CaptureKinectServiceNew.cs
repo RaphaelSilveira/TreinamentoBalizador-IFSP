@@ -23,15 +23,45 @@ namespace TreinamentoBalizador_IFSP.Services
         private Dictionary<string, List<KinectJoint>> jointsInMoment =
             new Dictionary<string, List<KinectJoint>>();
 
+        public CaptureKinectServiceNew()
+        {
+
+            temporalService = new TemporalService(7000);
+            temporal = new Thread(temporalService.Execute);
+
+            moment = 1;
+        }
+
         public void StartKinectSensor()
         {
             kinectSensor = KinectSensor.KinectSensors.Where(s => s.Status == KinectStatus.Connected).FirstOrDefault();
 
             if (kinectSensor != null)
             {
-                kinectSensor.SkeletonStream.Enable();
-                kinectSensor.Start();
+                Thread keepAlive = new Thread(KeepCapturing);
+                // kinectSensor.SkeletonStream.Enable();
+                // kinectSensor.Start();
                 Console.WriteLine("startou kinect");
+                if (kinectSensor.IsRunning)
+                {
+                    temporal.Start();
+                    keepAlive.Start();
+                }
+            }
+
+            // kinectSensor.AllFramesReady += Sensor_AllFramesReady;
+        }
+
+        private void KeepCapturing()
+        {
+            while (temporal.IsAlive);
+
+            Console.WriteLine("thread rodando");
+
+            if (kinectSensor != null)
+            {
+                kinectSensor.Stop();
+                // Save();
             }
         }
 
