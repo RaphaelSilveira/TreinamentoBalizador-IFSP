@@ -42,7 +42,6 @@ namespace TreinamentoBalizador_IFSP.Services
          */
         public void InitCapture()
         {
-            Console.WriteLine("Init capture");
 
             kinectSensor = KinectSensor.KinectSensors.Where(s => s.Status == KinectStatus.Connected).FirstOrDefault();
 

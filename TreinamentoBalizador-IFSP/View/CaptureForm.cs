@@ -9,12 +9,16 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using TreinamentoBalizador_IFSP.Services;
+using TreinamentoBalizador_IFSP.Models;
+
 namespace TreinamentoBalizador_IFSP.View
 {
     public partial class CaptureForm : Form
     {
 
         private String movement;
+        CaptureKinectServiceNew captureService = new CaptureKinectServiceNew();
 
         public CaptureForm()
         {
@@ -33,6 +37,7 @@ namespace TreinamentoBalizador_IFSP.View
 
         private void btnStartSensor_Click(object sender, EventArgs e)
         {
+            captureService.StartKinectSensor();
             btnStartSensor.Enabled = false;
             btnStartCapture.Enabled = true;
             btnSensorOff.Enabled = true;
@@ -65,10 +70,10 @@ namespace TreinamentoBalizador_IFSP.View
 
         private void bwCapturing_DoWork(object sender, DoWorkEventArgs e)
         {
-            for (int i = 0; i < 100; i++)//representa uma tarefa com 100 processos.
+            for (int i = 0; i < 7; i++)//representa uma tarefa com 100 processos.
             {
                 //Executa o método longo 100 vezes.
-                TarefaLonga(20);
+                //TarefaLonga(20);
                 //incrementa o progresso do backgroundWorker 
                 //a cada passagem do loop.
                 this.bwCapturing.ReportProgress(i);
