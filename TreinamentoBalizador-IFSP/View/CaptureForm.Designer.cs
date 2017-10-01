@@ -32,7 +32,7 @@
             this.lblMovementName = new System.Windows.Forms.Label();
             this.btnStartSensor = new System.Windows.Forms.Button();
             this.btnStartCapture = new System.Windows.Forms.Button();
-            this.lnlSensorReady = new System.Windows.Forms.Label();
+            this.lblSensorReady = new System.Windows.Forms.Label();
             this.pbCapturing = new System.Windows.Forms.ProgressBar();
             this.bwCapturing = new System.ComponentModel.BackgroundWorker();
             this.gbxSensor = new System.Windows.Forms.GroupBox();
@@ -75,15 +75,15 @@
             this.btnStartCapture.UseVisualStyleBackColor = true;
             this.btnStartCapture.Click += new System.EventHandler(this.btnStartCapture_Click);
             // 
-            // lnlSensorReady
+            // lblSensorReady
             // 
-            this.lnlSensorReady.AutoSize = true;
-            this.lnlSensorReady.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lnlSensorReady.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.lnlSensorReady.Location = new System.Drawing.Point(17, 35);
-            this.lnlSensorReady.Name = "lnlSensorReady";
-            this.lnlSensorReady.Size = new System.Drawing.Size(0, 18);
-            this.lnlSensorReady.TabIndex = 3;
+            this.lblSensorReady.AutoSize = true;
+            this.lblSensorReady.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSensorReady.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.lblSensorReady.Location = new System.Drawing.Point(17, 35);
+            this.lblSensorReady.Name = "lblSensorReady";
+            this.lblSensorReady.Size = new System.Drawing.Size(0, 18);
+            this.lblSensorReady.TabIndex = 3;
             // 
             // pbCapturing
             // 
@@ -107,7 +107,7 @@
             this.gbxSensor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbxSensor.Location = new System.Drawing.Point(28, 70);
             this.gbxSensor.Name = "gbxSensor";
-            this.gbxSensor.Size = new System.Drawing.Size(332, 100);
+            this.gbxSensor.Size = new System.Drawing.Size(332, 116);
             this.gbxSensor.TabIndex = 5;
             this.gbxSensor.TabStop = false;
             this.gbxSensor.Text = "Sensor";
@@ -126,7 +126,7 @@
             // 
             this.gbxCapture.Controls.Add(this.btnStopCapture);
             this.gbxCapture.Controls.Add(this.btnStartCapture);
-            this.gbxCapture.Controls.Add(this.lnlSensorReady);
+            this.gbxCapture.Controls.Add(this.lblSensorReady);
             this.gbxCapture.Controls.Add(this.pbCapturing);
             this.gbxCapture.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbxCapture.Location = new System.Drawing.Point(28, 208);
@@ -172,7 +172,7 @@
         private System.Windows.Forms.Label lblMovementName;
         private System.Windows.Forms.Button btnStartSensor;
         private System.Windows.Forms.Button btnStartCapture;
-        private System.Windows.Forms.Label lnlSensorReady;
+        private System.Windows.Forms.Label lblSensorReady;
         private System.Windows.Forms.ProgressBar pbCapturing;
         private System.ComponentModel.BackgroundWorker bwCapturing;
         private System.Windows.Forms.GroupBox gbxSensor;

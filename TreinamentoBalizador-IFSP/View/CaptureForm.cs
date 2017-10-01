@@ -18,16 +18,18 @@ namespace TreinamentoBalizador_IFSP.View
     {
 
         private String movement;
-        CaptureKinectServiceNew captureService = new CaptureKinectServiceNew();
+        CaptureKinectServiceNew captureService;
 
         public CaptureForm()
         {
             InitializeComponent();
+            captureService = new CaptureKinectServiceNew(this);
         }
 
         public CaptureForm(string movementText, string movementKey)
         {
             InitializeComponent();
+            captureService = new CaptureKinectServiceNew(this);
             this.Text = movementText;
             lblMovementName.Text = movementText;
 
@@ -39,7 +41,6 @@ namespace TreinamentoBalizador_IFSP.View
         {
             captureService.StartKinectSensor();
             btnStartSensor.Enabled = false;
-            btnStartCapture.Enabled = true;
             btnSensorOff.Enabled = true;
         }
 
@@ -56,7 +57,15 @@ namespace TreinamentoBalizador_IFSP.View
             pbCapturing.Value = 0;
 
             //executa o processo de forma assincrona.
-            bwCapturing.RunWorkerAsync();
+            // bwCapturing.RunWorkerAsync();
+
+            captureService.StartSaveCoordinates();
+        }
+
+        public void KinectReady()
+        {
+            btnStartCapture.Enabled = true;
+            lblSensorReady.Text = "Reconhecimento concluido";
         }
 
         private void TarefaLonga(int p)
