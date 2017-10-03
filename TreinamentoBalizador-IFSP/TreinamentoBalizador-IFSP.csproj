@@ -38,6 +38,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,14 +50,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\Movements.cs" />
+    <Compile Include="Communication\MovementServerCommunication.cs" />
+    <Compile Include="Configuration\LowercaseContractResolver.cs" />
+    <Compile Include="Configuration\Movements.cs" />
     <Compile Include="Models\CaptureParameters.cs" />
+    <Compile Include="Models\FormatedCoordinatesModel.cs" />
     <Compile Include="Models\KinectJoint.cs" />
     <Compile Include="Models\MovementItem.cs" />
     <Compile Include="Services\CaptureKinectService.cs" />
     <Compile Include="Services\CaptureKinectServiceNew.cs" />
-    <Compile Include="Services\SaveCoordinatesService.cs" />
-    <Compile Include="Services\SaveHeaderService.cs" />
+    <Compile Include="Services\FormatCoordinatesService.cs" />
     <Compile Include="Services\TemporalService.cs" />
     <Compile Include="Utils\DateUtils.cs" />
     <Compile Include="View\CaptureForm.cs">
@@ -169,5 +172,6 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

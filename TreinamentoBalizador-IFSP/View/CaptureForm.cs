@@ -23,32 +23,23 @@ namespace TreinamentoBalizador_IFSP.View
         public CaptureForm()
         {
             InitializeComponent();
-            captureService = new CaptureKinectServiceNew(this);
         }
 
         public CaptureForm(string movementText, string movementKey)
         {
             InitializeComponent();
-            captureService = new CaptureKinectServiceNew(this);
+            captureService = new CaptureKinectServiceNew(this, movementKey);
+
             this.Text = movementText;
             lblMovementName.Text = movementText;
-
-            Console.WriteLine(movementKey);
             this.movement = movementKey;
-        }
 
-        private void btnStartSensor_Click(object sender, EventArgs e)
-        {
             captureService.StartKinectSensor();
-            btnStartSensor.Enabled = false;
-            btnSensorOff.Enabled = true;
         }
 
         private void btnStartCapture_Click(object sender, EventArgs e)
         {
             //desabilita os botões enquanto a tarefa é executada
-            btnSensorOff.Enabled = false;
-            btnStartSensor.Enabled = false;
             btnStartCapture.Enabled = false;
             btnStopCapture.Enabled = true;
 

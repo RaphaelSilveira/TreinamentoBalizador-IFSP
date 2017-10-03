@@ -123,10 +123,10 @@ namespace TreinamentoBalizador_IFSP.Services
          */
         private void Save()
         {
-            SaveCoordinatesService saveCoordinatesService = new SaveCoordinatesService();
+            // SaveCoordinatesService saveCoordinatesService = new SaveCoordinatesService();
             Console.WriteLine("Call save");
 
-            saveCoordinatesService.Save(jointsInMoment, captureParameters, jointCount);
+            // saveCoordinatesService.Save(jointsInMoment, captureParameters, jointCount);
         }
     }
 }

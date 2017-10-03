@@ -30,16 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CaptureForm));
             this.lblMovementName = new System.Windows.Forms.Label();
-            this.btnStartSensor = new System.Windows.Forms.Button();
             this.btnStartCapture = new System.Windows.Forms.Button();
             this.lblSensorReady = new System.Windows.Forms.Label();
             this.pbCapturing = new System.Windows.Forms.ProgressBar();
             this.bwCapturing = new System.ComponentModel.BackgroundWorker();
-            this.gbxSensor = new System.Windows.Forms.GroupBox();
-            this.btnSensorOff = new System.Windows.Forms.Button();
             this.gbxCapture = new System.Windows.Forms.GroupBox();
             this.btnStopCapture = new System.Windows.Forms.Button();
-            this.gbxSensor.SuspendLayout();
             this.gbxCapture.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,22 +48,11 @@
             this.lblMovementName.Size = new System.Drawing.Size(0, 16);
             this.lblMovementName.TabIndex = 0;
             // 
-            // btnStartSensor
-            // 
-            this.btnStartSensor.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStartSensor.Location = new System.Drawing.Point(6, 42);
-            this.btnStartSensor.Name = "btnStartSensor";
-            this.btnStartSensor.Size = new System.Drawing.Size(106, 27);
-            this.btnStartSensor.TabIndex = 1;
-            this.btnStartSensor.Text = "Ligar sensor";
-            this.btnStartSensor.UseVisualStyleBackColor = true;
-            this.btnStartSensor.Click += new System.EventHandler(this.btnStartSensor_Click);
-            // 
             // btnStartCapture
             // 
             this.btnStartCapture.Enabled = false;
             this.btnStartCapture.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStartCapture.Location = new System.Drawing.Point(6, 72);
+            this.btnStartCapture.Location = new System.Drawing.Point(6, 73);
             this.btnStartCapture.Name = "btnStartCapture";
             this.btnStartCapture.Size = new System.Drawing.Size(106, 27);
             this.btnStartCapture.TabIndex = 2;
@@ -89,7 +74,7 @@
             // 
             this.pbCapturing.Location = new System.Drawing.Point(6, 122);
             this.pbCapturing.Name = "pbCapturing";
-            this.pbCapturing.Size = new System.Drawing.Size(320, 23);
+            this.pbCapturing.Size = new System.Drawing.Size(679, 23);
             this.pbCapturing.TabIndex = 4;
             // 
             // bwCapturing
@@ -100,28 +85,6 @@
             this.bwCapturing.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bwCapturing_ProgressChanged);
             this.bwCapturing.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwCapturing_RunWorkerCompleted);
             // 
-            // gbxSensor
-            // 
-            this.gbxSensor.Controls.Add(this.btnSensorOff);
-            this.gbxSensor.Controls.Add(this.btnStartSensor);
-            this.gbxSensor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxSensor.Location = new System.Drawing.Point(28, 70);
-            this.gbxSensor.Name = "gbxSensor";
-            this.gbxSensor.Size = new System.Drawing.Size(332, 116);
-            this.gbxSensor.TabIndex = 5;
-            this.gbxSensor.TabStop = false;
-            this.gbxSensor.Text = "Sensor";
-            // 
-            // btnSensorOff
-            // 
-            this.btnSensorOff.Enabled = false;
-            this.btnSensorOff.Location = new System.Drawing.Point(207, 42);
-            this.btnSensorOff.Name = "btnSensorOff";
-            this.btnSensorOff.Size = new System.Drawing.Size(119, 27);
-            this.btnSensorOff.TabIndex = 2;
-            this.btnSensorOff.Text = "Desligar sensor";
-            this.btnSensorOff.UseVisualStyleBackColor = true;
-            // 
             // gbxCapture
             // 
             this.gbxCapture.Controls.Add(this.btnStopCapture);
@@ -129,9 +92,9 @@
             this.gbxCapture.Controls.Add(this.lblSensorReady);
             this.gbxCapture.Controls.Add(this.pbCapturing);
             this.gbxCapture.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxCapture.Location = new System.Drawing.Point(28, 208);
+            this.gbxCapture.Location = new System.Drawing.Point(28, 22);
             this.gbxCapture.Name = "gbxCapture";
-            this.gbxCapture.Size = new System.Drawing.Size(332, 217);
+            this.gbxCapture.Size = new System.Drawing.Size(691, 217);
             this.gbxCapture.TabIndex = 6;
             this.gbxCapture.TabStop = false;
             this.gbxCapture.Text = "Leitura";
@@ -140,7 +103,7 @@
             // 
             this.btnStopCapture.Enabled = false;
             this.btnStopCapture.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStopCapture.Location = new System.Drawing.Point(207, 72);
+            this.btnStopCapture.Location = new System.Drawing.Point(566, 73);
             this.btnStopCapture.Name = "btnStopCapture";
             this.btnStopCapture.Size = new System.Drawing.Size(119, 27);
             this.btnStopCapture.TabIndex = 5;
@@ -154,12 +117,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(777, 571);
             this.Controls.Add(this.gbxCapture);
-            this.Controls.Add(this.gbxSensor);
             this.Controls.Add(this.lblMovementName);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CaptureForm";
             this.Text = "Capturar movimentos";
-            this.gbxSensor.ResumeLayout(false);
             this.gbxCapture.ResumeLayout(false);
             this.gbxCapture.PerformLayout();
             this.ResumeLayout(false);
@@ -170,13 +131,10 @@
         #endregion
 
         private System.Windows.Forms.Label lblMovementName;
-        private System.Windows.Forms.Button btnStartSensor;
         private System.Windows.Forms.Button btnStartCapture;
         private System.Windows.Forms.Label lblSensorReady;
         private System.Windows.Forms.ProgressBar pbCapturing;
         private System.ComponentModel.BackgroundWorker bwCapturing;
-        private System.Windows.Forms.GroupBox gbxSensor;
-        private System.Windows.Forms.Button btnSensorOff;
         private System.Windows.Forms.GroupBox gbxCapture;
         private System.Windows.Forms.Button btnStopCapture;
     }

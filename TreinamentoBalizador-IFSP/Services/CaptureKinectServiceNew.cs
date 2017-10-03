@@ -13,9 +13,11 @@ namespace TreinamentoBalizador_IFSP.Services
 {
     class CaptureKinectServiceNew
     {
+        private const String HAND_LEFT = "HandLeft";
+        private const String HAND_RIGHT = "HandRight";
         private KinectSensor kinectSensor;
         private Skeleton[] skeleton = new Skeleton[6];
-        private CaptureParameters captureParameters;
+        private FormatCoordinatesService captureService;
         private TemporalService temporalService;
         private Thread temporal;
         private List<KinectJoint> kinectJoints;
@@ -23,44 +25,38 @@ namespace TreinamentoBalizador_IFSP.Services
         private int jointCount = 0;
         private bool saveCoordinates = false;
         private CaptureForm captureForm;
+        private Thread keepAlive;
+        private String movement;
         private Dictionary<string, List<KinectJoint>> jointsInMoment =
             new Dictionary<string, List<KinectJoint>>();
 
-        public CaptureKinectServiceNew(CaptureForm captureForm)
+        public CaptureKinectServiceNew(CaptureForm captureForm, String movementKey)
         {
             this.captureForm = captureForm;
-            temporalService = new TemporalService(7000);
-            temporal = new Thread(temporalService.Execute);
 
+            temporalService = new TemporalService(8000);
+            temporal = new Thread(temporalService.Execute);
+            keepAlive = new Thread(KeepCapturing);
+
+            StartKinectSensor();
+            movement = movementKey;
             moment = 1;
         }
 
         public void StartKinectSensor()
         {
-            // kinectSensor = KinectSensor.KinectSensors.Where(s => s.Status == KinectStatus.Connected).FirstOrDefault();
-
-            //if (kinectSensor != null)
-            if(true)
-            {
-                Thread keepAlive = new Thread(KeepCapturing);
-                // kinectSensor.SkeletonStream.Enable();
-                // kinectSensor.Start();
-                Console.WriteLine("startou kinect");
-                // if (kinectSensor.IsRunning)
-                if(true)
-                {
-                    Console.WriteLine("startou thread");
-                    temporal.Start();
-                    keepAlive.Start();
-                }
-            }
-
-            // kinectSensor.AllFramesReady += Sensor_AllFramesReady;
+            kinectSensor = KinectSensor.KinectSensors.Where(s => s.Status == KinectStatus.Connected).FirstOrDefault();
+            kinectSensor.SkeletonStream.Enable();
+            kinectSensor.Start();
+            kinectSensor.AllFramesReady += Sensor_AllFramesReady;
         }
 
         public void StartSaveCoordinates()
         {
             saveCoordinates = true;
+            temporal.Start();
+            keepAlive.Start();
+            Console.WriteLine("startou");
         }
 
         public void StopSaveCoordinates()
@@ -71,15 +67,16 @@ namespace TreinamentoBalizador_IFSP.Services
         private void KeepCapturing()
         {
             while (temporal.IsAlive);
+            Console.WriteLine("temporal");
 
-            Console.WriteLine("thread rodando");
-
-            // if (kinectSensor != null)
-            if(true)
+            if (kinectSensor != null)
             {
-                Console.WriteLine("thread parou");
+                Console.WriteLine("parou");
                 kinectSensor.Stop();
-                // Save();
+                StopSaveCoordinates();
+                captureService = new FormatCoordinatesService();
+
+                captureService.Format(jointsInMoment, movement);
             }
         }
 
@@ -89,16 +86,14 @@ namespace TreinamentoBalizador_IFSP.Services
             {
                 if (frame != null)
                 {
+                    captureForm.KinectReady();
+                    Console.WriteLine("ready");
                     frame.CopySkeletonDataTo(skeleton);
                     kinectJoints = new List<KinectJoint>();
 
                     foreach (var body in skeleton)
                     {
-                        if (body.TrackingState == SkeletonTrackingState.Tracked)
-                        {
-                            captureForm.KinectReady();
-                        }
-                        if(saveCoordinates)
+                        if(body.TrackingState == SkeletonTrackingState.Tracked && saveCoordinates)
                         {
                             foreach (Joint joint in body.Joints)
                             {
@@ -106,8 +101,9 @@ namespace TreinamentoBalizador_IFSP.Services
 
                                 KinectJoint kinectJoint = new KinectJoint();
 
-                                if (captureParameters.GetSelectedJoints().Contains(joint.JointType.ToString()))
+                                if (joint.JointType.ToString().Equals(HAND_LEFT) || joint.JointType.ToString().Equals(HAND_RIGHT))
                                 {
+                                    Console.WriteLine(joint.JointType.ToString());
                                     kinectJoint.Type = joint.JointType.ToString();
                                     kinectJoint.Moment = moment;
                                     kinectJoint.X = skeletonPoint.X;
