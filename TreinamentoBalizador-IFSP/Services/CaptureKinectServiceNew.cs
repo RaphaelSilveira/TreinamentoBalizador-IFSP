@@ -86,13 +86,16 @@ namespace TreinamentoBalizador_IFSP.Services
             {
                 if (frame != null)
                 {
-                    captureForm.KinectReady();
-                    Console.WriteLine("ready");
                     frame.CopySkeletonDataTo(skeleton);
                     kinectJoints = new List<KinectJoint>();
 
                     foreach (var body in skeleton)
                     {
+                        if (body.TrackingState == SkeletonTrackingState.Tracked)
+                        {
+                            captureForm.BodyDetected();
+                            Console.WriteLine("ready");
+                        }
                         if(body.TrackingState == SkeletonTrackingState.Tracked && saveCoordinates)
                         {
                             foreach (Joint joint in body.Joints)
@@ -117,6 +120,11 @@ namespace TreinamentoBalizador_IFSP.Services
                             moment++;
                         }
                     }
+                }
+                else
+                {
+                    captureForm.BodyUnDetected();
+                    Console.WriteLine("ready");
                 }
             }
         }

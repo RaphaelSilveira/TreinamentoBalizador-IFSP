@@ -51,7 +51,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Communication\MovementServerCommunication.cs" />
-    <Compile Include="Configuration\LowercaseContractResolver.cs" />
     <Compile Include="Configuration\Movements.cs" />
     <Compile Include="Models\CaptureParameters.cs" />
     <Compile Include="Models\FormatedCoordinatesModel.cs" />

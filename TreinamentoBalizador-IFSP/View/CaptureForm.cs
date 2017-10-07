@@ -53,10 +53,16 @@ namespace TreinamentoBalizador_IFSP.View
             captureService.StartSaveCoordinates();
         }
 
-        public void KinectReady()
+        public void BodyDetected()
         {
             btnStartCapture.Enabled = true;
             lblSensorReady.Text = "Reconhecimento concluido";
+        }
+
+        public void BodyUnDetected()
+        {
+            btnStartCapture.Enabled = false;
+            lblSensorReady.Text = "";
         }
 
         private void TarefaLonga(int p)
