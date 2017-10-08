@@ -36,12 +36,12 @@
             this.lblMoveToDo = new System.Windows.Forms.Label();
             this.lblMoveToDoContent = new System.Windows.Forms.Label();
             this.btnStartMove = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblMoveCorrect = new System.Windows.Forms.Label();
+            this.lblMoveWrong = new System.Windows.Forms.Label();
+            this.lblPercentageCorrectMove = new System.Windows.Forms.Label();
+            this.lblMoveCorrectContent = new System.Windows.Forms.Label();
+            this.lblMoveWrongContent = new System.Windows.Forms.Label();
+            this.lblPercentageCorrectMoveContent = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
@@ -85,12 +85,12 @@
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox3.AutoSize = true;
-            this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.lblPercentageCorrectMoveContent);
+            this.groupBox3.Controls.Add(this.lblMoveWrongContent);
+            this.groupBox3.Controls.Add(this.lblMoveCorrectContent);
+            this.groupBox3.Controls.Add(this.lblPercentageCorrectMove);
+            this.groupBox3.Controls.Add(this.lblMoveWrong);
+            this.groupBox3.Controls.Add(this.lblMoveCorrect);
             this.groupBox3.Location = new System.Drawing.Point(12, 147);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(435, 255);
@@ -125,59 +125,59 @@
             this.btnStartMove.Text = "Iniciar movimento";
             this.btnStartMove.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // lblMoveCorrect
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Movimentos acertados:";
+            this.lblMoveCorrect.AutoSize = true;
+            this.lblMoveCorrect.Location = new System.Drawing.Point(7, 20);
+            this.lblMoveCorrect.Name = "lblMoveCorrect";
+            this.lblMoveCorrect.Size = new System.Drawing.Size(117, 13);
+            this.lblMoveCorrect.TabIndex = 0;
+            this.lblMoveCorrect.Text = "Movimentos acertados:";
             // 
-            // label2
+            // lblMoveWrong
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 45);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(105, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Movimentos errados:";
+            this.lblMoveWrong.AutoSize = true;
+            this.lblMoveWrong.Location = new System.Drawing.Point(6, 45);
+            this.lblMoveWrong.Name = "lblMoveWrong";
+            this.lblMoveWrong.Size = new System.Drawing.Size(105, 13);
+            this.lblMoveWrong.TabIndex = 1;
+            this.lblMoveWrong.Text = "Movimentos errados:";
             // 
-            // label3
+            // lblPercentageCorrectMove
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 71);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(121, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Porcentagem de acerto:";
+            this.lblPercentageCorrectMove.AutoSize = true;
+            this.lblPercentageCorrectMove.Location = new System.Drawing.Point(6, 71);
+            this.lblPercentageCorrectMove.Name = "lblPercentageCorrectMove";
+            this.lblPercentageCorrectMove.Size = new System.Drawing.Size(121, 13);
+            this.lblPercentageCorrectMove.TabIndex = 2;
+            this.lblPercentageCorrectMove.Text = "Porcentagem de acerto:";
             // 
-            // label4
+            // lblMoveCorrectContent
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(148, 20);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "label4";
+            this.lblMoveCorrectContent.AutoSize = true;
+            this.lblMoveCorrectContent.Location = new System.Drawing.Point(148, 20);
+            this.lblMoveCorrectContent.Name = "lblMoveCorrectContent";
+            this.lblMoveCorrectContent.Size = new System.Drawing.Size(35, 13);
+            this.lblMoveCorrectContent.TabIndex = 3;
+            this.lblMoveCorrectContent.Text = "label4";
             // 
-            // label5
+            // lblMoveWrongContent
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(148, 44);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "label5";
+            this.lblMoveWrongContent.AutoSize = true;
+            this.lblMoveWrongContent.Location = new System.Drawing.Point(148, 44);
+            this.lblMoveWrongContent.Name = "lblMoveWrongContent";
+            this.lblMoveWrongContent.Size = new System.Drawing.Size(35, 13);
+            this.lblMoveWrongContent.TabIndex = 4;
+            this.lblMoveWrongContent.Text = "label5";
             // 
-            // label6
+            // lblPercentageCorrectMoveContent
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(148, 70);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "label6";
+            this.lblPercentageCorrectMoveContent.AutoSize = true;
+            this.lblPercentageCorrectMoveContent.Location = new System.Drawing.Point(148, 70);
+            this.lblPercentageCorrectMoveContent.Name = "lblPercentageCorrectMoveContent";
+            this.lblPercentageCorrectMoveContent.Size = new System.Drawing.Size(35, 13);
+            this.lblPercentageCorrectMoveContent.TabIndex = 5;
+            this.lblPercentageCorrectMoveContent.Text = "label6";
             // 
             // TestFormView
             // 
@@ -210,11 +210,11 @@
         private System.Windows.Forms.Label lblMoveToDoContent;
         private System.Windows.Forms.Label lblMoveToDo;
         private System.Windows.Forms.Button btnStartMove;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblPercentageCorrectMove;
+        private System.Windows.Forms.Label lblMoveWrong;
+        private System.Windows.Forms.Label lblMoveCorrect;
+        private System.Windows.Forms.Label lblPercentageCorrectMoveContent;
+        private System.Windows.Forms.Label lblMoveWrongContent;
+        private System.Windows.Forms.Label lblMoveCorrectContent;
     }
 }

@@ -11,7 +11,7 @@ namespace TreinamentoBalizador_IFSP.Services
     class TestControlService
     {
         private Dictionary<String, String> movements = new Dictionary<string, string>();
-        List<MoveListTest> result;
+        private List<MoveListTest> result;
 
         Random random;
 
@@ -38,7 +38,8 @@ namespace TreinamentoBalizador_IFSP.Services
         public int Correct { get => correct; set => correct = value; }
 
         public int Wrong { get => wrong; set => wrong = value; }
-                
+        internal List<MoveListTest> Result { get => result; }
+
         public void GenerateListMovement()
         {
             HashSet<int> generated = new HashSet<int>();
@@ -65,7 +66,7 @@ namespace TreinamentoBalizador_IFSP.Services
                         move.Value = item.Value;
                         move.Correct = false;
 
-                        result.Add(move);
+                        Result.Add(move);
                         
                         count++;
                         index++;
@@ -80,7 +81,7 @@ namespace TreinamentoBalizador_IFSP.Services
 
         public MoveListTest getCurrentMovement()
         {
-            return result.ElementAt(index);
+            return Result.ElementAt(index);
         }
 
         public Double HitPercentage()
@@ -91,14 +92,14 @@ namespace TreinamentoBalizador_IFSP.Services
         public void AddCorrectMove()
         {
             this.correct++;
-            result.ElementAt(index).Correct = true;
+            Result.ElementAt(index).Correct = true;
             index++;
         }
 
         public void AddWrongMove()
         {
             this.wrong++;
-            result.ElementAt(index).Correct = false;
+            Result.ElementAt(index).Correct = false;
             index++;
         }
     }
