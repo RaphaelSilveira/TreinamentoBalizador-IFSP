@@ -61,7 +61,17 @@ namespace TreinamentoBalizador_IFSP.Services
 
         public void StopSaveCoordinates()
         {
+            temporal.Abort();
             saveCoordinates = false;
+            captureForm.BodyUnDetected();
+        }
+
+        public void StopAll()
+        {
+            temporal.Abort();
+            StopSaveCoordinates();
+            kinectSensor.Stop();
+
         }
 
         private void KeepCapturing()
@@ -72,11 +82,10 @@ namespace TreinamentoBalizador_IFSP.Services
             if (kinectSensor != null)
             {
                 Console.WriteLine("parou");
-                kinectSensor.Stop();
                 StopSaveCoordinates();
                 captureService = new FormatCoordinatesService();
 
-                captureService.Format(jointsInMoment, movement);
+                // captureService.Format(jointsInMoment, movement);
             }
         }
 
@@ -94,7 +103,6 @@ namespace TreinamentoBalizador_IFSP.Services
                         if (body.TrackingState == SkeletonTrackingState.Tracked)
                         {
                             captureForm.BodyDetected();
-                            Console.WriteLine("ready");
                         }
                         if(body.TrackingState == SkeletonTrackingState.Tracked && saveCoordinates)
                         {
@@ -124,7 +132,7 @@ namespace TreinamentoBalizador_IFSP.Services
                 else
                 {
                     captureForm.BodyUnDetected();
-                    Console.WriteLine("ready");
+                    Console.WriteLine("not ready");
                 }
             }
         }
