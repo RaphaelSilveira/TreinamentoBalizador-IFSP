@@ -135,6 +135,9 @@ namespace TreinamentoBalizador_IFSP.View
 
         private void button1_Click(object sender, EventArgs e)
         {
+            captureService.StopSaveCoordinates();
+            btnStopCapture.Enabled = false;
+
             //Cancelamento da tarefa com fim determinado [backgroundWorker1]
             if (bwCapturing.IsBusy)//se o backgroundWorker1 estiver ocupado
             {
@@ -143,8 +146,12 @@ namespace TreinamentoBalizador_IFSP.View
                 bwCapturing.CancelAsync();
             }
             //desabilita o botão cancelar.
-            btnStopCapture.Enabled = false;
             // label1.Text = "Cancelando...";
+        }
+
+        private void CaptureForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            captureService.StopAll();
         }
     }
 }

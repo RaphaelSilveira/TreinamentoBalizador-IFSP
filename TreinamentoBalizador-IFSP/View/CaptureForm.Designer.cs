@@ -121,6 +121,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CaptureForm";
             this.Text = "Capturar movimentos";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CaptureForm_FormClosing);
             this.gbxCapture.ResumeLayout(false);
             this.gbxCapture.PerformLayout();
             this.ResumeLayout(false);
