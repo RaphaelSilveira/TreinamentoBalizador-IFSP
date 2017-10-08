@@ -19,6 +19,8 @@ namespace TreinamentoBalizador_IFSP.Services
         private int wrong;
         private int index;
 
+        private static readonly int QUESTIONS_IN_TEST = 10;
+
         public TestControlService()
         {
             Movements data = Movements.Instance;
@@ -45,7 +47,7 @@ namespace TreinamentoBalizador_IFSP.Services
 
             foreach (KeyValuePair<String, String> top in this.movements)
             {
-                int value = random.Next(0, 9);
+                int value = random.Next(0, QUESTIONS_IN_TEST);
                 int count = 0;
 
                 while (generated.Contains(value))
@@ -71,6 +73,8 @@ namespace TreinamentoBalizador_IFSP.Services
                         generated.Add(value);
                     }
                 }
+
+                if (index == QUESTIONS_IN_TEST) break; 
             }
         }
 
