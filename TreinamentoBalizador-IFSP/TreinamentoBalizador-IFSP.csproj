@@ -55,11 +55,13 @@
     <Compile Include="Models\CaptureParameters.cs" />
     <Compile Include="Models\FormatedCoordinatesModel.cs" />
     <Compile Include="Models\KinectJoint.cs" />
+    <Compile Include="Models\MoveListTest.cs" />
     <Compile Include="Models\MovementItem.cs" />
     <Compile Include="Services\CaptureKinectService.cs" />
     <Compile Include="Services\CaptureKinectServiceNew.cs" />
     <Compile Include="Services\FormatCoordinatesService.cs" />
     <Compile Include="Services\TemporalService.cs" />
+    <Compile Include="Services\TestControlService.cs" />
     <Compile Include="Utils\DateUtils.cs" />
     <Compile Include="View\CaptureForm.cs">
       <SubType>Form</SubType>
@@ -80,6 +82,12 @@
     </Compile>
     <Compile Include="View\KinectConfigurationInfo.Designer.cs">
       <DependentUpon>KinectConfigurationInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\TestFormView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\TestFormView.Designer.cs">
+      <DependentUpon>TestFormView.cs</DependentUpon>
     </Compile>
     <Compile Include="View\TrainingFormView.cs">
       <SubType>Form</SubType>
@@ -112,6 +120,9 @@
     <EmbeddedResource Include="View\KinectConfigurationInfo.resx">
       <DependentUpon>KinectConfigurationInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\TestFormView.resx">
+      <DependentUpon>TestFormView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\TrainingFormView.resx">
       <DependentUpon>TrainingFormView.cs</DependentUpon>
     </EmbeddedResource>
@@ -133,7 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\favicon.ico" />
-    <None Include="Resources\logo.png" />
+    <None Include="Assets\logo.png" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="AxSHDocVw">

@@ -159,6 +159,7 @@ namespace TreinamentoBalizador_IFSP.View
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainFormView";
             this.Text = "Treinamento para balizadores de aéronaves";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.pnlTopMenu.ResumeLayout(false);
             this.pnlTopMenu.PerformLayout();
             this.menuStrip1.ResumeLayout(false);

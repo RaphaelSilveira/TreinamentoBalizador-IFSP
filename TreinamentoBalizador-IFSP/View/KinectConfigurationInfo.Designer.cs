@@ -30,6 +30,7 @@ namespace TreinamentoBalizador_IFSP.View
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KinectConfigurationInfo));
             this.pnlKinectConfigInfo = new System.Windows.Forms.Panel();
             this.btnContinue = new System.Windows.Forms.Button();
             this.pnlKinectConfigInfo.SuspendLayout();
@@ -60,8 +61,10 @@ namespace TreinamentoBalizador_IFSP.View
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(777, 571);
             this.Controls.Add(this.pnlKinectConfigInfo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "KinectConfigurationInfo";
             this.Text = "KinectConfigurationInfo";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.pnlKinectConfigInfo.ResumeLayout(false);
             this.ResumeLayout(false);
 

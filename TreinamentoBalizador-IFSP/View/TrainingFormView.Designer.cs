@@ -109,6 +109,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TrainingFormView";
             this.Text = "Lista de sinais";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.pnlMovementsList.ResumeLayout(false);
             this.gbxSelectMovement.ResumeLayout(false);
             this.gbxSelectMovement.PerformLayout();

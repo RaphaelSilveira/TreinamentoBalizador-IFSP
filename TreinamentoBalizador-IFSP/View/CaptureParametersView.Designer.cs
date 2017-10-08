@@ -184,6 +184,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CaptureParametersView";
             this.Text = "Captura de Parâmetros";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.CaptureParametersView_Load);
             this.gbxParameterCapture.ResumeLayout(false);
             this.gbxParameterCapture.PerformLayout();

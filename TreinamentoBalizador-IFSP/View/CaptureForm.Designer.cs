@@ -121,6 +121,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CaptureForm";
             this.Text = "Capturar movimentos";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.gbxCapture.ResumeLayout(false);
             this.gbxCapture.PerformLayout();
             this.ResumeLayout(false);
