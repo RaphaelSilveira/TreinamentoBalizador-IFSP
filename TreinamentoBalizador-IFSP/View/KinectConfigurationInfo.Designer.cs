@@ -47,9 +47,11 @@ namespace TreinamentoBalizador_IFSP.View
             // 
             // btnContinue
             // 
-            this.btnContinue.Location = new System.Drawing.Point(298, 488);
+            this.btnContinue.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnContinue.AutoSize = true;
+            this.btnContinue.Location = new System.Drawing.Point(289, 521);
             this.btnContinue.Name = "btnContinue";
-            this.btnContinue.Size = new System.Drawing.Size(183, 38);
+            this.btnContinue.Size = new System.Drawing.Size(136, 38);
             this.btnContinue.TabIndex = 0;
             this.btnContinue.Text = "Continuar";
             this.btnContinue.UseVisualStyleBackColor = true;
@@ -66,6 +68,7 @@ namespace TreinamentoBalizador_IFSP.View
             this.Text = "KinectConfigurationInfo";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.pnlKinectConfigInfo.ResumeLayout(false);
+            this.pnlKinectConfigInfo.PerformLayout();
             this.ResumeLayout(false);
 
         }

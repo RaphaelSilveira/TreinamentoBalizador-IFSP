@@ -19,7 +19,6 @@ namespace TreinamentoBalizador_IFSP.View
 
         private void TestFormView_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

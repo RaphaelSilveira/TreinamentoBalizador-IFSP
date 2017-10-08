@@ -41,7 +41,7 @@ namespace TreinamentoBalizador_IFSP.View
                     RenderForm(form);
                     break;
                 case TEST:
-                    form = new CaptureParametersView()
+                    form = new TestFormView()
                     {
                         TopLevel = false,
                         FormBorderStyle = FormBorderStyle.None,
