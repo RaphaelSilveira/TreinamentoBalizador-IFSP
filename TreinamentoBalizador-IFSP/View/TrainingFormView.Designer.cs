@@ -186,6 +186,12 @@
             this.btnTrainingMove.UseVisualStyleBackColor = true;
             this.btnTrainingMove.Click += new System.EventHandler(this.btnTrainingMove_Click);
             // 
+            // bgdProgressStatus
+            // 
+            this.bgdProgressStatus.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgdProgressStatus_DoWork_1);
+            this.bgdProgressStatus.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgdProgressStatus_ProgressChanged_1);
+            this.bgdProgressStatus.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgdProgressStatus_RunWorkerCompleted_1);
+            // 
             // TrainingFormView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);

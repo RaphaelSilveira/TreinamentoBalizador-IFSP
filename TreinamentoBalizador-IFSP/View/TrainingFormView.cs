@@ -130,7 +130,7 @@ namespace TreinamentoBalizador_IFSP.View
             lblMovement.Text = movementText;
         }
 
-        private void bgdProgressStatus_DoWork(object sender, DoWorkEventArgs e)
+        private void bgdProgressStatus_DoWork_1(object sender, DoWorkEventArgs e)
         {
             for (int i = 0; i <= 16; i++)
             {
@@ -141,12 +141,12 @@ namespace TreinamentoBalizador_IFSP.View
             bgdProgressStatus.ReportProgress(100);
         }
 
-        private void bgdProgressStatus_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private void bgdProgressStatus_ProgressChanged_1(object sender, ProgressChangedEventArgs e)
         {
             pbCapturing.Value = e.ProgressPercentage;
         }
 
-        private void bgdProgressStatus_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void bgdProgressStatus_RunWorkerCompleted_1(object sender, RunWorkerCompletedEventArgs e)
         {
 
         }
