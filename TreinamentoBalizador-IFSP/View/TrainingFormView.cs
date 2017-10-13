@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 using TreinamentoBalizador_IFSP.Data;
 using TreinamentoBalizador_IFSP.Models;
+using TreinamentoBalizador_IFSP.Services;
 
 namespace TreinamentoBalizador_IFSP.View
 {
@@ -18,8 +19,11 @@ namespace TreinamentoBalizador_IFSP.View
         private Dictionary<String, String> movements = new Dictionary<string, string>();
         Movements movementData = Movements.Instance;
         private bool trainingFile;
+        private String movementText = "Sinaleiro";
+        private String movementKey;
+        CaptureKinectServiceNew captureService;
 
- 
+
         public TrainingFormView(bool trainingFile)
         {
             InitializeComponent();
@@ -27,22 +31,26 @@ namespace TreinamentoBalizador_IFSP.View
             this.trainingFile = trainingFile;
             Console.WriteLine("Trainig file" + this.trainingFile);
             PopulateCombobox();
+
+            this.trainingFile = trainingFile;
         }
 
         private void cbxSelectMovement_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Console.WriteLine(cbxSelectMovement.SelectedValue);
+            movementText = cbxSelectMovement.Text;
+            movementKey = cbxSelectMovement.SelectedValue.ToString();
+
+            Console.WriteLine("text" + movementText);
+            Console.WriteLine("key" + movementKey);
             wmpMovement.URL = @"videos\\"+ cbxSelectMovement.SelectedValue + ".mp4";
             wmpMovement.Ctlcontrols.play();
+
         }
 
         private void PopulateCombobox()
         {
 
-            var dataSource = new List<MovementItem>();
-            
-            //Setup data binding
-            
+            var dataSource = new List<MovementItem>();            
 
             foreach (KeyValuePair<string, string> pair in movements)
             {
@@ -69,8 +77,44 @@ namespace TreinamentoBalizador_IFSP.View
 
         private void btnTraining_Click(object sender, EventArgs e)
         {
-            CaptureForm captureForm = new CaptureForm(cbxSelectMovement.Text, cbxSelectMovement.SelectedValue.ToString(), trainingFile);
-            captureForm.Show();
+            captureService = new CaptureKinectServiceNew(this, movementKey, this.trainingFile);
+            captureService.StartKinectSensor();
+            lblMovement.Text = movementText;
+        }
+
+
+
+        public void BodyUndetected()
+        {
+            Console.WriteLine("body undet");
+            btnStartCapture.Enabled = true;
+            btnStopCapture.BeginInvoke(
+                new Action(() => { Enabled = false; })
+            );
+
+            lblSensorReady.BeginInvoke(
+                new Action(() => { Text = ""; })
+            );
+        }
+
+        public void BodyDetected()
+        {
+            btnStartCapture.Enabled = true;
+            lblSensorReady.Text = "Reconhecimento concluido";
+        }
+
+        private void btnStartCapture_Click(object sender, EventArgs e)
+        {
+            btnStartCapture.Enabled = false;
+            btnStopCapture.Enabled = true;
+
+            captureService.StartSaveCoordinates();
+        }
+
+        private void btnStopCapture_Click(object sender, EventArgs e)
+        {
+            captureService.StopSaveCoordinates();
+            btnStopCapture.Enabled = false;
         }
     }
 }

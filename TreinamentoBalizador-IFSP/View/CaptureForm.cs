@@ -30,7 +30,7 @@ namespace TreinamentoBalizador_IFSP.View
         {
             InitializeComponent();
             this.trainingFile = trainingFile;
-            captureService = new CaptureKinectServiceNew(this, movementKey, this.trainingFile);
+            // captureService = new CaptureKinectServiceNew(this, movementKey, this.trainingFile);
 
             this.Text = movementText;
             lblMovementName.Text = movementText;
