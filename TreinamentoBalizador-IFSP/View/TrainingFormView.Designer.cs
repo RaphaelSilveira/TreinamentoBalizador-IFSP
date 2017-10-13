@@ -41,6 +41,7 @@
             this.lblSelect = new System.Windows.Forms.Label();
             this.cbxSelectMovement = new System.Windows.Forms.ComboBox();
             this.btnTrainingMove = new System.Windows.Forms.Button();
+            this.bgdProgressStatus = new System.ComponentModel.BackgroundWorker();
             this.pnlMovementsList.SuspendLayout();
             this.gbxCapture.SuspendLayout();
             this.gbxSelectMovement.SuspendLayout();
@@ -220,5 +221,6 @@
         private System.Windows.Forms.ProgressBar pbCapturing;
         private System.Windows.Forms.Label lblMovement;
         private System.Windows.Forms.Button btnTrainingMove;
+        private System.ComponentModel.BackgroundWorker bgdProgressStatus;
     }
 }

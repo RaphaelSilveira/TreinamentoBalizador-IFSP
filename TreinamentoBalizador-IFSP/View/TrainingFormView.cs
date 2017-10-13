@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -105,6 +106,11 @@ namespace TreinamentoBalizador_IFSP.View
 
         private void btnStartCapture_Click(object sender, EventArgs e)
         {
+            pbCapturing.Style = ProgressBarStyle.Blocks;
+            pbCapturing.Value = 0;
+
+            bgdProgressStatus.RunWorkerAsync();
+
             btnStartCapture.Enabled = false;
             btnStopCapture.Enabled = true;
 
@@ -122,6 +128,27 @@ namespace TreinamentoBalizador_IFSP.View
             captureService = new CaptureKinectServiceNew(this, movementKey, this.trainingFile);
             captureService.StartKinectSensor();
             lblMovement.Text = movementText;
+        }
+
+        private void bgdProgressStatus_DoWork(object sender, DoWorkEventArgs e)
+        {
+            for (int i = 0; i <= 16; i++)
+            {
+                Thread.Sleep(500);
+                bgdProgressStatus.ReportProgress((100 / 16) * i);
+            }
+
+            bgdProgressStatus.ReportProgress(100);
+        }
+
+        private void bgdProgressStatus_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            pbCapturing.Value = e.ProgressPercentage;
+        }
+
+        private void bgdProgressStatus_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+
         }
     }
 }

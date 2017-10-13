@@ -40,8 +40,6 @@ namespace TreinamentoBalizador_IFSP.View
             this.msOpenTestForm = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.msOpenGroundSignalsListForm = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.msOpenAboutForm = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.msOpenClose = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlBaseForm = new System.Windows.Forms.Panel();
@@ -76,8 +74,6 @@ namespace TreinamentoBalizador_IFSP.View
             this.msOpenTestForm,
             this.toolStripSeparator4,
             this.msOpenGroundSignalsListForm,
-            this.toolStripSeparator2,
-            this.msOpenAboutForm,
             this.toolStripSeparator3,
             this.msOpenClose});
             this.msMainMenu.Name = "msMainMenu";
@@ -114,17 +110,6 @@ namespace TreinamentoBalizador_IFSP.View
             this.msOpenGroundSignalsListForm.Size = new System.Drawing.Size(190, 22);
             this.msOpenGroundSignalsListForm.Text = "Adicionar movimento";
             this.msOpenGroundSignalsListForm.Click += new System.EventHandler(this.msOpenGroundSignalsListForm_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(187, 6);
-            // 
-            // msOpenAboutForm
-            // 
-            this.msOpenAboutForm.Name = "msOpenAboutForm";
-            this.msOpenAboutForm.Size = new System.Drawing.Size(190, 22);
-            this.msOpenAboutForm.Text = "Sobre";
             // 
             // toolStripSeparator3
             // 
@@ -176,10 +161,8 @@ namespace TreinamentoBalizador_IFSP.View
         private System.Windows.Forms.ToolStripMenuItem msMainMenu;
         private System.Windows.Forms.ToolStripMenuItem msOpenCaptureParametersForm;
         private System.Windows.Forms.ToolStripMenuItem msOpenGroundSignalsListForm;
-        private System.Windows.Forms.ToolStripMenuItem msOpenAboutForm;
         private System.Windows.Forms.ToolStripMenuItem msOpenClose;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.Panel pnlBaseForm;
         private System.Windows.Forms.ToolStripMenuItem msOpenTestForm;
