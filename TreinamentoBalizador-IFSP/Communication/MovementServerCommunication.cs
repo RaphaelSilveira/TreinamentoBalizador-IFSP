@@ -16,7 +16,7 @@ namespace TreinamentoBalizador_IFSP.Communication
     {
         public Boolean VerifyMovement(FormatedCoordinatesModel formatedCoordinates)
         {
-            var request = (HttpWebRequest)WebRequest.Create("http://172.16.3.56:8080/verify-moviment");
+            var request = (HttpWebRequest)WebRequest.Create("http://localhost:8080/verify-moviment");
             request.ContentType = "application/json";
             request.Method = "POST";
 

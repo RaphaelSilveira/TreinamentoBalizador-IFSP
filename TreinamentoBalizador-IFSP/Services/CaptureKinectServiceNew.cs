@@ -85,7 +85,7 @@ namespace TreinamentoBalizador_IFSP.Services
                 StopSaveCoordinates();
                 captureService = new FormatCoordinatesService();
 
-                // captureService.Format(jointsInMoment, movement);
+                captureService.Format(jointsInMoment, movement);
             }
         }
 

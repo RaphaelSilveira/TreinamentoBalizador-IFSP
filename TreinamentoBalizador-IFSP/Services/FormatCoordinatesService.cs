@@ -39,7 +39,7 @@ namespace TreinamentoBalizador_IFSP.Services
                     formated.Coordinates.Add(kinectJoint.Z.ToString());
                     j++;
                 }
-                if (j == 210)
+                if (j == 1260)
                 {
                     break;
                 }

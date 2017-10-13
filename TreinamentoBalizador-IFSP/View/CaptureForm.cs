@@ -61,8 +61,8 @@ namespace TreinamentoBalizador_IFSP.View
 
         public void BodyUnDetected()
         {
-            btnStartCapture.Enabled = false;
-            lblSensorReady.Text = "";
+            //btnStartCapture.Enabled = false;
+            //lblSensorReady.Text = "";
         }
 
         private void TarefaLonga(int p)

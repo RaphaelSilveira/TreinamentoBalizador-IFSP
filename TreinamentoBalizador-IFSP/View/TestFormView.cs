@@ -41,5 +41,10 @@ namespace TreinamentoBalizador_IFSP.View
             lblMoveWrongContent.Text = testControlService.Wrong.ToString();
             lblPercentageCorrectMoveContent.Text = testControlService.HitPercentage().ToString();
         }
+
+        private void btnStartMove_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
