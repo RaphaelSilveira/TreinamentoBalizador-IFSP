@@ -64,19 +64,18 @@ namespace TreinamentoBalizador_IFSP.Services
             saveCoordinates = true;
             temporal.Start();
             keepAlive.Start();
-            Console.WriteLine("startou");
         }
 
         public void StopSaveCoordinates()
         {
-            temporal.Interrupt();
+            temporal.Abort();
             saveCoordinates = false;
         }
 
         public void StopAll()
         {
             kinectSensor.Stop();
-            temporal.Interrupt();
+            temporal.Abort();
             StopSaveCoordinates();
 
         }
@@ -84,11 +83,9 @@ namespace TreinamentoBalizador_IFSP.Services
         private void KeepCapturing()
         {
             while (temporal.IsAlive);
-            Console.WriteLine("temporal");
 
             if (kinectSensor != null)
             {
-                Console.WriteLine("parou");
                 StopSaveCoordinates();
                 trainigForm.BodyUndetected();
                 captureService = new FormatCoordinatesService();

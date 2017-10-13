@@ -30,7 +30,6 @@ namespace TreinamentoBalizador_IFSP.View
             InitializeComponent();
             movements = movementData.movments;
             this.trainingFile = trainingFile;
-            Console.WriteLine("Trainig file" + this.trainingFile);
             PopulateCombobox();
 
             this.trainingFile = trainingFile;
@@ -87,14 +86,13 @@ namespace TreinamentoBalizador_IFSP.View
 
         public void BodyUndetected()
         {
-            Console.WriteLine("body undet");
             btnStartCapture.Enabled = true;
             btnStopCapture.BeginInvoke(
-                new Action(() => { Enabled = false; })
+                new Action(() => { btnStopCapture.Enabled = false; })
             );
 
             lblSensorReady.BeginInvoke(
-                new Action(() => { Text = ""; })
+                new Action(() => { lblSensorReady.Text = ""; })
             );
         }
 

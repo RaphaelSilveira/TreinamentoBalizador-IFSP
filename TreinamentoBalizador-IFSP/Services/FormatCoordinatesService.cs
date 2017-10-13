@@ -28,7 +28,6 @@ namespace TreinamentoBalizador_IFSP.Services
             for (int i = first, j = 0; i < last; i++)
             {
                 List<KinectJoint> kinectJoints = jointsInMoment[i.ToString()];
-                Console.WriteLine(jointsInMoment.Count);
                 foreach (KinectJoint kinectJoint in kinectJoints)
                 {
 
