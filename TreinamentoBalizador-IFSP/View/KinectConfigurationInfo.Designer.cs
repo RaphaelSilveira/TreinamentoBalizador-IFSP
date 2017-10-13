@@ -63,7 +63,10 @@ namespace TreinamentoBalizador_IFSP.View
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(777, 571);
             this.Controls.Add(this.pnlKinectConfigInfo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "KinectConfigurationInfo";
             this.Text = "KinectConfigurationInfo";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

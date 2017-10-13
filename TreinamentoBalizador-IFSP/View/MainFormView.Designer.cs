@@ -155,8 +155,11 @@ namespace TreinamentoBalizador_IFSP.View
             this.ClientSize = new System.Drawing.Size(777, 571);
             this.Controls.Add(this.pnlBaseForm);
             this.Controls.Add(this.pnlTopMenu);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "MainFormView";
             this.Text = "Treinamento para balizadores de aéronaves";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

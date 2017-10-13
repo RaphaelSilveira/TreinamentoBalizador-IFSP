@@ -24,16 +24,16 @@ namespace TreinamentoBalizador_IFSP.Services
         private int moment;
         private int jointCount = 0;
         private bool saveCoordinates = false;
-        private CaptureForm captureForm;
+        private TrainingFormView trainigForm;
         private Thread keepAlive;
         private String movement;
         private bool trainingFile;
         private Dictionary<string, List<KinectJoint>> jointsInMoment =
             new Dictionary<string, List<KinectJoint>>();
 
-        public CaptureKinectServiceNew(CaptureForm captureForm, String movementKey, bool trainingFile)
+        public CaptureKinectServiceNew(TrainingFormView trainigForm, String movementKey, bool trainingFile)
         {
-            this.captureForm = captureForm;
+            this.trainigForm = trainigForm;
             this.trainingFile = trainingFile;
 
             StartKinectSensor();
@@ -65,7 +65,6 @@ namespace TreinamentoBalizador_IFSP.Services
         {
             temporal.Interrupt();
             saveCoordinates = false;
-            captureForm.BodyUndetected();
         }
 
         public void StopAll()
@@ -85,6 +84,7 @@ namespace TreinamentoBalizador_IFSP.Services
             {
                 Console.WriteLine("parou");
                 StopSaveCoordinates();
+                trainigForm.BodyUndetected();
                 captureService = new FormatCoordinatesService();
 
                 captureService.Format(jointsInMoment, movement, trainingFile);
@@ -104,7 +104,7 @@ namespace TreinamentoBalizador_IFSP.Services
                     {
                         if (body.TrackingState == SkeletonTrackingState.Tracked)
                         {
-                            captureForm.BodyDetected();
+                            trainigForm.BodyDetected();
                         }
                         if(body.TrackingState == SkeletonTrackingState.Tracked && saveCoordinates)
                         {
@@ -129,11 +129,6 @@ namespace TreinamentoBalizador_IFSP.Services
                             moment++;
                         }
                     }
-                }
-                else
-                {
-                    captureForm.BodyUndetected();
-                    Console.WriteLine("not ready");
                 }
             }
         }
