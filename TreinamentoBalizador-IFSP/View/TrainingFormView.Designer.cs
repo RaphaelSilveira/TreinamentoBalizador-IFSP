@@ -42,7 +42,6 @@
             // 
             // pnlMovementsList
             // 
-            this.pnlMovementsList.Controls.Add(this.btnTraining);
             this.pnlMovementsList.Controls.Add(this.gbxSelectMovement);
             this.pnlMovementsList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMovementsList.Location = new System.Drawing.Point(0, 0);
@@ -52,7 +51,7 @@
             // 
             // btnTraining
             // 
-            this.btnTraining.Location = new System.Drawing.Point(627, 529);
+            this.btnTraining.Location = new System.Drawing.Point(285, 431);
             this.btnTraining.Name = "btnTraining";
             this.btnTraining.Size = new System.Drawing.Size(138, 30);
             this.btnTraining.TabIndex = 3;
@@ -62,12 +61,16 @@
             // 
             // gbxSelectMovement
             // 
+            this.gbxSelectMovement.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbxSelectMovement.Controls.Add(this.btnTraining);
             this.gbxSelectMovement.Controls.Add(this.wmpMovement);
             this.gbxSelectMovement.Controls.Add(this.lblSelect);
             this.gbxSelectMovement.Controls.Add(this.cbxSelectMovement);
             this.gbxSelectMovement.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbxSelectMovement.Location = new System.Drawing.Point(12, 23);
             this.gbxSelectMovement.Name = "gbxSelectMovement";
+            this.gbxSelectMovement.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.gbxSelectMovement.Size = new System.Drawing.Size(753, 476);
             this.gbxSelectMovement.TabIndex = 0;
             this.gbxSelectMovement.TabStop = false;
@@ -75,11 +78,13 @@
             // 
             // wmpMovement
             // 
+            this.wmpMovement.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.wmpMovement.Enabled = true;
             this.wmpMovement.Location = new System.Drawing.Point(21, 75);
             this.wmpMovement.Name = "wmpMovement";
             this.wmpMovement.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("wmpMovement.OcxState")));
-            this.wmpMovement.Size = new System.Drawing.Size(701, 324);
+            this.wmpMovement.Size = new System.Drawing.Size(701, 350);
             this.wmpMovement.TabIndex = 2;
             // 
             // lblSelect

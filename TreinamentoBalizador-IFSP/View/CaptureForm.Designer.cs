@@ -136,7 +136,7 @@
         private System.Windows.Forms.Label lblSensorReady;
         private System.Windows.Forms.ProgressBar pbCapturing;
         private System.ComponentModel.BackgroundWorker bwCapturing;
-        private System.Windows.Forms.GroupBox gbxCapture;
         private System.Windows.Forms.Button btnStopCapture;
+        protected System.Windows.Forms.GroupBox gbxCapture;
     }
 }

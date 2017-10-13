@@ -27,16 +27,14 @@ namespace TreinamentoBalizador_IFSP.Services
         private CaptureForm captureForm;
         private Thread keepAlive;
         private String movement;
+        private bool trainingFile;
         private Dictionary<string, List<KinectJoint>> jointsInMoment =
             new Dictionary<string, List<KinectJoint>>();
 
-        public CaptureKinectServiceNew(CaptureForm captureForm, String movementKey)
+        public CaptureKinectServiceNew(CaptureForm captureForm, String movementKey, bool trainingFile)
         {
             this.captureForm = captureForm;
-
-            temporalService = new TemporalService(8000);
-            temporal = new Thread(temporalService.Execute);
-            keepAlive = new Thread(KeepCapturing);
+            this.trainingFile = trainingFile;
 
             StartKinectSensor();
             movement = movementKey;
@@ -53,6 +51,10 @@ namespace TreinamentoBalizador_IFSP.Services
 
         public void StartSaveCoordinates()
         {
+            temporalService = new TemporalService(8000);
+            temporal = new Thread(temporalService.Execute);
+            keepAlive = new Thread(KeepCapturing);
+ 
             saveCoordinates = true;
             temporal.Start();
             keepAlive.Start();
@@ -61,16 +63,16 @@ namespace TreinamentoBalizador_IFSP.Services
 
         public void StopSaveCoordinates()
         {
-            temporal.Abort();
+            temporal.Interrupt();
             saveCoordinates = false;
-            captureForm.BodyUnDetected();
+            captureForm.BodyUndetected();
         }
 
         public void StopAll()
         {
-            temporal.Abort();
-            StopSaveCoordinates();
             kinectSensor.Stop();
+            temporal.Interrupt();
+            StopSaveCoordinates();
 
         }
 
@@ -85,7 +87,7 @@ namespace TreinamentoBalizador_IFSP.Services
                 StopSaveCoordinates();
                 captureService = new FormatCoordinatesService();
 
-                // captureService.Format(jointsInMoment, movement);
+                captureService.Format(jointsInMoment, movement, trainingFile);
             }
         }
 
@@ -114,7 +116,6 @@ namespace TreinamentoBalizador_IFSP.Services
 
                                 if (joint.JointType.ToString().Equals(HAND_LEFT) || joint.JointType.ToString().Equals(HAND_RIGHT))
                                 {
-                                    Console.WriteLine(joint.JointType.ToString());
                                     kinectJoint.Type = joint.JointType.ToString();
                                     kinectJoint.Moment = moment;
                                     kinectJoint.X = skeletonPoint.X;
@@ -131,7 +132,7 @@ namespace TreinamentoBalizador_IFSP.Services
                 }
                 else
                 {
-                    captureForm.BodyUnDetected();
+                    captureForm.BodyUndetected();
                     Console.WriteLine("not ready");
                 }
             }
