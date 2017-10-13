@@ -42,6 +42,7 @@
             this.lblPercentageCorrectMove = new System.Windows.Forms.Label();
             this.lblMoveWrong = new System.Windows.Forms.Label();
             this.lblMoveCorrect = new System.Windows.Forms.Label();
+            this.bgdProgressStatus = new System.ComponentModel.BackgroundWorker();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
@@ -180,6 +181,13 @@
             this.lblMoveCorrect.TabIndex = 0;
             this.lblMoveCorrect.Text = "Movimentos acertados:";
             // 
+            // bgdProgressStatus
+            // 
+            this.bgdProgressStatus.WorkerReportsProgress = true;
+            this.bgdProgressStatus.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgdProgressStatus_DoWork);
+            this.bgdProgressStatus.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgdProgressStatus_ProgressChanged);
+            this.bgdProgressStatus.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgdProgressStatus_RunWorkerCompleted);
+            // 
             // TestFormView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -217,5 +225,6 @@
         private System.Windows.Forms.Label lblPercentageCorrectMoveContent;
         private System.Windows.Forms.Label lblMoveWrongContent;
         private System.Windows.Forms.Label lblMoveCorrectContent;
+        private System.ComponentModel.BackgroundWorker bgdProgressStatus;
     }
 }

@@ -86,7 +86,19 @@ namespace TreinamentoBalizador_IFSP.Services
 
         public Double HitPercentage()
         {
-            return (correct / (correct + wrong)) * 100;
+            Double result = 0d;
+
+            try
+            {
+                 result = (correct / (correct + wrong)) * 100;
+            }
+            catch (DivideByZeroException e)
+            {
+                Console.WriteLine("Error: " + e);
+            }
+
+
+            return result;
         }
 
         public void AddCorrectMove()
