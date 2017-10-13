@@ -32,7 +32,7 @@ namespace TreinamentoBalizador_IFSP.View
             switch (flow)
             {
                 case ADD_MOVEMENT:
-                    form = new CaptureParametersView()
+                    form = new TrainingFormView(true)
                     {
                         TopLevel = false,
                         FormBorderStyle = FormBorderStyle.None,
@@ -50,7 +50,7 @@ namespace TreinamentoBalizador_IFSP.View
                     RenderForm(form);
                     break;
                 case TRAINIG:
-                    form = new TrainingFormView()
+                    form = new TrainingFormView(false)
                     {
                         TopLevel = false,
                         FormBorderStyle = FormBorderStyle.None,

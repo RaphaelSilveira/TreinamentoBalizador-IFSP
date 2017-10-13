@@ -18,6 +18,7 @@ namespace TreinamentoBalizador_IFSP.View
     {
 
         private String movement;
+        private bool trainingFile;
         CaptureKinectServiceNew captureService;
 
         public CaptureForm()
@@ -25,10 +26,11 @@ namespace TreinamentoBalizador_IFSP.View
             InitializeComponent();
         }
 
-        public CaptureForm(string movementText, string movementKey)
+        public CaptureForm(string movementText, string movementKey, bool trainingFile)
         {
             InitializeComponent();
-            captureService = new CaptureKinectServiceNew(this, movementKey);
+            this.trainingFile = trainingFile;
+            captureService = new CaptureKinectServiceNew(this, movementKey, this.trainingFile);
 
             this.Text = movementText;
             lblMovementName.Text = movementText;
@@ -47,22 +49,18 @@ namespace TreinamentoBalizador_IFSP.View
             pbCapturing.Style = ProgressBarStyle.Blocks;
             pbCapturing.Value = 0;
 
-            //executa o processo de forma assincrona.
-            // bwCapturing.RunWorkerAsync();
-
             captureService.StartSaveCoordinates();
+        }
+
+        public void BodyUndetected()
+        {
+
         }
 
         public void BodyDetected()
         {
             btnStartCapture.Enabled = true;
             lblSensorReady.Text = "Reconhecimento concluido";
-        }
-
-        public void BodyUnDetected()
-        {
-            //btnStartCapture.Enabled = false;
-            //lblSensorReady.Text = "";
         }
 
         private void TarefaLonga(int p)
@@ -147,6 +145,12 @@ namespace TreinamentoBalizador_IFSP.View
             }
             //desabilita o botão cancelar.
             // label1.Text = "Cancelando...";
+        }
+
+        public void TrainingFile()
+        {
+            trainingFile = !trainingFile;
+            Console.WriteLine(trainingFile);
         }
 
         private void CaptureForm_FormClosing(object sender, FormClosingEventArgs e)

@@ -17,12 +17,15 @@ namespace TreinamentoBalizador_IFSP.View
     {
         private Dictionary<String, String> movements = new Dictionary<string, string>();
         Movements movementData = Movements.Instance;
+        private bool trainingFile;
 
  
-        public TrainingFormView()
+        public TrainingFormView(bool trainingFile)
         {
             InitializeComponent();
             movements = movementData.movments;
+            this.trainingFile = trainingFile;
+            Console.WriteLine("Trainig file" + this.trainingFile);
             PopulateCombobox();
         }
 
@@ -66,7 +69,7 @@ namespace TreinamentoBalizador_IFSP.View
 
         private void btnTraining_Click(object sender, EventArgs e)
         {
-            CaptureForm captureForm = new CaptureForm(cbxSelectMovement.Text, cbxSelectMovement.SelectedValue.ToString());
+            CaptureForm captureForm = new CaptureForm(cbxSelectMovement.Text, cbxSelectMovement.SelectedValue.ToString(), trainingFile);
             captureForm.Show();
         }
     }
