@@ -43,8 +43,15 @@ namespace TreinamentoBalizador_IFSP.Services
                 }
             }
 
+            if (trainingFile)
+            {
+                return communication.SaveMovement(formated);
+            }
+            else
+            {
+                return communication.VerifyMovement(formated);
+            }
 
-            return communication.VerifyMovement(formated, trainingFile);
         }
     }
 }

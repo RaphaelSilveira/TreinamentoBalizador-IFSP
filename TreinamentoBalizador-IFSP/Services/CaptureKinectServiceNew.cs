@@ -8,6 +8,7 @@ using System.Threading;
 
 using TreinamentoBalizador_IFSP.View;
 using TreinamentoBalizador_IFSP.Models;
+using System.Windows.Forms;
 
 namespace TreinamentoBalizador_IFSP.Services
 {
@@ -15,6 +16,11 @@ namespace TreinamentoBalizador_IFSP.Services
     {
         private const String HAND_LEFT = "HandLeft";
         private const String HAND_RIGHT = "HandRight";
+        private const String SUCCESS_MOVEMENT = "Movimento executado com sucesso";
+        private const String FAILED_MOVEMENT = "O movimento não foi executado corretamente";
+        private const String SUCCESS_SAVED = "Movimento salvo com sucesso";
+        private const String FAILED_SAVED = "Não foi possível salvar movimento";
+
         private KinectSensor kinectSensor;
         private Skeleton[] skeleton = new Skeleton[6];
         private FormatCoordinatesService captureService;
@@ -87,7 +93,34 @@ namespace TreinamentoBalizador_IFSP.Services
                 trainigForm.BodyUndetected();
                 captureService = new FormatCoordinatesService();
 
-                captureService.Format(jointsInMoment, movement, trainingFile);
+                bool success = captureService.Format(jointsInMoment, movement, trainingFile);
+
+
+                if (success)
+                {
+                    if (trainingFile) {
+                        MessageBox.Show(SUCCESS_SAVED, "Sucesso!",
+                                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    else
+                    {
+                        MessageBox.Show(SUCCESS_MOVEMENT, "Sucesso!",
+                                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                }
+                else
+                {
+                    if (trainingFile)
+                    {
+                        MessageBox.Show(FAILED_SAVED, "Ops!",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show(FAILED_MOVEMENT, "Ops!",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
         }
 
