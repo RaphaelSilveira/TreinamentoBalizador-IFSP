@@ -116,5 +116,12 @@ namespace TreinamentoBalizador_IFSP.View
             captureService.StopSaveCoordinates();
             btnStopCapture.Enabled = false;
         }
+
+        private void btnTrainingMove_Click(object sender, EventArgs e)
+        {
+            captureService = new CaptureKinectServiceNew(this, movementKey, this.trainingFile);
+            captureService.StartKinectSensor();
+            lblMovement.Text = movementText;
+        }
     }
 }
