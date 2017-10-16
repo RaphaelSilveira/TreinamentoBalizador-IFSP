@@ -87,8 +87,9 @@ namespace TreinamentoBalizador_IFSP.Services
             if (kinectSensor != null)
             {
                 StopSaveCoordinates();
-                trainigForm.BodyUndetected();
+                kinectSensor.Stop();
                 captureService = new FormatCoordinatesService();
+                trainigForm.BodyUndetected();
 
                 bool success = captureService.Format(jointsInMoment, movement, trainingFile);
 

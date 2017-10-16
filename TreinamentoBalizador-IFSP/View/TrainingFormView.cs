@@ -20,8 +20,8 @@ namespace TreinamentoBalizador_IFSP.View
         private Dictionary<String, String> movements = new Dictionary<string, string>();
         Movements movementData = Movements.Instance;
         private bool trainingFile;
-        private String movementText = "Sinaleiro";
-        private String movementKey;
+        private String movementText = "";
+        private String movementKey = "";
         CaptureKinectServiceNew captureService;
 
 
@@ -31,14 +31,18 @@ namespace TreinamentoBalizador_IFSP.View
             movements = movementData.movments;
             this.trainingFile = trainingFile;
             PopulateCombobox();
+            cbxSelectMovement.SelectedIndex = -1;
 
             this.trainingFile = trainingFile;
         }
 
         private void cbxSelectMovement_SelectedIndexChanged(object sender, EventArgs e)
         {
-            movementText = cbxSelectMovement.Text;
-            movementKey = cbxSelectMovement.SelectedValue.ToString();
+
+            if (cbxSelectMovement.SelectedValue != null) {
+                movementText = cbxSelectMovement.Text;
+                movementKey = cbxSelectMovement.SelectedValue.ToString();
+            }
 
             Console.WriteLine("text" + movementText);
             Console.WriteLine("key" + movementKey);
@@ -50,10 +54,12 @@ namespace TreinamentoBalizador_IFSP.View
         private void PopulateCombobox()
         {
 
-            var dataSource = new List<MovementItem>();            
-
+            var dataSource = new List<MovementItem>();
+            Console.WriteLine(movements.Count);
             foreach (KeyValuePair<string, string> pair in movements)
             {
+                Console.WriteLine(pair.Key);
+                Console.WriteLine(pair.Value);
                 dataSource.Add(new MovementItem() { Text = pair.Value.Replace(',', ' '), Key = pair.Key });
             }
 
@@ -86,13 +92,27 @@ namespace TreinamentoBalizador_IFSP.View
 
         public void BodyUndetected()
         {
-            btnStartCapture.Enabled = true;
+            movementText = "";
+            movementKey = "";
+
             btnStopCapture.BeginInvoke(
                 new Action(() => { btnStopCapture.Enabled = false; })
             );
 
+            btnStartCapture.BeginInvoke(
+                new Action(() => { btnStartCapture.Enabled = false; })
+            );
+
+            cbxSelectMovement.BeginInvoke(
+                new Action(() => { cbxSelectMovement.SelectedIndex = -1; })
+            );
+
             lblSensorReady.BeginInvoke(
                 new Action(() => { lblSensorReady.Text = ""; })
+            );
+
+            lblMovement.BeginInvoke(
+                new Action(() => { lblMovement.Text = ""; })
             );
         }
 
@@ -123,9 +143,18 @@ namespace TreinamentoBalizador_IFSP.View
 
         private void btnTrainingMove_Click(object sender, EventArgs e)
         {
-            captureService = new CaptureKinectServiceNew(this, movementKey, this.trainingFile);
-            captureService.StartKinectSensor();
-            lblMovement.Text = movementText;
+            if (cbxSelectMovement.SelectedIndex == -1)
+            {
+
+                MessageBox.Show("Selecione um movimento!", "Ops!",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                captureService = new CaptureKinectServiceNew(this, movementKey, this.trainingFile);
+                captureService.StartKinectSensor();
+                lblMovement.Text = movementText;
+            }
         }
 
         private void bgdProgressStatus_DoWork_1(object sender, DoWorkEventArgs e)

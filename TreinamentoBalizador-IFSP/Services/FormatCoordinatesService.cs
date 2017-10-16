@@ -19,7 +19,7 @@ namespace TreinamentoBalizador_IFSP.Services
             List<String> movements = new List<string>();
             formated.Coordinates = movements;
 
-            Console.WriteLine(jointsInMoment.Count);
+            Console.WriteLine(movement);
             int first = int.Parse(jointsInMoment.First().Key);
             int last = int.Parse(jointsInMoment.Last().Key);
 
