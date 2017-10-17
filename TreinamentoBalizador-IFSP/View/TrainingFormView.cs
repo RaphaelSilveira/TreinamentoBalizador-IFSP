@@ -38,7 +38,6 @@ namespace TreinamentoBalizador_IFSP.View
 
         private void cbxSelectMovement_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             if (cbxSelectMovement.SelectedValue != null) {
                 movementText = cbxSelectMovement.Text;
                 movementKey = cbxSelectMovement.SelectedValue.ToString();
@@ -94,6 +93,8 @@ namespace TreinamentoBalizador_IFSP.View
         {
             movementText = "";
             movementKey = "";
+
+            bgdProgressStatus.ReportProgress(0);
 
             btnStopCapture.BeginInvoke(
                 new Action(() => { btnStopCapture.Enabled = false; })

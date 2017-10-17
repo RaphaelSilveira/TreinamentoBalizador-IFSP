@@ -11,15 +11,14 @@ namespace TreinamentoBalizador_IFSP.Services
 {
     class FormatCoordinatesService
     {
-        public Boolean Format(Dictionary<string, List<KinectJoint>> jointsInMoment, String movement, bool trainingFile)
+        public FormatedCoordinatesModel Format(Dictionary<string, List<KinectJoint>> jointsInMoment, String movement)
         {
             FormatedCoordinatesModel formated = new FormatedCoordinatesModel();
-            MovementServerCommunication communication = new MovementServerCommunication();
 
             List<String> movements = new List<string>();
             formated.Coordinates = movements;
 
-            Console.WriteLine(movement);
+            Console.WriteLine("Count on format" + jointsInMoment.Count);
             int first = int.Parse(jointsInMoment.First().Key);
             int last = int.Parse(jointsInMoment.Last().Key);
 
@@ -42,15 +41,7 @@ namespace TreinamentoBalizador_IFSP.Services
                 }
             }
 
-            if (trainingFile)
-            {
-                return communication.SaveMovement(formated);
-            }
-            else
-            {
-                return communication.VerifyMovement(formated);
-            }
-
+         return formated;
         }
     }
 }

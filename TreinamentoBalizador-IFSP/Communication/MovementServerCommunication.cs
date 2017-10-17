@@ -76,7 +76,7 @@ namespace TreinamentoBalizador_IFSP.Communication
             {
                 HttpStatusCode statusCode = ((HttpWebResponse)response).StatusCode;
                 Console.WriteLine(statusCode.ToString());
-                if (statusCode.ToString() == "200")
+                if (statusCode.ToString() == "OK")
                 {
                     result = true;
                 }
