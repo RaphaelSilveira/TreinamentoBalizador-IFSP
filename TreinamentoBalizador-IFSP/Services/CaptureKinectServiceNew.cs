@@ -21,6 +21,7 @@ namespace TreinamentoBalizador_IFSP.Services
         private const String FAILED_MOVEMENT = "O movimento não foi executado corretamente";
         private const String SUCCESS_SAVED = "Movimento salvo com sucesso";
         private const String FAILED_SAVED = "Não foi possível salvar movimento";
+        private const String KINECT_NOT_AVAILABLE = "É necessário conectar o Kinect antes de iniciar";
 
         private KinectSensor kinectSensor;
         private Skeleton[] skeleton = new Skeleton[6];
@@ -43,18 +44,22 @@ namespace TreinamentoBalizador_IFSP.Services
         {
             this.trainigForm = trainigForm;
             this.trainingFile = trainingFile;
-
-            StartKinectSensor();
+            
             movement = movementKey;
             moment = 1;
         }
 
         public void StartKinectSensor()
         {
-            kinectSensor = KinectSensor.KinectSensors.Where(s => s.Status == KinectStatus.Connected).FirstOrDefault();
-            kinectSensor.SkeletonStream.Enable();
-            kinectSensor.Start();
-            kinectSensor.AllFramesReady += Sensor_AllFramesReady;
+            try
+            {
+                StartKineck();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(KINECT_NOT_AVAILABLE, "Ops!",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void StartSaveCoordinates()
@@ -82,6 +87,15 @@ namespace TreinamentoBalizador_IFSP.Services
 
         }
 
+        private void StartKineck()
+        {
+            kinectSensor = KinectSensor.KinectSensors.Where(s => s.Status == KinectStatus.Connected).FirstOrDefault();
+            kinectSensor.SkeletonStream.Enable();
+            kinectSensor.Start();
+            kinectSensor.AllFramesReady += Sensor_AllFramesReady;
+            trainigForm.SetMovementLabel();
+        }
+
         private void KeepCapturing()
         {
             while (temporal.IsAlive);
@@ -95,7 +109,10 @@ namespace TreinamentoBalizador_IFSP.Services
 
                 FormatedCoordinatesModel formatedCoordinates = formatService.Format(jointsInMoment, movement);
 
-                Communicate(formatedCoordinates);
+                if (formatedCoordinates != null)
+                {
+                    Communicate(formatedCoordinates);
+                }
             }
         }
 

@@ -25,9 +25,10 @@ namespace TreinamentoBalizador_IFSP.View
         CaptureKinectServiceNew captureService;
 
 
-        public TrainingFormView(bool trainingFile)
+        public TrainingFormView(bool trainingFile, String formName)
         {
             InitializeComponent();
+            lblFormName.Text = formName;
             movements = movementData.movments;
             this.trainingFile = trainingFile;
             PopulateCombobox();
@@ -79,15 +80,6 @@ namespace TreinamentoBalizador_IFSP.View
 
             file.Close();
         }
-
-        private void btnTraining_Click(object sender, EventArgs e)
-        {
-            captureService = new CaptureKinectServiceNew(this, movementKey, this.trainingFile);
-            captureService.StartKinectSensor();
-            lblMovement.Text = movementText;
-        }
-
-
 
         public void BodyUndetected()
         {
@@ -154,8 +146,12 @@ namespace TreinamentoBalizador_IFSP.View
             {
                 captureService = new CaptureKinectServiceNew(this, movementKey, this.trainingFile);
                 captureService.StartKinectSensor();
-                lblMovement.Text = movementText;
             }
+        }
+
+        public void SetMovementLabel()
+        {
+            lblMovement.Text = movementText;
         }
 
         private void bgdProgressStatus_DoWork_1(object sender, DoWorkEventArgs e)
