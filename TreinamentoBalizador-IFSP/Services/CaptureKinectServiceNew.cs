@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using TreinamentoBalizador_IFSP.View;
 using TreinamentoBalizador_IFSP.Models;
 using TreinamentoBalizador_IFSP.Communication;
+using System.Media;
 
 namespace TreinamentoBalizador_IFSP.Services
 {
@@ -71,6 +72,7 @@ namespace TreinamentoBalizador_IFSP.Services
             saveCoordinates = true;
             temporal.Start();
             keepAlive.Start();
+            SystemSounds.Hand.Play();
         }
 
         public void StopSaveCoordinates()
@@ -102,6 +104,7 @@ namespace TreinamentoBalizador_IFSP.Services
 
             if (kinectSensor != null)
             {
+                SystemSounds.Hand.Play();
                 kinectSensor.Stop();
                 formatService = new FormatCoordinatesService();
                 StopSaveCoordinates();
