@@ -83,43 +83,43 @@ namespace TreinamentoBalizador_IFSP.View
             // msOpenCaptureParametersForm
             // 
             this.msOpenCaptureParametersForm.Name = "msOpenCaptureParametersForm";
-            this.msOpenCaptureParametersForm.Size = new System.Drawing.Size(190, 22);
+            this.msOpenCaptureParametersForm.Size = new System.Drawing.Size(156, 22);
             this.msOpenCaptureParametersForm.Text = "Treinamento";
             this.msOpenCaptureParametersForm.Click += new System.EventHandler(this.msOpenCaptureParametersForm_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(187, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(153, 6);
             // 
             // msOpenTestForm
             // 
             this.msOpenTestForm.Name = "msOpenTestForm";
-            this.msOpenTestForm.Size = new System.Drawing.Size(190, 22);
+            this.msOpenTestForm.Size = new System.Drawing.Size(156, 22);
             this.msOpenTestForm.Text = "Prova";
             this.msOpenTestForm.Click += new System.EventHandler(this.msOpenTestForm_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(187, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(153, 6);
             // 
             // msOpenGroundSignalsListForm
             // 
             this.msOpenGroundSignalsListForm.Name = "msOpenGroundSignalsListForm";
-            this.msOpenGroundSignalsListForm.Size = new System.Drawing.Size(190, 22);
-            this.msOpenGroundSignalsListForm.Text = "Adicionar movimento";
+            this.msOpenGroundSignalsListForm.Size = new System.Drawing.Size(156, 22);
+            this.msOpenGroundSignalsListForm.Text = "Balanceamento";
             this.msOpenGroundSignalsListForm.Click += new System.EventHandler(this.msOpenGroundSignalsListForm_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(187, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(153, 6);
             // 
             // msOpenClose
             // 
             this.msOpenClose.Name = "msOpenClose";
-            this.msOpenClose.Size = new System.Drawing.Size(190, 22);
+            this.msOpenClose.Size = new System.Drawing.Size(156, 22);
             this.msOpenClose.Text = "Sair";
             this.msOpenClose.Click += new System.EventHandler(this.msOpenClose_Click);
             // 

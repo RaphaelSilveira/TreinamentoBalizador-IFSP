@@ -37,11 +37,12 @@
             this.lblSensorReady = new System.Windows.Forms.Label();
             this.pbCapturing = new System.Windows.Forms.ProgressBar();
             this.gbxSelectMovement = new System.Windows.Forms.GroupBox();
+            this.btnTrainingMove = new System.Windows.Forms.Button();
             this.wmpMovement = new AxWMPLib.AxWindowsMediaPlayer();
             this.lblSelect = new System.Windows.Forms.Label();
             this.cbxSelectMovement = new System.Windows.Forms.ComboBox();
-            this.btnTrainingMove = new System.Windows.Forms.Button();
             this.bgdProgressStatus = new System.ComponentModel.BackgroundWorker();
+            this.lblFormName = new System.Windows.Forms.Label();
             this.pnlMovementsList.SuspendLayout();
             this.gbxCapture.SuspendLayout();
             this.gbxSelectMovement.SuspendLayout();
@@ -50,6 +51,7 @@
             // 
             // pnlMovementsList
             // 
+            this.pnlMovementsList.Controls.Add(this.lblFormName);
             this.pnlMovementsList.Controls.Add(this.gbxCapture);
             this.pnlMovementsList.Controls.Add(this.gbxSelectMovement);
             this.pnlMovementsList.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -78,7 +80,7 @@
             // lblMovement
             // 
             this.lblMovement.AutoSize = true;
-            this.lblMovement.Location = new System.Drawing.Point(176, 51);
+            this.lblMovement.Location = new System.Drawing.Point(176, 29);
             this.lblMovement.Name = "lblMovement";
             this.lblMovement.Size = new System.Drawing.Size(0, 18);
             this.lblMovement.TabIndex = 6;
@@ -114,7 +116,7 @@
             this.lblSensorReady.AutoSize = true;
             this.lblSensorReady.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSensorReady.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.lblSensorReady.Location = new System.Drawing.Point(176, 101);
+            this.lblSensorReady.Location = new System.Drawing.Point(176, 64);
             this.lblSensorReady.Name = "lblSensorReady";
             this.lblSensorReady.Size = new System.Drawing.Size(0, 18);
             this.lblSensorReady.TabIndex = 3;
@@ -137,13 +139,24 @@
             this.gbxSelectMovement.Controls.Add(this.lblSelect);
             this.gbxSelectMovement.Controls.Add(this.cbxSelectMovement);
             this.gbxSelectMovement.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxSelectMovement.Location = new System.Drawing.Point(12, 12);
+            this.gbxSelectMovement.Location = new System.Drawing.Point(12, 41);
             this.gbxSelectMovement.Name = "gbxSelectMovement";
             this.gbxSelectMovement.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.gbxSelectMovement.Size = new System.Drawing.Size(1135, 491);
+            this.gbxSelectMovement.Size = new System.Drawing.Size(1135, 462);
             this.gbxSelectMovement.TabIndex = 0;
             this.gbxSelectMovement.TabStop = false;
             this.gbxSelectMovement.Text = "Selecionar movimento";
+            // 
+            // btnTrainingMove
+            // 
+            this.btnTrainingMove.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnTrainingMove.Location = new System.Drawing.Point(489, 426);
+            this.btnTrainingMove.Name = "btnTrainingMove";
+            this.btnTrainingMove.Size = new System.Drawing.Size(145, 30);
+            this.btnTrainingMove.TabIndex = 3;
+            this.btnTrainingMove.Text = "Treinar movimento";
+            this.btnTrainingMove.UseVisualStyleBackColor = true;
+            this.btnTrainingMove.Click += new System.EventHandler(this.btnTrainingMove_Click);
             // 
             // wmpMovement
             // 
@@ -152,7 +165,7 @@
             this.wmpMovement.Location = new System.Drawing.Point(320, 59);
             this.wmpMovement.Name = "wmpMovement";
             this.wmpMovement.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("wmpMovement.OcxState")));
-            this.wmpMovement.Size = new System.Drawing.Size(502, 390);
+            this.wmpMovement.Size = new System.Drawing.Size(502, 361);
             this.wmpMovement.TabIndex = 2;
             // 
             // lblSelect
@@ -175,22 +188,21 @@
             this.cbxSelectMovement.TabIndex = 0;
             this.cbxSelectMovement.SelectedIndexChanged += new System.EventHandler(this.cbxSelectMovement_SelectedIndexChanged);
             // 
-            // btnTrainingMove
-            // 
-            this.btnTrainingMove.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnTrainingMove.Location = new System.Drawing.Point(489, 455);
-            this.btnTrainingMove.Name = "btnTrainingMove";
-            this.btnTrainingMove.Size = new System.Drawing.Size(145, 30);
-            this.btnTrainingMove.TabIndex = 3;
-            this.btnTrainingMove.Text = "Treinar movimento";
-            this.btnTrainingMove.UseVisualStyleBackColor = true;
-            this.btnTrainingMove.Click += new System.EventHandler(this.btnTrainingMove_Click);
-            // 
             // bgdProgressStatus
             // 
+            this.bgdProgressStatus.WorkerReportsProgress = true;
             this.bgdProgressStatus.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgdProgressStatus_DoWork_1);
             this.bgdProgressStatus.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgdProgressStatus_ProgressChanged_1);
             this.bgdProgressStatus.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgdProgressStatus_RunWorkerCompleted_1);
+            // 
+            // lblFormName
+            // 
+            this.lblFormName.AutoSize = true;
+            this.lblFormName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFormName.Location = new System.Drawing.Point(15, 9);
+            this.lblFormName.Name = "lblFormName";
+            this.lblFormName.Size = new System.Drawing.Size(0, 18);
+            this.lblFormName.TabIndex = 8;
             // 
             // TrainingFormView
             // 
@@ -204,6 +216,7 @@
             this.Text = "Lista de sinais";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.pnlMovementsList.ResumeLayout(false);
+            this.pnlMovementsList.PerformLayout();
             this.gbxCapture.ResumeLayout(false);
             this.gbxCapture.PerformLayout();
             this.gbxSelectMovement.ResumeLayout(false);
@@ -228,5 +241,6 @@
         private System.Windows.Forms.Label lblMovement;
         private System.Windows.Forms.Button btnTrainingMove;
         private System.ComponentModel.BackgroundWorker bgdProgressStatus;
+        private System.Windows.Forms.Label lblFormName;
     }
 }

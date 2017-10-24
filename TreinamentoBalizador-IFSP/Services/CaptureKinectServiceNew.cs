@@ -5,10 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Kinect;
 using System.Threading;
+using System.Windows.Forms;
 
 using TreinamentoBalizador_IFSP.View;
 using TreinamentoBalizador_IFSP.Models;
-using System.Windows.Forms;
+using TreinamentoBalizador_IFSP.Communication;
+using System.Media;
 
 namespace TreinamentoBalizador_IFSP.Services
 {
@@ -20,10 +22,12 @@ namespace TreinamentoBalizador_IFSP.Services
         private const String FAILED_MOVEMENT = "O movimento não foi executado corretamente";
         private const String SUCCESS_SAVED = "Movimento salvo com sucesso";
         private const String FAILED_SAVED = "Não foi possível salvar movimento";
+        private const String KINECT_NOT_AVAILABLE = "É necessário conectar o Kinect antes de iniciar";
 
         private KinectSensor kinectSensor;
         private Skeleton[] skeleton = new Skeleton[6];
-        private FormatCoordinatesService captureService;
+        private FormatCoordinatesService formatService;
+        MovementServerCommunication communication = new MovementServerCommunication();
         private TemporalService temporalService;
         private Thread temporal;
         private List<KinectJoint> kinectJoints;
@@ -41,18 +45,22 @@ namespace TreinamentoBalizador_IFSP.Services
         {
             this.trainigForm = trainigForm;
             this.trainingFile = trainingFile;
-
-            StartKinectSensor();
+            
             movement = movementKey;
             moment = 1;
         }
 
         public void StartKinectSensor()
         {
-            kinectSensor = KinectSensor.KinectSensors.Where(s => s.Status == KinectStatus.Connected).FirstOrDefault();
-            kinectSensor.SkeletonStream.Enable();
-            kinectSensor.Start();
-            kinectSensor.AllFramesReady += Sensor_AllFramesReady;
+            try
+            {
+                StartKineck();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(KINECT_NOT_AVAILABLE, "Ops!",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void StartSaveCoordinates()
@@ -64,6 +72,7 @@ namespace TreinamentoBalizador_IFSP.Services
             saveCoordinates = true;
             temporal.Start();
             keepAlive.Start();
+            SystemSounds.Hand.Play();
         }
 
         public void StopSaveCoordinates()
@@ -80,43 +89,67 @@ namespace TreinamentoBalizador_IFSP.Services
 
         }
 
+        private void StartKineck()
+        {
+            kinectSensor = KinectSensor.KinectSensors.Where(s => s.Status == KinectStatus.Connected).FirstOrDefault();
+            kinectSensor.SkeletonStream.Enable();
+            kinectSensor.Start();
+            kinectSensor.AllFramesReady += Sensor_AllFramesReady;
+            trainigForm.SetMovementLabel();
+        }
+
         private void KeepCapturing()
         {
             while (temporal.IsAlive);
 
             if (kinectSensor != null)
             {
+                SystemSounds.Hand.Play();
+                kinectSensor.Stop();
+                formatService = new FormatCoordinatesService();
                 StopSaveCoordinates();
                 trainigForm.BodyUndetected();
-                captureService = new FormatCoordinatesService();
 
-                bool success = captureService.Format(jointsInMoment, movement, trainingFile);
+                FormatedCoordinatesModel formatedCoordinates = formatService.Format(jointsInMoment, movement);
 
-
-                if (success)
+                if (formatedCoordinates != null)
                 {
-                    if (trainingFile) {
-                        MessageBox.Show(SUCCESS_SAVED, "Sucesso!",
-                                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
-                    else
-                    {
-                        MessageBox.Show(SUCCESS_MOVEMENT, "Sucesso!",
-                                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
+                    Communicate(formatedCoordinates);
+                }
+            }
+        }
+
+        private void Communicate(FormatedCoordinatesModel formatedCoordinates)
+        {
+
+            if (trainingFile)
+            {
+                bool saveSuccess =  communication.SaveMovement(formatedCoordinates);
+
+                if (saveSuccess)
+                {
+                    MessageBox.Show(SUCCESS_SAVED, "Sucesso!",
+                            MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 else
                 {
-                    if (trainingFile)
-                    {
-                        MessageBox.Show(FAILED_SAVED, "Ops!",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                        MessageBox.Show(FAILED_MOVEMENT, "Ops!",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    MessageBox.Show(FAILED_SAVED, "Ops!",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                bool verifySuccess = communication.VerifyMovement(formatedCoordinates);
+
+                if (verifySuccess)
+                {
+                    MessageBox.Show(SUCCESS_MOVEMENT, "Sucesso!",
+                            MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    MessageBox.Show(FAILED_MOVEMENT, "Ops!",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

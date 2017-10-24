@@ -19,7 +19,7 @@ namespace TreinamentoBalizador_IFSP.Communication
             String endPoint = "verify-movement";
 
             Console.WriteLine("comunication" + endPoint);
-            var request = (HttpWebRequest)WebRequest.Create("http://192.168.0.49:8080/" + endPoint);
+            var request = (HttpWebRequest)WebRequest.Create("http://172.16.3.56:8080/" + endPoint);
             request.ContentType = "application/json";
             request.Method = "POST";
 
@@ -52,7 +52,7 @@ namespace TreinamentoBalizador_IFSP.Communication
             String endPoint = "save-movement";
 
             Console.WriteLine("comunication" + endPoint);
-            var request = (HttpWebRequest)WebRequest.Create("http://192.168.0.49:8080/" + endPoint);
+            var request = (HttpWebRequest)WebRequest.Create("http://172.16.3.56:8080/" + endPoint);
             request.ContentType = "application/json";
             request.Method = "POST";
 
@@ -75,8 +75,8 @@ namespace TreinamentoBalizador_IFSP.Communication
             using (var streamReader = new StreamReader(response.GetResponseStream()))
             {
                 HttpStatusCode statusCode = ((HttpWebResponse)response).StatusCode;
-
-                if (statusCode.ToString() == "200")
+                Console.WriteLine(statusCode.ToString());
+                if (statusCode.ToString() == "OK")
                 {
                     result = true;
                 }
