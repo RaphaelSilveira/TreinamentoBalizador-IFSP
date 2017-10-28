@@ -24,7 +24,7 @@ namespace TreinamentoBalizador_IFSP.View
         private List<int> movementsIndexRandomList;
         private CaptureKinectServiceNew captureService;
         private FormatedCoordinatesModel formatedCoordinates;
-        private CommunicationService communicationService;
+        private CommunicationService communicationService = new CommunicationService();
         private int movementCount = 0;
         private String currentMovement;
 
@@ -142,6 +142,7 @@ namespace TreinamentoBalizador_IFSP.View
             ExamResult result = new ExamResult(currentMovement, success);
 
             examResults.Add(result);
+            UpdateGrid();
             movementCount++;
 
             HasNextMovement();
@@ -150,6 +151,7 @@ namespace TreinamentoBalizador_IFSP.View
         private void btnExamCancel_Click(object sender, EventArgs e)
         {
             FinishExam();
+            dgvResults.Rows.Clear();
         }
 
         private void HasNextMovement()
@@ -178,7 +180,27 @@ namespace TreinamentoBalizador_IFSP.View
 
         private void UpdateGrid()
         {
+            dgvResults.Rows.Clear();
+            foreach (ExamResult result in examResults) {
+                dgvResults.Rows.Add(
+                    examParameters.StudentName,
+                    examParameters.Date,
+                    result.Movement,
+                    ResultText(result.Result)
+               );
+            }
+        }
 
+        private String ResultText(bool result)
+        {
+            if (result)
+            {
+                return "Certo";
+            }
+            else
+            {
+                return "Errado";
+            }
         }
     }
 }
