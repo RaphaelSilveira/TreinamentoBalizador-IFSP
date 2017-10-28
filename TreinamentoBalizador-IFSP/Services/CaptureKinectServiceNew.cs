@@ -34,16 +34,17 @@ namespace TreinamentoBalizador_IFSP.Services
         private int moment;
         private int jointCount = 0;
         private bool saveCoordinates = false;
-        private TrainingFormView trainigForm;
+        private AbstractFormService form;
         private Thread keepAlive;
         private String movement;
         private bool trainingFile;
         private Dictionary<string, List<KinectJoint>> jointsInMoment =
             new Dictionary<string, List<KinectJoint>>();
 
-        public CaptureKinectServiceNew(TrainingFormView trainigForm, String movementKey, bool trainingFile)
+        public CaptureKinectServiceNew(AbstractFormService form, String movementKey, bool trainingFile)
         {
-            this.trainigForm = trainigForm;
+            this.form = form;
+
             this.trainingFile = trainingFile;
             
             movement = movementKey;
@@ -95,7 +96,7 @@ namespace TreinamentoBalizador_IFSP.Services
             kinectSensor.SkeletonStream.Enable();
             kinectSensor.Start();
             kinectSensor.AllFramesReady += Sensor_AllFramesReady;
-            trainigForm.SetMovementLabel();
+            form.SetMovementLabel();
         }
 
         private void KeepCapturing()
@@ -108,7 +109,7 @@ namespace TreinamentoBalizador_IFSP.Services
                 kinectSensor.Stop();
                 formatService = new FormatCoordinatesService();
                 StopSaveCoordinates();
-                trainigForm.BodyUndetected();
+                form.BodyUndetected();
 
                 FormatedCoordinatesModel formatedCoordinates = formatService.Format(jointsInMoment, movement);
 
@@ -167,7 +168,7 @@ namespace TreinamentoBalizador_IFSP.Services
                     {
                         if (body.TrackingState == SkeletonTrackingState.Tracked)
                         {
-                            trainigForm.BodyDetected();
+                            form.BodyDetected();
                         }
                         if(body.TrackingState == SkeletonTrackingState.Tracked && saveCoordinates)
                         {

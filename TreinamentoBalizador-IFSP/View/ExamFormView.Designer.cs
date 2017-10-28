@@ -46,11 +46,13 @@
             this.btnExamCancel = new System.Windows.Forms.Button();
             this.gbxExamResult = new System.Windows.Forms.GroupBox();
             this.dgvResults = new System.Windows.Forms.DataGridView();
-            this.clmStudantName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmMovement = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmResult = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnStartKinect = new System.Windows.Forms.Button();
             this.lblSensorReady = new System.Windows.Forms.Label();
+            this.bgdProgressStatus = new System.ComponentModel.BackgroundWorker();
+            this.clmStudantName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmMovement = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmResult = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlExam.SuspendLayout();
             this.gbxExamConfig.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMovementNumber)).BeginInit();
@@ -202,6 +204,7 @@
             this.btnInitCapture.TabIndex = 5;
             this.btnInitCapture.Text = "Executar movimento";
             this.btnInitCapture.UseVisualStyleBackColor = true;
+            this.btnInitCapture.Click += new System.EventHandler(this.btnInitCapture_Click);
             // 
             // btnStopCapture
             // 
@@ -252,32 +255,18 @@
             // dgvResults
             // 
             this.dgvResults.AllowUserToAddRows = false;
+            this.dgvResults.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvResults.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmStudantName,
+            this.clmDate,
             this.clmMovement,
             this.clmResult});
             this.dgvResults.Location = new System.Drawing.Point(15, 37);
             this.dgvResults.Name = "dgvResults";
             this.dgvResults.Size = new System.Drawing.Size(1102, 190);
             this.dgvResults.TabIndex = 0;
-            // 
-            // clmStudantName
-            // 
-            this.clmStudantName.HeaderText = "Nome do aluno";
-            this.clmStudantName.Name = "clmStudantName";
-            this.clmStudantName.Width = 400;
-            // 
-            // clmMovement
-            // 
-            this.clmMovement.HeaderText = "Movimento";
-            this.clmMovement.Name = "clmMovement";
-            this.clmMovement.Width = 558;
-            // 
-            // clmResult
-            // 
-            this.clmResult.HeaderText = "Resultado";
-            this.clmResult.Name = "clmResult";
             // 
             // btnStartKinect
             // 
@@ -290,6 +279,7 @@
             this.btnStartKinect.TabIndex = 8;
             this.btnStartKinect.Text = "Preparar para execução";
             this.btnStartKinect.UseVisualStyleBackColor = true;
+            this.btnStartKinect.Click += new System.EventHandler(this.btnStartKinect_Click);
             // 
             // lblSensorReady
             // 
@@ -300,6 +290,29 @@
             this.lblSensorReady.Name = "lblSensorReady";
             this.lblSensorReady.Size = new System.Drawing.Size(0, 18);
             this.lblSensorReady.TabIndex = 9;
+            // 
+            // clmStudantName
+            // 
+            this.clmStudantName.HeaderText = "Nome do aluno";
+            this.clmStudantName.Name = "clmStudantName";
+            this.clmStudantName.Width = 400;
+            // 
+            // clmDate
+            // 
+            this.clmDate.HeaderText = "Data da prova";
+            this.clmDate.Name = "clmDate";
+            this.clmDate.Width = 200;
+            // 
+            // clmMovement
+            // 
+            this.clmMovement.HeaderText = "Movimento";
+            this.clmMovement.Name = "clmMovement";
+            this.clmMovement.Width = 560;
+            // 
+            // clmResult
+            // 
+            this.clmResult.HeaderText = "Resultado";
+            this.clmResult.Name = "clmResult";
             // 
             // ExamFormView
             // 
@@ -342,10 +355,12 @@
         private System.Windows.Forms.Button btnExamCancel;
         private System.Windows.Forms.GroupBox gbxExamResult;
         private System.Windows.Forms.DataGridView dgvResults;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmStudantName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmMovement;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmResult;
         private System.Windows.Forms.Button btnStartKinect;
         private System.Windows.Forms.Label lblSensorReady;
+        private System.ComponentModel.BackgroundWorker bgdProgressStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmStudantName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmMovement;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmResult;
     }
 }

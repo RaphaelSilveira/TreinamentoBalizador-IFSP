@@ -15,7 +15,7 @@ using TreinamentoBalizador_IFSP.Services;
 
 namespace TreinamentoBalizador_IFSP.View
 {
-    public partial class TrainingFormView : Form
+    public partial class TrainingFormView : AbstractFormService
     {
         private Dictionary<String, String> movements = new Dictionary<string, string>();
         Movements movementData = Movements.Instance;
@@ -81,40 +81,6 @@ namespace TreinamentoBalizador_IFSP.View
             file.Close();
         }
 
-        public void BodyUndetected()
-        {
-            movementText = "";
-            movementKey = "";
-
-            bgdProgressStatus.ReportProgress(0);
-
-            btnStopCapture.BeginInvoke(
-                new Action(() => { btnStopCapture.Enabled = false; })
-            );
-
-            btnStartCapture.BeginInvoke(
-                new Action(() => { btnStartCapture.Enabled = false; })
-            );
-
-            cbxSelectMovement.BeginInvoke(
-                new Action(() => { cbxSelectMovement.SelectedIndex = -1; })
-            );
-
-            lblSensorReady.BeginInvoke(
-                new Action(() => { lblSensorReady.Text = ""; })
-            );
-
-            lblMovement.BeginInvoke(
-                new Action(() => { lblMovement.Text = ""; })
-            );
-        }
-
-        public void BodyDetected()
-        {
-            btnStartCapture.Enabled = true;
-            lblSensorReady.Text = "Reconhecimento concluido";
-        }
-
         private void btnStartCapture_Click(object sender, EventArgs e)
         {
             pbCapturing.Style = ProgressBarStyle.Blocks;
@@ -149,11 +115,6 @@ namespace TreinamentoBalizador_IFSP.View
             }
         }
 
-        public void SetMovementLabel()
-        {
-            lblMovement.Text = movementText;
-        }
-
         private void bgdProgressStatus_DoWork_1(object sender, DoWorkEventArgs e)
         {
             for (int i = 0; i <= 16; i++)
@@ -173,6 +134,45 @@ namespace TreinamentoBalizador_IFSP.View
         private void bgdProgressStatus_RunWorkerCompleted_1(object sender, RunWorkerCompletedEventArgs e)
         {
 
+        }
+
+        public override void SetMovementLabel()
+        {
+            lblMovement.Text = movementText;
+        }
+
+        public override void BodyUndetected()
+        {
+            movementText = "";
+            movementKey = "";
+
+            bgdProgressStatus.ReportProgress(0);
+
+            btnStopCapture.BeginInvoke(
+                new Action(() => { btnStopCapture.Enabled = false; })
+            );
+
+            btnStartCapture.BeginInvoke(
+                new Action(() => { btnStartCapture.Enabled = false; })
+            );
+
+            cbxSelectMovement.BeginInvoke(
+                new Action(() => { cbxSelectMovement.SelectedIndex = -1; })
+            );
+
+            lblSensorReady.BeginInvoke(
+                new Action(() => { lblSensorReady.Text = ""; })
+            );
+
+            lblMovement.BeginInvoke(
+                new Action(() => { lblMovement.Text = ""; })
+            );
+        }
+
+        public override void BodyDetected()
+        {
+            btnStartCapture.Enabled = true;
+            lblSensorReady.Text = "Reconhecimento concluido";
         }
     }
 }
