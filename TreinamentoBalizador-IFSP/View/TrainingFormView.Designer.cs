@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrainingFormView));
             this.pnlMovementsList = new System.Windows.Forms.Panel();
+            this.lblFormName = new System.Windows.Forms.Label();
             this.gbxCapture = new System.Windows.Forms.GroupBox();
             this.lblMovement = new System.Windows.Forms.Label();
             this.btnStopCapture = new System.Windows.Forms.Button();
@@ -42,7 +43,6 @@
             this.lblSelect = new System.Windows.Forms.Label();
             this.cbxSelectMovement = new System.Windows.Forms.ComboBox();
             this.bgdProgressStatus = new System.ComponentModel.BackgroundWorker();
-            this.lblFormName = new System.Windows.Forms.Label();
             this.pnlMovementsList.SuspendLayout();
             this.gbxCapture.SuspendLayout();
             this.gbxSelectMovement.SuspendLayout();
@@ -59,6 +59,15 @@
             this.pnlMovementsList.Name = "pnlMovementsList";
             this.pnlMovementsList.Size = new System.Drawing.Size(1159, 741);
             this.pnlMovementsList.TabIndex = 0;
+            // 
+            // lblFormName
+            // 
+            this.lblFormName.AutoSize = true;
+            this.lblFormName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFormName.Location = new System.Drawing.Point(15, 9);
+            this.lblFormName.Name = "lblFormName";
+            this.lblFormName.Size = new System.Drawing.Size(0, 18);
+            this.lblFormName.TabIndex = 8;
             // 
             // gbxCapture
             // 
@@ -102,7 +111,7 @@
             // 
             this.btnStartCapture.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnStartCapture.Enabled = false;
-            this.btnStartCapture.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStartCapture.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStartCapture.Location = new System.Drawing.Point(6, 23);
             this.btnStartCapture.Name = "btnStartCapture";
             this.btnStartCapture.Size = new System.Drawing.Size(130, 30);
@@ -194,15 +203,6 @@
             this.bgdProgressStatus.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgdProgressStatus_DoWork_1);
             this.bgdProgressStatus.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgdProgressStatus_ProgressChanged_1);
             this.bgdProgressStatus.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgdProgressStatus_RunWorkerCompleted_1);
-            // 
-            // lblFormName
-            // 
-            this.lblFormName.AutoSize = true;
-            this.lblFormName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFormName.Location = new System.Drawing.Point(15, 9);
-            this.lblFormName.Name = "lblFormName";
-            this.lblFormName.Size = new System.Drawing.Size(0, 18);
-            this.lblFormName.TabIndex = 8;
             // 
             // TrainingFormView
             // 

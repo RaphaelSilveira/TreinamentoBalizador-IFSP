@@ -81,7 +81,6 @@
     <Compile Include="Models\KinectJoint.cs" />
     <Compile Include="Models\MoveListTest.cs" />
     <Compile Include="Models\MovementItem.cs" />
-    <Compile Include="Services\CaptureKinectService.cs" />
     <Compile Include="Services\CaptureKinectServiceNew.cs" />
     <Compile Include="Services\FormatCoordinatesService.cs" />
     <Compile Include="Services\TemporalService.cs" />
@@ -101,17 +100,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\ExamFormView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ExamFormView.Designer.cs">
+      <DependentUpon>ExamFormView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\KinectConfigurationInfo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\KinectConfigurationInfo.Designer.cs">
       <DependentUpon>KinectConfigurationInfo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\TestFormView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\TestFormView.Designer.cs">
-      <DependentUpon>TestFormView.cs</DependentUpon>
     </Compile>
     <Compile Include="View\TrainingFormView.cs">
       <SubType>Form</SubType>
@@ -141,11 +140,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\ExamFormView.resx">
+      <DependentUpon>ExamFormView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\KinectConfigurationInfo.resx">
       <DependentUpon>KinectConfigurationInfo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\TestFormView.resx">
-      <DependentUpon>TestFormView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\TrainingFormView.resx">
       <DependentUpon>TrainingFormView.cs</DependentUpon>

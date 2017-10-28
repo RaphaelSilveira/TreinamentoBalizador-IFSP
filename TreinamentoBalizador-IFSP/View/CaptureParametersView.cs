@@ -74,8 +74,8 @@ namespace TreinamentoBalizador_IFSP
                 captureParameters.Movement = cbxMovement.Text;
                 captureParameters.SetSelectedJoints(jointList);
 
-                CaptureKinectService captureKinectService = new CaptureKinectService(captureParameters);
-                captureKinectService.InitCapture();
+                // CaptureKinectServiceNew captureKinectService = new CaptureKinectServiceNew();
+                // captureKinectService.InitCapture();
 
             }
         }
