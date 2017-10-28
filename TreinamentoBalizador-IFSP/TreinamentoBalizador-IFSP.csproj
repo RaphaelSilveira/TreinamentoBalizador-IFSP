@@ -83,12 +83,10 @@
     <Compile Include="Models\KinectJoint.cs" />
     <Compile Include="Models\MoveListTest.cs" />
     <Compile Include="Models\MovementItem.cs" />
-    <Compile Include="Services\AbstractFormService.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Services\CaptureKinectServiceNew.cs" />
     <Compile Include="Services\ExamService.cs" />
     <Compile Include="Services\FormatCoordinatesService.cs" />
+    <Compile Include="Interfaces\FormInterface.cs" />
     <Compile Include="Services\TemporalService.cs" />
     <Compile Include="Services\TestControlService.cs" />
     <Compile Include="Utils\DateUtils.cs" />

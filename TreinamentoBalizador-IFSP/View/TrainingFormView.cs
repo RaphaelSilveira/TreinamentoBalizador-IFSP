@@ -15,7 +15,7 @@ using TreinamentoBalizador_IFSP.Services;
 
 namespace TreinamentoBalizador_IFSP.View
 {
-    public partial class TrainingFormView : AbstractFormService
+    public partial class TrainingFormView : Form, FormInterface
     {
         private Dictionary<String, String> movements = new Dictionary<string, string>();
         Movements movementData = Movements.Instance;
@@ -136,12 +136,12 @@ namespace TreinamentoBalizador_IFSP.View
 
         }
 
-        public override void SetMovementLabel()
+        public void SetMovementLabel()
         {
             lblMovement.Text = movementText;
         }
 
-        public override void BodyUndetected()
+        public void BodyUndetected()
         {
             movementText = "";
             movementKey = "";
@@ -169,7 +169,7 @@ namespace TreinamentoBalizador_IFSP.View
             );
         }
 
-        public override void BodyDetected()
+        public void BodyDetected()
         {
             btnStartCapture.Enabled = true;
             lblSensorReady.Text = "Reconhecimento concluido";

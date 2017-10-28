@@ -14,7 +14,7 @@ using TreinamentoBalizador_IFSP.Services;
 
 namespace TreinamentoBalizador_IFSP.View
 {
-    public partial class ExamFormView : AbstractFormService
+    public partial class ExamFormView : Form, FormInterface
     {
 
         private ExamParameters examParameters;
@@ -52,6 +52,7 @@ namespace TreinamentoBalizador_IFSP.View
                 examResults = new List<ExamResult>();
                 btnExamCancel.Enabled = true;
                 btnStartKinect.Enabled = true;
+                btnExamInit.Enabled = false;
 
                 movementsIndexRandomList = examService.RandomMovementListGenerate(
                     dbMovements.Count,
@@ -108,17 +109,18 @@ namespace TreinamentoBalizador_IFSP.View
             pbCapturing.Value = e.ProgressPercentage;
         }
 
-        public override void SetMovementLabel()
+        public void SetMovementLabel()
         {
             lblMovement.Text = currentMovement;
         }
 
-        public override void BodyDetected()
+        public void BodyDetected()
         {
-
+            btnExamInit.Enabled = true;
+            lblSensorReady.Text = "Reconhecimento concluido";
         }
 
-        public override void BodyUndetected()
+        public void BodyUndetected()
         {
 
         }

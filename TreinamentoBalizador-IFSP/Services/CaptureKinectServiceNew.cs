@@ -34,14 +34,14 @@ namespace TreinamentoBalizador_IFSP.Services
         private int moment;
         private int jointCount = 0;
         private bool saveCoordinates = false;
-        private AbstractFormService form;
+        private FormInterface form;
         private Thread keepAlive;
         private String movement;
         private bool trainingFile;
         private Dictionary<string, List<KinectJoint>> jointsInMoment =
             new Dictionary<string, List<KinectJoint>>();
 
-        public CaptureKinectServiceNew(AbstractFormService form, String movementKey, bool trainingFile)
+        public CaptureKinectServiceNew(FormInterface form, String movementKey, bool trainingFile)
         {
             this.form = form;
 
