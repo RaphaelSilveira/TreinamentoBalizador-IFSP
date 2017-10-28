@@ -49,6 +49,8 @@
             this.clmStudantName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmMovement = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmResult = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnStartKinect = new System.Windows.Forms.Button();
+            this.lblSensorReady = new System.Windows.Forms.Label();
             this.pnlExam.SuspendLayout();
             this.gbxExamConfig.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMovementNumber)).BeginInit();
@@ -156,6 +158,8 @@
             // 
             this.gbxExamStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbxExamStatus.Controls.Add(this.lblSensorReady);
+            this.gbxExamStatus.Controls.Add(this.btnStartKinect);
             this.gbxExamStatus.Controls.Add(this.pbCapturing);
             this.gbxExamStatus.Controls.Add(this.btnStopCapture);
             this.gbxExamStatus.Controls.Add(this.btnInitCapture);
@@ -191,7 +195,8 @@
             // 
             this.btnInitCapture.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnInitCapture.Location = new System.Drawing.Point(981, 24);
+            this.btnInitCapture.Enabled = false;
+            this.btnInitCapture.Location = new System.Drawing.Point(981, 64);
             this.btnInitCapture.Name = "btnInitCapture";
             this.btnInitCapture.Size = new System.Drawing.Size(145, 30);
             this.btnInitCapture.TabIndex = 5;
@@ -202,7 +207,8 @@
             // 
             this.btnStopCapture.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStopCapture.Location = new System.Drawing.Point(981, 69);
+            this.btnStopCapture.Enabled = false;
+            this.btnStopCapture.Location = new System.Drawing.Point(981, 104);
             this.btnStopCapture.Name = "btnStopCapture";
             this.btnStopCapture.Size = new System.Drawing.Size(145, 30);
             this.btnStopCapture.TabIndex = 6;
@@ -222,6 +228,7 @@
             // 
             this.btnExamCancel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExamCancel.Enabled = false;
             this.btnExamCancel.Location = new System.Drawing.Point(984, 67);
             this.btnExamCancel.Name = "btnExamCancel";
             this.btnExamCancel.Size = new System.Drawing.Size(145, 30);
@@ -237,7 +244,7 @@
             this.gbxExamResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbxExamResult.Location = new System.Drawing.Point(15, 413);
             this.gbxExamResult.Name = "gbxExamResult";
-            this.gbxExamResult.Size = new System.Drawing.Size(1135, 279);
+            this.gbxExamResult.Size = new System.Drawing.Size(1135, 251);
             this.gbxExamResult.TabIndex = 3;
             this.gbxExamResult.TabStop = false;
             this.gbxExamResult.Text = "Resultados";
@@ -265,12 +272,34 @@
             // 
             this.clmMovement.HeaderText = "Movimento";
             this.clmMovement.Name = "clmMovement";
-            this.clmMovement.Width = 560;
+            this.clmMovement.Width = 558;
             // 
             // clmResult
             // 
             this.clmResult.HeaderText = "Resultado";
             this.clmResult.Name = "clmResult";
+            // 
+            // btnStartKinect
+            // 
+            this.btnStartKinect.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnStartKinect.Enabled = false;
+            this.btnStartKinect.Location = new System.Drawing.Point(981, 21);
+            this.btnStartKinect.Name = "btnStartKinect";
+            this.btnStartKinect.Size = new System.Drawing.Size(145, 30);
+            this.btnStartKinect.TabIndex = 8;
+            this.btnStartKinect.Text = "Preparar para execução";
+            this.btnStartKinect.UseVisualStyleBackColor = true;
+            // 
+            // lblSensorReady
+            // 
+            this.lblSensorReady.AutoSize = true;
+            this.lblSensorReady.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSensorReady.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.lblSensorReady.Location = new System.Drawing.Point(823, 33);
+            this.lblSensorReady.Name = "lblSensorReady";
+            this.lblSensorReady.Size = new System.Drawing.Size(0, 18);
+            this.lblSensorReady.TabIndex = 9;
             // 
             // ExamFormView
             // 
@@ -316,5 +345,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmStudantName;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmMovement;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmResult;
+        private System.Windows.Forms.Button btnStartKinect;
+        private System.Windows.Forms.Label lblSensorReady;
     }
 }

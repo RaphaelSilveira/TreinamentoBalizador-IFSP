@@ -77,11 +77,14 @@
     <Compile Include="Communication\MovementServerCommunication.cs" />
     <Compile Include="Configuration\Movements.cs" />
     <Compile Include="Models\CaptureParameters.cs" />
+    <Compile Include="Models\ExamParameters.cs" />
+    <Compile Include="Models\ExamResult.cs" />
     <Compile Include="Models\FormatedCoordinatesModel.cs" />
     <Compile Include="Models\KinectJoint.cs" />
     <Compile Include="Models\MoveListTest.cs" />
     <Compile Include="Models\MovementItem.cs" />
     <Compile Include="Services\CaptureKinectServiceNew.cs" />
+    <Compile Include="Services\ExamService.cs" />
     <Compile Include="Services\FormatCoordinatesService.cs" />
     <Compile Include="Services\TemporalService.cs" />
     <Compile Include="Services\TestControlService.cs" />
