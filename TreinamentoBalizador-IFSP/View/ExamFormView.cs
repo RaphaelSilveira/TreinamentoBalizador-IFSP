@@ -23,6 +23,9 @@ namespace TreinamentoBalizador_IFSP.View
         private ExamService examService = new ExamService();
         private List<int> movementsIndexRandomList;
         private CaptureKinectServiceNew captureService;
+        private FormatedCoordinatesModel formatedCoordinates;
+        private CommunicationService communicationService;
+        private int movementCount = 0;
         private String currentMovement;
 
 
@@ -83,6 +86,11 @@ namespace TreinamentoBalizador_IFSP.View
             pbCapturing.Value = 0;
 
             bgdProgressStatus.RunWorkerAsync();
+
+            captureService.StartSaveCoordinates();
+
+            btnStopCapture.Enabled = false;
+            btnStopCapture.Enabled = true;
         }
   
         private void btnStartKinect_Click(object sender, EventArgs e)
@@ -117,13 +125,60 @@ namespace TreinamentoBalizador_IFSP.View
         public void BodyDetected()
         {
             btnExamInit.Enabled = true;
+            btnStartKinect.Enabled = false;
             lblSensorReady.Text = "Reconhecimento concluido";
         }
 
-        public void BodyUndetected()
+        public void FinishCapture()
+        {
+            bgdProgressStatus.ReportProgress(0);
+            lblSensorReady.Text = "";
+            btnStopCapture.Enabled = false;
+
+            formatedCoordinates = captureService.formatedCoordinates;
+
+            bool success = communicationService.CommunicateExam(formatedCoordinates);
+
+            ExamResult result = new ExamResult(currentMovement, success);
+
+            examResults.Add(result);
+            movementCount++;
+
+            HasNextMovement();
+        }
+
+        private void btnExamCancel_Click(object sender, EventArgs e)
+        {
+            FinishExam();
+        }
+
+        private void HasNextMovement()
+        {
+            if (movementCount < examParameters.MovementNumber)
+            {
+                btnStartKinect.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show("Prova Finalizada!", "Sucesso!",
+                            MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                FinishExam();
+                btnStartKinect.Enabled = true;
+            }
+        }
+
+        private void FinishExam()
+        {
+            btnExamCancel.Enabled = false;
+            btnInitCapture.Enabled = false;
+            btnStartKinect.Enabled = false;
+            btnStopCapture.Enabled = false;
+            btnExamInit.Enabled = true;
+        }
+
+        private void UpdateGrid()
         {
 
         }
-
     }
 }

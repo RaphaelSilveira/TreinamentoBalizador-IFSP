@@ -84,6 +84,7 @@
     <Compile Include="Models\MoveListTest.cs" />
     <Compile Include="Models\MovementItem.cs" />
     <Compile Include="Services\CaptureKinectServiceNew.cs" />
+    <Compile Include="Services\CommunicationService.cs" />
     <Compile Include="Services\ExamService.cs" />
     <Compile Include="Services\FormatCoordinatesService.cs" />
     <Compile Include="Interfaces\FormInterface.cs" />

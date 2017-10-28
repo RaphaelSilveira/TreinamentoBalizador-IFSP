@@ -9,7 +9,7 @@ namespace TreinamentoBalizador_IFSP.Services
     interface FormInterface
     {
         void SetMovementLabel();
-        void BodyUndetected();
+        void FinishCapture();
         void BodyDetected();
     }
 }

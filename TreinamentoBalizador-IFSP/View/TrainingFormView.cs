@@ -23,6 +23,8 @@ namespace TreinamentoBalizador_IFSP.View
         private String movementText = "";
         private String movementKey = "";
         CaptureKinectServiceNew captureService;
+        CommunicationService communicationService = new CommunicationService();
+        private FormatedCoordinatesModel formatedCoordinates;
 
 
         public TrainingFormView(bool trainingFile, String formName)
@@ -141,7 +143,7 @@ namespace TreinamentoBalizador_IFSP.View
             lblMovement.Text = movementText;
         }
 
-        public void BodyUndetected()
+        public void FinishCapture()
         {
             movementText = "";
             movementKey = "";
@@ -167,6 +169,10 @@ namespace TreinamentoBalizador_IFSP.View
             lblMovement.BeginInvoke(
                 new Action(() => { lblMovement.Text = ""; })
             );
+
+            formatedCoordinates = captureService.formatedCoordinates;
+
+            communicationService.Communicate(formatedCoordinates, trainingFile);
         }
 
         public void BodyDetected()
