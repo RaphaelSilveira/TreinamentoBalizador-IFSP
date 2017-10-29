@@ -18,7 +18,7 @@ namespace TreinamentoBalizador_IFSP.Communication
             List<ActiveMovement> activeMovements = new List<ActiveMovement>();
             String endPoint = "get-movements";
             
-            var request = (HttpWebRequest)WebRequest.Create("http://172.16.3.56:8080/" + endPoint);
+            var request = (HttpWebRequest)WebRequest.Create("http://192.168.100.5:8080/" + endPoint);
             request.ContentType = "application/json";
             request.Method = "GET";
 
@@ -31,6 +31,7 @@ namespace TreinamentoBalizador_IFSP.Communication
                 if (statusCode.ToString() == "OK")
                 {
                     activeMovements = new JavaScriptSerializer().Deserialize<List<ActiveMovement>>(streamReader.ReadToEnd());
+                
                 }
             }
 
