@@ -9,7 +9,7 @@ namespace TreinamentoBalizador_IFSP.Data
     class Movements
     {
         private static Movements instance;
-        public Dictionary<String, String> movments = new Dictionary<string, string>();
+        public Dictionary<String, String> movements = new Dictionary<string, string>();
 
         private Movements() {
             ReadFile();

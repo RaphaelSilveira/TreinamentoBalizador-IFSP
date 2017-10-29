@@ -31,7 +31,7 @@ namespace TreinamentoBalizador_IFSP.View
         {
             InitializeComponent();
             lblFormName.Text = formName;
-            movements = movementData.movments;
+            movements = movementData.movements;
             this.trainingFile = trainingFile;
             PopulateCombobox();
             cbxSelectMovement.SelectedIndex = -1;

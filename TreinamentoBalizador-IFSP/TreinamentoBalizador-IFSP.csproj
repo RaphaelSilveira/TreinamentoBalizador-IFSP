@@ -74,6 +74,7 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Communication\MovementConfigCommunication.cs" />
     <Compile Include="Communication\MovementServerCommunication.cs" />
     <Compile Include="Configuration\Movements.cs" />
     <Compile Include="Models\CaptureParameters.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Models\FormatedCoordinatesModel.cs" />
     <Compile Include="Models\KinectJoint.cs" />
     <Compile Include="Models\MoveListTest.cs" />
+    <Compile Include="Models\ActiveMovement.cs" />
     <Compile Include="Models\MovementItem.cs" />
     <Compile Include="Services\CaptureKinectServiceNew.cs" />
     <Compile Include="Services\CommunicationService.cs" />
