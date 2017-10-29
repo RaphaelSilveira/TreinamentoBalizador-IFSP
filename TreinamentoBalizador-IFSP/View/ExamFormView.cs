@@ -159,12 +159,16 @@ namespace TreinamentoBalizador_IFSP.View
             if (movementCount < examParameters.MovementNumber)
             {
                 btnStartKinect.Enabled = true;
+                lblCurrentMovement.Text = currentMovement;
+                lblSensorReady.Text = "";
             }
             else
             {
                 MessageBox.Show("Prova Finalizada!", "Sucesso!",
                             MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 FinishExam();
+                lblCurrentMovement.Text = "";
+                lblSensorReady.Text = "";
                 btnStartKinect.Enabled = true;
             }
         }
