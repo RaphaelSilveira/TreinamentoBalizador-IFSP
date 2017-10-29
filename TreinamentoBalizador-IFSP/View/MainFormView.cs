@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using TreinamentoBalizador_IFSP.Data;
+
 namespace TreinamentoBalizador_IFSP.View
 {
     public partial class MainFormView : Form
@@ -17,6 +19,12 @@ namespace TreinamentoBalizador_IFSP.View
         public MainFormView()
         {
             InitializeComponent();
+            InicializeMovements();
+        }
+
+        private void InicializeMovements()
+        {
+            Movements movementData = Movements.Instance;
         }
 
         private void msOpenClose_Click(object sender, EventArgs e)

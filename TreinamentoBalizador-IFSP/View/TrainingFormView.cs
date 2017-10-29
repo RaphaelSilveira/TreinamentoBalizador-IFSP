@@ -17,7 +17,7 @@ namespace TreinamentoBalizador_IFSP.View
 {
     public partial class TrainingFormView : Form, FormInterface
     {
-        private Dictionary<String, String> movements = new Dictionary<string, string>();
+        private List<ActiveMovement> activeMovements;
         Movements movementData = Movements.Instance;
         private bool trainingFile;
         private String movementText = "";
@@ -31,7 +31,7 @@ namespace TreinamentoBalizador_IFSP.View
         {
             InitializeComponent();
             lblFormName.Text = formName;
-            movements = movementData.movements;
+            activeMovements = movementData.activeMovements;
             this.trainingFile = trainingFile;
             PopulateCombobox();
             cbxSelectMovement.SelectedIndex = -1;
@@ -57,30 +57,17 @@ namespace TreinamentoBalizador_IFSP.View
         {
 
             var dataSource = new List<MovementItem>();
-            Console.WriteLine(movements.Count);
-            foreach (KeyValuePair<string, string> pair in movements)
+            Console.WriteLine(activeMovements.Count);
+            foreach (ActiveMovement movement in activeMovements)
             {
-                Console.WriteLine(pair.Key);
-                Console.WriteLine(pair.Value);
-                dataSource.Add(new MovementItem() { Text = pair.Value.Replace(',', ' '), Key = pair.Key });
+                Console.WriteLine(movement.Key);
+                Console.WriteLine(movement.Name);
+                dataSource.Add(new MovementItem() { Text = movement.Name, Key = movement.Key });
             }
 
             this.cbxSelectMovement.DataSource = dataSource;
             this.cbxSelectMovement.DisplayMember = "Text";
             this.cbxSelectMovement.ValueMember = "Key";
-        }
-
-        private void ReadFile()
-        {
-            string line;
-            System.IO.StreamReader file = new System.IO.StreamReader(@"current_movement.txt");
-            while ((line = file.ReadLine()) != null)
-            {
-                string[] lineSplited = line.Split(';');
-                movements.Add(lineSplited[0], lineSplited[1]);
-            }
-
-            file.Close();
         }
 
         private void btnStartCapture_Click(object sender, EventArgs e)

@@ -4,15 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using TreinamentoBalizador_IFSP.Models;
+using TreinamentoBalizador_IFSP.Communication;
+
 namespace TreinamentoBalizador_IFSP.Data
 {
     class Movements
     {
         private static Movements instance;
-        public Dictionary<String, String> movements = new Dictionary<string, string>();
+        private MovementConfigCommunication communication = new MovementConfigCommunication();
+        public List<ActiveMovement> activeMovements;
 
         private Movements() {
-            ReadFile();
+            LoadMovements();
         }
 
         public static Movements Instance {
@@ -25,17 +29,9 @@ namespace TreinamentoBalizador_IFSP.Data
             }
         }
 
-        private void ReadFile()
+        private void LoadMovements()
         {
-            string line;
-            System.IO.StreamReader file = new System.IO.StreamReader(@"current_movement.txt");
-            while ((line = file.ReadLine()) != null)
-            {
-                string[] lineSplited = line.Split(';');
-                movments.Add(lineSplited[0], lineSplited[1]);
-            }
-
-            file.Close();
+            activeMovements = communication.GetActiveMovementsList();
         }
     }
 }
