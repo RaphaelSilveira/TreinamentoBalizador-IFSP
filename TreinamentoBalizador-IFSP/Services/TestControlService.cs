@@ -24,7 +24,7 @@ namespace TreinamentoBalizador_IFSP.Services
         public TestControlService()
         {
             Movements data = Movements.Instance;
-            movements = data.movments;
+            movements = data.movements;
 
             index = 0;
 
