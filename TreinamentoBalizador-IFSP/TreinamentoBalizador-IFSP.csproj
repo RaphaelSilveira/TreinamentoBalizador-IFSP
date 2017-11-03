@@ -99,18 +99,6 @@
     <Compile Include="View\BalanceFormView.Designer.cs">
       <DependentUpon>BalanceFormView.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\CaptureForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\CaptureForm.Designer.cs">
-      <DependentUpon>CaptureForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\CaptureParametersView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\CaptureParametersView.Designer.cs">
-      <DependentUpon>CaptureParametersView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\ExamFormView.cs">
@@ -139,12 +127,6 @@
     </Compile>
     <EmbeddedResource Include="View\BalanceFormView.resx">
       <DependentUpon>BalanceFormView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\CaptureForm.resx">
-      <DependentUpon>CaptureForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\CaptureParametersView.resx">
-      <DependentUpon>CaptureParametersView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
