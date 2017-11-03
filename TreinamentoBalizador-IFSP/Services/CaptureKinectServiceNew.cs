@@ -9,6 +9,8 @@ using System.Windows.Forms;
 
 using TreinamentoBalizador_IFSP.Models;
 using System.Media;
+using System.IO;
+using System.Reflection;
 
 namespace TreinamentoBalizador_IFSP.Services
 {
@@ -72,6 +74,12 @@ namespace TreinamentoBalizador_IFSP.Services
             temporal.Start();
             keepAlive.Start();
             SystemSounds.Hand.Play();
+
+            String originalPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);
+            String finalPath = originalPath.Replace("bin\\Debug", "Assets") + "\\alarm.wav";
+            
+            SoundPlayer simpleSound = new SoundPlayer(finalPath);
+            simpleSound.Play();
         }
 
         public void StopSaveCoordinates()

@@ -166,6 +166,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\alarm.wav" />
     <Content Include="Assets\definitive.PNG" />
     <Content Include="Assets\favicon.ico" />
     <Content Include="Videos\AcionarFreios.mp4" />
