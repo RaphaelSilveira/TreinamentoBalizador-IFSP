@@ -32,9 +32,9 @@ namespace TreinamentoBalizador_IFSP.View
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KinectConfigurationInfo));
             this.pnlKinectConfigInfo = new System.Windows.Forms.Panel();
-            this.btnContinue = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnContinue = new System.Windows.Forms.Button();
             this.pnlKinectConfigInfo.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -49,18 +49,6 @@ namespace TreinamentoBalizador_IFSP.View
             this.pnlKinectConfigInfo.Name = "pnlKinectConfigInfo";
             this.pnlKinectConfigInfo.Size = new System.Drawing.Size(892, 609);
             this.pnlKinectConfigInfo.TabIndex = 0;
-            // 
-            // btnContinue
-            // 
-            this.btnContinue.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnContinue.AutoSize = true;
-            this.btnContinue.Location = new System.Drawing.Point(377, 537);
-            this.btnContinue.Name = "btnContinue";
-            this.btnContinue.Size = new System.Drawing.Size(136, 38);
-            this.btnContinue.TabIndex = 0;
-            this.btnContinue.Text = "Continuar";
-            this.btnContinue.UseVisualStyleBackColor = true;
-            this.btnContinue.Click += new System.EventHandler(this.btnContinue_Click_1);
             // 
             // groupBox1
             // 
@@ -81,6 +69,18 @@ namespace TreinamentoBalizador_IFSP.View
             this.pictureBox1.Size = new System.Drawing.Size(854, 475);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // btnContinue
+            // 
+            this.btnContinue.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnContinue.AutoSize = true;
+            this.btnContinue.Location = new System.Drawing.Point(377, 537);
+            this.btnContinue.Name = "btnContinue";
+            this.btnContinue.Size = new System.Drawing.Size(136, 38);
+            this.btnContinue.TabIndex = 0;
+            this.btnContinue.Text = "Continuar";
+            this.btnContinue.UseVisualStyleBackColor = true;
+            this.btnContinue.Click += new System.EventHandler(this.btnContinue_Click_1);
             // 
             // KinectConfigurationInfo
             // 
