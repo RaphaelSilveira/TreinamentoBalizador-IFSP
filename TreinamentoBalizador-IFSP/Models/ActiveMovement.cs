@@ -10,7 +10,7 @@ namespace TreinamentoBalizador_IFSP.Models
     {
         public String Key { get; set; }
         public String Name{ get; set; }
-        public String FileName { get; set; }
+        public String File { get; set; }
         public int InsertsInArff { get; set; }
     }
 }

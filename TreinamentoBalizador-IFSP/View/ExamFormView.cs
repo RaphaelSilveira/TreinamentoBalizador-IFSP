@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 using TreinamentoBalizador_IFSP.Models;
 using TreinamentoBalizador_IFSP.Services;
+using TreinamentoBalizador_IFSP.Data;
 
 namespace TreinamentoBalizador_IFSP.View
 {
@@ -19,19 +20,22 @@ namespace TreinamentoBalizador_IFSP.View
 
         private ExamParameters examParameters;
         private List<ExamResult> examResults;
-        private Dictionary<int, string> dbMovements = new Dictionary<int, string>();
         private ExamService examService = new ExamService();
         private List<int> movementsIndexRandomList;
         private CaptureKinectServiceNew captureService;
         private FormatedCoordinatesModel formatedCoordinates;
         private CommunicationService communicationService = new CommunicationService();
+        private Movements movementData = Movements.Instance;
+        private List<ActiveMovement> activeMovements;
         private int movementCount = 0;
-        private String currentMovement;
+        private ActiveMovement currentMovement;
 
 
         public ExamFormView()
         {
             InitializeComponent();
+            activeMovements = movementData.activeMovements;
+            numUpDownMovementNumber.Maximum = activeMovements.Count;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -58,10 +62,17 @@ namespace TreinamentoBalizador_IFSP.View
                 btnExamInit.Enabled = false;
 
                 movementsIndexRandomList = examService.RandomMovementListGenerate(
-                    dbMovements.Count,
+                    activeMovements.Count,
                     movementNumber
                 );
+                SetMovement();
             }
+        }
+
+        private void SetMovement()
+        {
+            currentMovement = activeMovements[movementsIndexRandomList[movementCount]];
+            lblCurrentMovement.Text = currentMovement.Name;
         }
         
         private String ExamParametersValidation()
@@ -95,8 +106,7 @@ namespace TreinamentoBalizador_IFSP.View
   
         private void btnStartKinect_Click(object sender, EventArgs e)
         {
-            String currentMovementKey = "";
-            captureService = new CaptureKinectServiceNew(this, currentMovementKey, false);
+            captureService = new CaptureKinectServiceNew(this, currentMovement.Key, false);
 
             captureService.StartKinectSensor();
         }
@@ -119,7 +129,7 @@ namespace TreinamentoBalizador_IFSP.View
 
         public void SetMovementLabel()
         {
-            lblMovement.Text = currentMovement;
+            lblMovement.Text = currentMovement.Name;
         }
 
         public void BodyDetected()
@@ -139,7 +149,7 @@ namespace TreinamentoBalizador_IFSP.View
 
             bool success = communicationService.CommunicateExam(formatedCoordinates);
 
-            ExamResult result = new ExamResult(currentMovement, success);
+            ExamResult result = new ExamResult(currentMovement.Name, success);
 
             examResults.Add(result);
             UpdateGrid();
@@ -159,7 +169,7 @@ namespace TreinamentoBalizador_IFSP.View
             if (movementCount < examParameters.MovementNumber)
             {
                 btnStartKinect.Enabled = true;
-                lblCurrentMovement.Text = currentMovement;
+                lblCurrentMovement.Text = currentMovement.Name;
                 lblSensorReady.Text = "";
             }
             else
@@ -180,6 +190,7 @@ namespace TreinamentoBalizador_IFSP.View
             btnStartKinect.Enabled = false;
             btnStopCapture.Enabled = false;
             btnExamInit.Enabled = true;
+            lblCurrentMovement.Text = "";
         }
 
         private void UpdateGrid()

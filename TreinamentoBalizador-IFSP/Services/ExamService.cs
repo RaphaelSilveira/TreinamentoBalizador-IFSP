@@ -13,29 +13,20 @@ namespace TreinamentoBalizador_IFSP.Services
             List<int> list = new List<int>();
             Random rnd = new Random();
 
-            for (int i = 0; i < totalMovement; i++)
+            while (list.Count < examMovementNumber)
             {
-                int index = rnd.Next(1, totalMovement);
+                int index = rnd.Next(0, totalMovement);
 
                 if (list.Contains(index))
                 {
-                    index = rnd.Next(1, totalMovement);
+                    index = rnd.Next(0, totalMovement);
                 }
                 else
                 {
                     list.Add(index);
                 }
-
-                if (list.Count == examMovementNumber)
-                {
-                    break;
-                }
             }
 
-            foreach (int number in list)
-            {
-                Console.Write("Os números gerados foram: {0}", number);
-            }
             return list;
         }
     }
