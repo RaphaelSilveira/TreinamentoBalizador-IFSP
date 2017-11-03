@@ -165,7 +165,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\definitive.PNG" />
     <Content Include="Assets\favicon.ico" />
+    <Content Include="Videos\AcionarFreios.mp4" />
+    <Content Include="Videos\GirarParaDireita.mp4" />
+    <Content Include="Videos\GirarParaEsquerda.mp4" />
+    <Content Include="Videos\IdentificacaoRampa.mp4" />
+    <Content Include="Videos\ParadaNormal.mp4" />
+    <Content Include="Videos\ProsseguirFrente.mp4" />
+    <Content Include="Videos\ProsseguirParaProximoSinaleiroComoOrientadoPelaTorreControleDireita.mp4" />
+    <Content Include="Videos\ProsseguirParaProximoSinaleiroComoOrientadoPelaTorreControleEsquerda.mp4" />
+    <Content Include="Videos\Sinaleiro.mp4" />
+    <Content Include="Videos\SoltarFreios.mp4" />
     <None Include="Assets\logo.png" />
   </ItemGroup>
   <ItemGroup>

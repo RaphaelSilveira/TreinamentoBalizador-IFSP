@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -45,8 +47,11 @@ namespace TreinamentoBalizador_IFSP.View
                 movementText = cbxSelectMovement.Text;
                 movementKey = cbxSelectMovement.SelectedValue.ToString();
             }
-            
-            wmpMovement.URL = @"videos\\"+ cbxSelectMovement.SelectedValue + ".mp4";
+
+            String originalPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);
+            String finalPath = originalPath.Replace("bin\\Debug", "Videos");
+
+            wmpMovement.URL = finalPath + "\\" + cbxSelectMovement.SelectedValue + ".mp4";
             wmpMovement.Ctlcontrols.play();
 
         }
