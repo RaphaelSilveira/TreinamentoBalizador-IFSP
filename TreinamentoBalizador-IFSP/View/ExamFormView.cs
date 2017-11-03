@@ -42,9 +42,6 @@ namespace TreinamentoBalizador_IFSP.View
         {
             String error = ExamParametersValidation();
 
-            numUpDownMovementNumber.Enabled = false;
-            txtBoxStudentName.Enabled = false;
-
             if (error != "")
             {
                 MessageBox.Show(error, "Campo obrigatório",
@@ -58,6 +55,11 @@ namespace TreinamentoBalizador_IFSP.View
                     movementNumber,
                     DateTime.Now.ToString("dd/MM/yyyy hh:mm ")
                 );
+
+
+                dgvResults.Rows.Clear();
+                numUpDownMovementNumber.Enabled = false;
+                txtBoxStudentName.Enabled = false;
 
                 examResults = new List<ExamResult>();
                 btnExamCancel.Enabled = true;
@@ -77,6 +79,10 @@ namespace TreinamentoBalizador_IFSP.View
             currentMovement = activeMovements[movementsIndexRandomList[movementCount]];
             lblCurrentMovement.BeginInvoke(
                 new Action(() => { lblCurrentMovement.Text = currentMovement.Name; })
+            );
+            int count = movementCount + 1;
+            lblMovementCount.BeginInvoke(
+                new Action(() => { lblMovementCount.Text = count.ToString(); })
             );
         }
         
@@ -105,15 +111,17 @@ namespace TreinamentoBalizador_IFSP.View
 
             captureService.StartSaveCoordinates();
 
-            btnStopCapture.Enabled = false;
+            btnInitCapture.Enabled = false;
             btnStopCapture.Enabled = true;
         }
   
         private void btnStartKinect_Click(object sender, EventArgs e)
         {
+            Console.WriteLine("start");
             captureService = new CaptureKinectServiceNew(this, currentMovement.Key, false);
-
+            Console.WriteLine("start");
             captureService.StartKinectSensor();
+            Console.WriteLine("start");
         }
 
         public void SetMovementLabel()
@@ -208,6 +216,9 @@ namespace TreinamentoBalizador_IFSP.View
             lblSensorReady.BeginInvoke(
                 new Action(() => { lblSensorReady.Text = ""; })
             );
+            lblMovementCount.BeginInvoke(
+                new Action(() => { lblMovementCount.Text = ""; })
+            );
             numUpDownMovementNumber.BeginInvoke(
                 new Action(() => { numUpDownMovementNumber.Enabled = true; })
             );
@@ -275,6 +286,12 @@ namespace TreinamentoBalizador_IFSP.View
         private void bgdProgressStatus_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
 
+        }
+
+        private void btnStopCapture_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("stop all");
+            captureService.StopAll();
         }
     }
 }

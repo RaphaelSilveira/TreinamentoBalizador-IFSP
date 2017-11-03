@@ -128,6 +128,7 @@ namespace TreinamentoBalizador_IFSP.View
 
         public void FinishCapture()
         {
+            Console.WriteLine("finish");
             movementText = "";
             movementKey = "";
 

@@ -53,6 +53,7 @@
             this.txtBoxStudentName = new System.Windows.Forms.TextBox();
             this.lblStudentName = new System.Windows.Forms.Label();
             this.bgdProgressStatus = new System.ComponentModel.BackgroundWorker();
+            this.lblMovementCount = new System.Windows.Forms.Label();
             this.pnlExam.SuspendLayout();
             this.gbxExamResult.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).BeginInit();
@@ -127,6 +128,7 @@
             // 
             this.gbxExamStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbxExamStatus.Controls.Add(this.lblMovementCount);
             this.gbxExamStatus.Controls.Add(this.lblSensorReady);
             this.gbxExamStatus.Controls.Add(this.btnStartKinect);
             this.gbxExamStatus.Controls.Add(this.pbCapturing);
@@ -185,6 +187,7 @@
             this.btnStopCapture.TabIndex = 6;
             this.btnStopCapture.Text = "Parar execução";
             this.btnStopCapture.UseVisualStyleBackColor = true;
+            this.btnStopCapture.Click += new System.EventHandler(this.btnStopCapture_Click);
             // 
             // btnInitCapture
             // 
@@ -320,6 +323,15 @@
             this.bgdProgressStatus.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgdProgressStatus_ProgressChanged);
             this.bgdProgressStatus.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgdProgressStatus_RunWorkerCompleted);
             // 
+            // lblMovementCount
+            // 
+            this.lblMovementCount.AutoSize = true;
+            this.lblMovementCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMovementCount.Location = new System.Drawing.Point(103, 38);
+            this.lblMovementCount.Name = "lblMovementCount";
+            this.lblMovementCount.Size = new System.Drawing.Size(0, 18);
+            this.lblMovementCount.TabIndex = 10;
+            // 
             // ExamFormView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -370,5 +382,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmMovement;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmResult;
+        private System.Windows.Forms.Label lblMovementCount;
     }
 }

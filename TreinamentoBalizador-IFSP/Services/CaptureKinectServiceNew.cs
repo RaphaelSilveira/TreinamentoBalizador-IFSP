@@ -31,6 +31,7 @@ namespace TreinamentoBalizador_IFSP.Services
         private Thread keepAlive;
         private String movement;
         private bool trainingFile;
+        private bool bodyDeceted = false;
         public FormatedCoordinatesModel formatedCoordinates { get; set; }
         private Dictionary<string, List<KinectJoint>> jointsInMoment =
             new Dictionary<string, List<KinectJoint>>();
@@ -103,15 +104,15 @@ namespace TreinamentoBalizador_IFSP.Services
             Console.WriteLine(kinectSensor.IsRunning);
             if (kinectSensor != null)
             {
-                SystemSounds.Hand.Play();
-
-                StopSaveCoordinates();
-                Console.WriteLine("passou no finish aqui antes fromat");
-                formatService = new FormatCoordinatesService();
-                formatedCoordinates = formatService.Format(jointsInMoment, movement);
-                Console.WriteLine("passou no finish aqui depois fromat");
-                form.FinishCapture();
+                SystemSounds.Asterisk.Play();
+                bodyDeceted = false;
                 kinectSensor.Stop();
+                formatService = new FormatCoordinatesService();
+                StopSaveCoordinates();
+
+                formatedCoordinates = formatService.Format(jointsInMoment, movement);
+
+                form.FinishCapture();
             }
         }
         
@@ -126,9 +127,10 @@ namespace TreinamentoBalizador_IFSP.Services
 
                     foreach (var body in skeleton)
                     {
-                        if (body.TrackingState == SkeletonTrackingState.Tracked)
+                        if (body.TrackingState == SkeletonTrackingState.Tracked && !bodyDeceted)
                         {
                             form.BodyDetected();
+                            bodyDeceted = true;
                         }
                         if(body.TrackingState == SkeletonTrackingState.Tracked && saveCoordinates)
                         {
