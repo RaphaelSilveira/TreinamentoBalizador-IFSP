@@ -45,9 +45,7 @@ namespace TreinamentoBalizador_IFSP.View
                 movementText = cbxSelectMovement.Text;
                 movementKey = cbxSelectMovement.SelectedValue.ToString();
             }
-
-            Console.WriteLine("text" + movementText);
-            Console.WriteLine("key" + movementKey);
+            
             wmpMovement.URL = @"videos\\"+ cbxSelectMovement.SelectedValue + ".mp4";
             wmpMovement.Ctlcontrols.play();
 
@@ -60,8 +58,6 @@ namespace TreinamentoBalizador_IFSP.View
             Console.WriteLine(activeMovements.Count);
             foreach (ActiveMovement movement in activeMovements)
             {
-                Console.WriteLine(movement.Key);
-                Console.WriteLine(movement.Name);
                 dataSource.Add(new MovementItem() { Text = movement.Name, Key = movement.Key });
             }
 

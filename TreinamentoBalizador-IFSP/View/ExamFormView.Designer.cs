@@ -149,7 +149,7 @@
             this.lblSensorReady.AutoSize = true;
             this.lblSensorReady.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSensorReady.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.lblSensorReady.Location = new System.Drawing.Point(823, 33);
+            this.lblSensorReady.Location = new System.Drawing.Point(679, 33);
             this.lblSensorReady.Name = "lblSensorReady";
             this.lblSensorReady.Size = new System.Drawing.Size(0, 18);
             this.lblSensorReady.TabIndex = 9;
@@ -314,6 +314,13 @@
             this.lblStudentName.Size = new System.Drawing.Size(100, 16);
             this.lblStudentName.TabIndex = 0;
             this.lblStudentName.Text = "Nome do aluno";
+            // 
+            // bgdProgressStatus
+            // 
+            this.bgdProgressStatus.WorkerReportsProgress = true;
+            this.bgdProgressStatus.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgdProgressStatus_DoWork);
+            this.bgdProgressStatus.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgdProgressStatus_ProgressChanged);
+            this.bgdProgressStatus.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgdProgressStatus_RunWorkerCompleted);
             // 
             // ExamFormView
             // 

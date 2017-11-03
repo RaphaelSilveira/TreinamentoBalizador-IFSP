@@ -42,6 +42,9 @@ namespace TreinamentoBalizador_IFSP.View
         {
             String error = ExamParametersValidation();
 
+            numUpDownMovementNumber.Enabled = false;
+            txtBoxStudentName.Enabled = false;
+
             if (error != "")
             {
                 MessageBox.Show(error, "Campo obrigatório",
@@ -72,7 +75,9 @@ namespace TreinamentoBalizador_IFSP.View
         private void SetMovement()
         {
             currentMovement = activeMovements[movementsIndexRandomList[movementCount]];
-            lblCurrentMovement.Text = currentMovement.Name;
+            lblCurrentMovement.BeginInvoke(
+                new Action(() => { lblCurrentMovement.Text = currentMovement.Name; })
+            );
         }
         
         private String ExamParametersValidation()
@@ -111,30 +116,14 @@ namespace TreinamentoBalizador_IFSP.View
             captureService.StartKinectSensor();
         }
 
-        private void bgdProgressStatus_DoWork_1(object sender, DoWorkEventArgs e)
-        {
-            for (int i = 0; i <= 16; i++)
-            {
-                Thread.Sleep(500);
-                bgdProgressStatus.ReportProgress((100 / 16) * i);
-            }
-
-            bgdProgressStatus.ReportProgress(100);
-        }
-
-        private void bgdProgressStatus_ProgressChanged_1(object sender, ProgressChangedEventArgs e)
-        {
-            pbCapturing.Value = e.ProgressPercentage;
-        }
-
         public void SetMovementLabel()
         {
-            lblMovement.Text = currentMovement.Name;
+            
         }
 
         public void BodyDetected()
         {
-            btnExamInit.Enabled = true;
+            btnInitCapture.Enabled = true;
             btnStartKinect.Enabled = false;
             lblSensorReady.Text = "Reconhecimento concluido";
         }
@@ -142,10 +131,18 @@ namespace TreinamentoBalizador_IFSP.View
         public void FinishCapture()
         {
             bgdProgressStatus.ReportProgress(0);
-            lblSensorReady.Text = "";
-            btnStopCapture.Enabled = false;
+
+            lblSensorReady.BeginInvoke(
+                new Action(() => { lblSensorReady.Text = ""; })
+            );
+
+            btnStopCapture.BeginInvoke(
+                new Action(() => { btnStopCapture.Enabled = false; })
+            ); ;
 
             formatedCoordinates = captureService.formatedCoordinates;
+
+            Console.WriteLine(formatedCoordinates.Movement.Length + "length");
 
             bool success = communicationService.CommunicateExam(formatedCoordinates);
 
@@ -168,41 +165,82 @@ namespace TreinamentoBalizador_IFSP.View
         {
             if (movementCount < examParameters.MovementNumber)
             {
-                btnStartKinect.Enabled = true;
-                lblCurrentMovement.Text = currentMovement.Name;
-                lblSensorReady.Text = "";
+                btnStartKinect.BeginInvoke(
+                    new Action(() => { btnStartKinect.Enabled = true; })
+                );
+                btnInitCapture.BeginInvoke(
+                    new Action(() => { btnInitCapture.Enabled = false; })
+                );
+                lblSensorReady.BeginInvoke(
+                    new Action(() => { lblSensorReady.Text = ""; })
+                );
+                SetMovement();
             }
             else
             {
                 MessageBox.Show("Prova Finalizada!", "Sucesso!",
                             MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 FinishExam();
-                lblCurrentMovement.Text = "";
-                lblSensorReady.Text = "";
-                btnStartKinect.Enabled = true;
             }
         }
 
         private void FinishExam()
         {
-            btnExamCancel.Enabled = false;
-            btnInitCapture.Enabled = false;
-            btnStartKinect.Enabled = false;
-            btnStopCapture.Enabled = false;
-            btnExamInit.Enabled = true;
-            lblCurrentMovement.Text = "";
+            movementCount = 0;
+            btnExamCancel.BeginInvoke(
+                new Action(() => { btnExamCancel.Enabled = false; })
+            );
+            btnInitCapture.BeginInvoke(
+                new Action(() => { btnInitCapture.Enabled = false; })
+            );
+            btnStartKinect.BeginInvoke(
+                new Action(() => { btnStartKinect.Enabled = false; })
+            );
+            btnStopCapture.BeginInvoke(
+                new Action(() => { btnStopCapture.Enabled = false; })
+            );
+            btnExamInit.BeginInvoke(
+                new Action(() => { btnExamInit.Enabled = true; })
+            );
+            lblCurrentMovement.BeginInvoke(
+                new Action(() => { lblCurrentMovement.Text = ""; })
+            );
+            lblSensorReady.BeginInvoke(
+                new Action(() => { lblSensorReady.Text = ""; })
+            );
+            numUpDownMovementNumber.BeginInvoke(
+                new Action(() => { numUpDownMovementNumber.Enabled = true; })
+            );
+            txtBoxStudentName.BeginInvoke(
+                new Action(() => {
+                    txtBoxStudentName.Enabled = true;
+                    txtBoxStudentName.Text = "";
+                })
+            );
         }
 
         private void UpdateGrid()
         {
-            dgvResults.Rows.Clear();
+            btnStopCapture.BeginInvoke(
+                new Action(() => { btnStopCapture.Enabled = false; })
+            );
+ 
+            dgvResults.BeginInvoke(
+                new Action(() => {
+                    dgvResults.Rows.Clear();
+                })
+            );
+
             foreach (ExamResult result in examResults) {
-                dgvResults.Rows.Add(
-                    examParameters.StudentName,
-                    examParameters.Date,
-                    result.Movement,
-                    ResultText(result.Result)
-               );
+                dgvResults.BeginInvoke(
+                    new Action(() => {
+                        dgvResults.Rows.Add(
+                            examParameters.StudentName,
+                            examParameters.Date,
+                            result.Movement,
+                            ResultText(result.Result));
+                    })
+                );
             }
         }
 
@@ -216,6 +254,27 @@ namespace TreinamentoBalizador_IFSP.View
             {
                 return "Errado";
             }
+        }
+
+        private void bgdProgressStatus_DoWork(object sender, DoWorkEventArgs e)
+        {
+            for (int i = 0; i <= 16; i++)
+            {
+                Thread.Sleep(500);
+                bgdProgressStatus.ReportProgress((100 / 16) * i);
+            }
+
+            bgdProgressStatus.ReportProgress(100);
+        }
+
+        private void bgdProgressStatus_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            pbCapturing.Value = e.ProgressPercentage;
+        }
+
+        private void bgdProgressStatus_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+
         }
     }
 }

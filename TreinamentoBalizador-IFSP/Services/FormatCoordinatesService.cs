@@ -17,9 +17,7 @@ namespace TreinamentoBalizador_IFSP.Services
         public FormatedCoordinatesModel Format(Dictionary<string, List<KinectJoint>> jointsInMoment, String movement)
         {
             FormatedCoordinatesModel formated = new FormatedCoordinatesModel();
-
             List<String> movements = new List<string>();
-            formated.Coordinates = movements;
 
             Console.WriteLine("Count on format" + jointsInMoment.Count);
 
@@ -28,9 +26,14 @@ namespace TreinamentoBalizador_IFSP.Services
                 int first = int.Parse(jointsInMoment.First().Key);
                 int last = int.Parse(jointsInMoment.Last().Key);
 
+                formated.Coordinates = movements;
                 formated.Movement = movement;
 
-                for (int i = first, j = 0; i < last; i++)
+
+                Console.WriteLine("formated antes");
+                Console.WriteLine(formated.Coordinates.Count);
+
+                for (int i = first; i < last; i++)
                 {
                     List<KinectJoint> kinectJoints = jointsInMoment[i.ToString()];
                     foreach (KinectJoint kinectJoint in kinectJoints)
@@ -40,12 +43,14 @@ namespace TreinamentoBalizador_IFSP.Services
                         formated.Coordinates.Add(kinectJoint.Y.ToString());
                         formated.Coordinates.Add(kinectJoint.Z.ToString());
                     }
-                    j++;
-                    if (j == 210)
+                    if (formated.Coordinates.Count == 1260)
                     {
                         break;
                     }
                 }
+
+                Console.WriteLine("formated depois");
+                Console.WriteLine(formated.Coordinates.Count);
 
                 return formated;
             }

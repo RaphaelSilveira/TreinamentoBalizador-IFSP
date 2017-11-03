@@ -99,17 +99,19 @@ namespace TreinamentoBalizador_IFSP.Services
         private void KeepCapturing()
         {
             while (temporal.IsAlive);
-
+            Console.WriteLine("passou no finish aqui deoi");
+            Console.WriteLine(kinectSensor.IsRunning);
             if (kinectSensor != null)
             {
                 SystemSounds.Hand.Play();
-                kinectSensor.Stop();
-                formatService = new FormatCoordinatesService();
-                StopSaveCoordinates();
- 
-                formatedCoordinates = formatService.Format(jointsInMoment, movement);
 
+                StopSaveCoordinates();
+                Console.WriteLine("passou no finish aqui antes fromat");
+                formatService = new FormatCoordinatesService();
+                formatedCoordinates = formatService.Format(jointsInMoment, movement);
+                Console.WriteLine("passou no finish aqui depois fromat");
                 form.FinishCapture();
+                kinectSensor.Stop();
             }
         }
         
