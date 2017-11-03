@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 
 using TreinamentoBalizador_IFSP.Models;
+using TreinamentoBalizador_IFSP.Utils;
 
 namespace TreinamentoBalizador_IFSP.Communication
 {
@@ -18,7 +19,7 @@ namespace TreinamentoBalizador_IFSP.Communication
             List<ActiveMovement> activeMovements = new List<ActiveMovement>();
             String endPoint = "get-movements";
             
-            var request = (HttpWebRequest)WebRequest.Create("http://192.168.0.17:8080/" + endPoint);
+            var request = (HttpWebRequest)WebRequest.Create(Constant.URL + endPoint);
             request.ContentType = "application/json";
             request.Method = "GET";
 
