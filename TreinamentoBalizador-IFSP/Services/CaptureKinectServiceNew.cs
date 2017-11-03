@@ -73,13 +73,8 @@ namespace TreinamentoBalizador_IFSP.Services
             saveCoordinates = true;
             temporal.Start();
             keepAlive.Start();
-            SystemSounds.Hand.Play();
 
-            String originalPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);
-            String finalPath = originalPath.Replace("bin\\Debug", "Assets") + "\\alarm.wav";
-            
-            SoundPlayer simpleSound = new SoundPlayer(finalPath);
-            simpleSound.Play();
+            PlaySound();
         }
 
         public void StopSaveCoordinates()
@@ -104,6 +99,14 @@ namespace TreinamentoBalizador_IFSP.Services
             kinectSensor.AllFramesReady += Sensor_AllFramesReady;
             form.SetMovementLabel();
         }
+        private void PlaySound()
+        {
+            String originalPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);
+            String finalPath = originalPath.Replace("bin\\Debug", "Assets") + "\\alarm.wav";
+
+            SoundPlayer simpleSound = new SoundPlayer(finalPath);
+            simpleSound.Play();
+        }
 
         private void KeepCapturing()
         {
@@ -112,7 +115,7 @@ namespace TreinamentoBalizador_IFSP.Services
             Console.WriteLine(kinectSensor.IsRunning);
             if (kinectSensor != null)
             {
-                SystemSounds.Asterisk.Play();
+                PlaySound();
                 bodyDeceted = false;
                 kinectSensor.Stop();
                 formatService = new FormatCoordinatesService();
