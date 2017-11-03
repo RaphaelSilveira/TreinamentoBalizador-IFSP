@@ -162,6 +162,12 @@ namespace TreinamentoBalizador_IFSP.View
             formatedCoordinates = captureService.formatedCoordinates;
 
             communicationService.Communicate(formatedCoordinates, trainingFile);
+
+            if (trainingFile)
+            {
+                movementData.SetNull();
+                movementData = Movements.Instance;
+            }
         }
 
         public void BodyDetected()

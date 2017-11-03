@@ -33,5 +33,10 @@ namespace TreinamentoBalizador_IFSP.Data
         {
             activeMovements = communication.GetActiveMovementsList();
         }
+
+        public void SetNull()
+        {
+            instance = null;
+        }
     }
 }
