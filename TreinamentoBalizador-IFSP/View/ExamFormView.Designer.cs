@@ -91,6 +91,7 @@
             this.dgvResults.AllowUserToAddRows = false;
             this.dgvResults.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvResults.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvResults.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmStudantName,
@@ -106,19 +107,16 @@
             // 
             this.clmStudantName.HeaderText = "Nome do aluno";
             this.clmStudantName.Name = "clmStudantName";
-            this.clmStudantName.Width = 400;
             // 
             // clmDate
             // 
             this.clmDate.HeaderText = "Data da prova";
             this.clmDate.Name = "clmDate";
-            this.clmDate.Width = 200;
             // 
             // clmMovement
             // 
             this.clmMovement.HeaderText = "Movimento";
             this.clmMovement.Name = "clmMovement";
-            this.clmMovement.Width = 560;
             // 
             // clmResult
             // 
@@ -329,8 +327,10 @@
             this.ClientSize = new System.Drawing.Size(1159, 741);
             this.Controls.Add(this.pnlExam);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimizeBox = false;
             this.Name = "ExamFormView";
             this.Text = "Prova de movimentos";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.pnlExam.ResumeLayout(false);
             this.pnlExam.PerformLayout();
             this.gbxExamResult.ResumeLayout(false);
