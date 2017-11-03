@@ -43,6 +43,7 @@ namespace TreinamentoBalizador_IFSP.View
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.msOpenClose = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlBaseForm = new System.Windows.Forms.Panel();
+            this.balanceamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlTopMenu.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -74,6 +75,7 @@ namespace TreinamentoBalizador_IFSP.View
             this.msOpenTestForm,
             this.toolStripSeparator4,
             this.msOpenGroundSignalsListForm,
+            this.balanceamentoToolStripMenuItem,
             this.toolStripSeparator3,
             this.msOpenClose});
             this.msMainMenu.Name = "msMainMenu";
@@ -83,43 +85,43 @@ namespace TreinamentoBalizador_IFSP.View
             // msOpenCaptureParametersForm
             // 
             this.msOpenCaptureParametersForm.Name = "msOpenCaptureParametersForm";
-            this.msOpenCaptureParametersForm.Size = new System.Drawing.Size(156, 22);
+            this.msOpenCaptureParametersForm.Size = new System.Drawing.Size(190, 22);
             this.msOpenCaptureParametersForm.Text = "Treinamento";
             this.msOpenCaptureParametersForm.Click += new System.EventHandler(this.msOpenCaptureParametersForm_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(153, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(187, 6);
             // 
             // msOpenTestForm
             // 
             this.msOpenTestForm.Name = "msOpenTestForm";
-            this.msOpenTestForm.Size = new System.Drawing.Size(156, 22);
+            this.msOpenTestForm.Size = new System.Drawing.Size(190, 22);
             this.msOpenTestForm.Text = "Prova";
             this.msOpenTestForm.Click += new System.EventHandler(this.msOpenTestForm_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(153, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(187, 6);
             // 
             // msOpenGroundSignalsListForm
             // 
             this.msOpenGroundSignalsListForm.Name = "msOpenGroundSignalsListForm";
-            this.msOpenGroundSignalsListForm.Size = new System.Drawing.Size(156, 22);
-            this.msOpenGroundSignalsListForm.Text = "Balanceamento";
+            this.msOpenGroundSignalsListForm.Size = new System.Drawing.Size(190, 22);
+            this.msOpenGroundSignalsListForm.Text = "Adicionar movimento";
             this.msOpenGroundSignalsListForm.Click += new System.EventHandler(this.msOpenGroundSignalsListForm_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(153, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(187, 6);
             // 
             // msOpenClose
             // 
             this.msOpenClose.Name = "msOpenClose";
-            this.msOpenClose.Size = new System.Drawing.Size(156, 22);
+            this.msOpenClose.Size = new System.Drawing.Size(190, 22);
             this.msOpenClose.Text = "Sair";
             this.msOpenClose.Click += new System.EventHandler(this.msOpenClose_Click);
             // 
@@ -132,6 +134,13 @@ namespace TreinamentoBalizador_IFSP.View
             this.pnlBaseForm.Name = "pnlBaseForm";
             this.pnlBaseForm.Size = new System.Drawing.Size(777, 546);
             this.pnlBaseForm.TabIndex = 1;
+            // 
+            // balanceamentoToolStripMenuItem
+            // 
+            this.balanceamentoToolStripMenuItem.Name = "balanceamentoToolStripMenuItem";
+            this.balanceamentoToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.balanceamentoToolStripMenuItem.Text = "Balanceamento";
+            this.balanceamentoToolStripMenuItem.Click += new System.EventHandler(this.balanceamentoToolStripMenuItem_Click);
             // 
             // MainFormView
             // 
@@ -167,5 +176,6 @@ namespace TreinamentoBalizador_IFSP.View
         private System.Windows.Forms.Panel pnlBaseForm;
         private System.Windows.Forms.ToolStripMenuItem msOpenTestForm;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private ToolStripMenuItem balanceamentoToolStripMenuItem;
     }
 }

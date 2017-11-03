@@ -61,5 +61,20 @@ namespace TreinamentoBalizador_IFSP.View
             pnlBaseForm.Controls.Add(_objForm);
             _objForm.Show();
         }
+
+        private void balanceamentoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _objForm?.Close();
+
+            _objForm = new BalanceFormView()
+            {
+                TopLevel = false,
+                FormBorderStyle = FormBorderStyle.None,
+                Dock = DockStyle.Fill
+            };
+
+            pnlBaseForm.Controls.Add(_objForm);
+            _objForm.Show();
+        }
     }
 }

@@ -93,6 +93,12 @@
     <Compile Include="Services\TemporalService.cs" />
     <Compile Include="Services\TestControlService.cs" />
     <Compile Include="Utils\DateUtils.cs" />
+    <Compile Include="View\BalanceFormView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\BalanceFormView.Designer.cs">
+      <DependentUpon>BalanceFormView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\CaptureForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +137,9 @@
     <Compile Include="View\MainFormView.Designer.cs">
       <DependentUpon>MainFormView.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\BalanceFormView.resx">
+      <DependentUpon>BalanceFormView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\CaptureForm.resx">
       <DependentUpon>CaptureForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -19,7 +19,7 @@ namespace TreinamentoBalizador_IFSP.Communication
             String endPoint = "verify-movement";
 
             Console.WriteLine("comunication" + endPoint);
-            var request = (HttpWebRequest)WebRequest.Create("http://172.16.3.56:8080/" + endPoint);
+            var request = (HttpWebRequest)WebRequest.Create("http://192.168.0.17:8080/" + endPoint);
             request.ContentType = "application/json";
             request.Method = "POST";
 
