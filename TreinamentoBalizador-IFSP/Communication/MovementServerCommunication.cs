@@ -52,7 +52,7 @@ namespace TreinamentoBalizador_IFSP.Communication
             String endPoint = "save-movement";
 
             Console.WriteLine("comunication" + endPoint);
-            var request = (HttpWebRequest)WebRequest.Create("http://192.168.0.17:8080/" + endPoint);
+            var request = (HttpWebRequest)WebRequest.Create("http://192.168.100.5:8080/" + endPoint);
             request.ContentType = "application/json";
             request.Method = "POST";
 

@@ -32,7 +32,7 @@ namespace TreinamentoBalizador_IFSP.View
             switch (flow)
             {
                 case ADD_MOVEMENT:
-                    form = new TrainingFormView(true, "Balanceamento")
+                    form = new TrainingFormView(true, "Adicionar movimento")
                     {
                         TopLevel = false,
                         FormBorderStyle = FormBorderStyle.None,

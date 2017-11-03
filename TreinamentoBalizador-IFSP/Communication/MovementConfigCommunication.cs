@@ -31,7 +31,6 @@ namespace TreinamentoBalizador_IFSP.Communication
                 if (statusCode.ToString() == "OK")
                 {
                     activeMovements = new JavaScriptSerializer().Deserialize<List<ActiveMovement>>(streamReader.ReadToEnd());
-                
                 }
             }
 
