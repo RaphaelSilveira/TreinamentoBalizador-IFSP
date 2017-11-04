@@ -102,7 +102,7 @@ namespace TreinamentoBalizador_IFSP.Services
         private void PlaySound()
         {
             String originalPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);
-            String finalPath = originalPath.Replace("bin\\Debug", "Assets") + "\\alarm.wav";
+            String finalPath = originalPath.Replace("bin\\Debug", "Assets") + "\\beep.wav";
 
             SoundPlayer simpleSound = new SoundPlayer(finalPath);
             simpleSound.Play();

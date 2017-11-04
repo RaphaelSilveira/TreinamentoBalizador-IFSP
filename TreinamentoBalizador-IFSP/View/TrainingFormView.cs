@@ -80,6 +80,7 @@ namespace TreinamentoBalizador_IFSP.View
 
             btnStartCapture.Enabled = false;
             btnStopCapture.Enabled = true;
+            cbxSelectMovement.Enabled = false;
 
             captureService.StartSaveCoordinates();
         }
@@ -146,10 +147,7 @@ namespace TreinamentoBalizador_IFSP.View
             btnStartCapture.BeginInvoke(
                 new Action(() => { btnStartCapture.Enabled = false; })
             );
-
-            cbxSelectMovement.BeginInvoke(
-                new Action(() => { cbxSelectMovement.SelectedIndex = -1; })
-            );
+            
 
             lblSensorReady.BeginInvoke(
                 new Action(() => { lblSensorReady.Text = ""; })
@@ -168,6 +166,13 @@ namespace TreinamentoBalizador_IFSP.View
                 movementData.SetNull();
                 movementData = Movements.Instance;
             }
+
+            cbxSelectMovement.BeginInvoke(
+                new Action(() => {
+                    cbxSelectMovement.SelectedIndex = -1;
+                    cbxSelectMovement.Enabled = true;
+                })
+            );
         }
 
         public void BodyDetected()

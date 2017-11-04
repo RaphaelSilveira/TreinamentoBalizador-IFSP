@@ -166,9 +166,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\alarm.wav" />
+    <Content Include="Assets\beep.wav" />
     <Content Include="Assets\definitive.PNG" />
     <Content Include="Assets\favicon.ico" />
+    <Content Include="Videos\CalcosColocados.mp4" />
+    <Content Include="Videos\CalcosRetirados.mp4" />
+    <Content Include="Videos\AcionarMotores.mp4" />
+    <Content Include="Videos\AcionarMotor1.mp4" />
+    <Content Include="Videos\CortarMotores.mp4" />
+    <Content Include="Videos\ReduzirVelocidade.mp4" />
+    <Content Include="Videos\RecuarGirandoCaudaDireita.mp4" />
+    <Content Include="Videos\RecuarGirandoCaudaEsquerda.mp4" />
+    <Content Include="Videos\PositivoTudoLivre.mp4" />
+    <Content Include="Videos\AfirmativoTudoLivre.mp4" />
     <Content Include="Videos\AcionarFreios.mp4" />
     <Content Include="Videos\GirarParaDireita.mp4" />
     <Content Include="Videos\GirarParaEsquerda.mp4" />
