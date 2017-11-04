@@ -37,6 +37,7 @@
             this.clmMovement = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmResult = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbxExamStatus = new System.Windows.Forms.GroupBox();
+            this.lblMovementCount = new System.Windows.Forms.Label();
             this.lblSensorReady = new System.Windows.Forms.Label();
             this.btnStartKinect = new System.Windows.Forms.Button();
             this.pbCapturing = new System.Windows.Forms.ProgressBar();
@@ -53,7 +54,6 @@
             this.txtBoxStudentName = new System.Windows.Forms.TextBox();
             this.lblStudentName = new System.Windows.Forms.Label();
             this.bgdProgressStatus = new System.ComponentModel.BackgroundWorker();
-            this.lblMovementCount = new System.Windows.Forms.Label();
             this.pnlExam.SuspendLayout();
             this.gbxExamResult.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).BeginInit();
@@ -71,7 +71,7 @@
             this.pnlExam.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlExam.Location = new System.Drawing.Point(0, 0);
             this.pnlExam.Name = "pnlExam";
-            this.pnlExam.Size = new System.Drawing.Size(1159, 741);
+            this.pnlExam.Size = new System.Drawing.Size(1159, 733);
             this.pnlExam.TabIndex = 0;
             // 
             // gbxExamResult
@@ -143,6 +143,15 @@
             this.gbxExamStatus.TabIndex = 2;
             this.gbxExamStatus.TabStop = false;
             this.gbxExamStatus.Text = "Execução da prova";
+            // 
+            // lblMovementCount
+            // 
+            this.lblMovementCount.AutoSize = true;
+            this.lblMovementCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMovementCount.Location = new System.Drawing.Point(103, 38);
+            this.lblMovementCount.Name = "lblMovementCount";
+            this.lblMovementCount.Size = new System.Drawing.Size(0, 18);
+            this.lblMovementCount.TabIndex = 10;
             // 
             // lblSensorReady
             // 
@@ -323,20 +332,11 @@
             this.bgdProgressStatus.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgdProgressStatus_ProgressChanged);
             this.bgdProgressStatus.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgdProgressStatus_RunWorkerCompleted);
             // 
-            // lblMovementCount
-            // 
-            this.lblMovementCount.AutoSize = true;
-            this.lblMovementCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMovementCount.Location = new System.Drawing.Point(103, 38);
-            this.lblMovementCount.Name = "lblMovementCount";
-            this.lblMovementCount.Size = new System.Drawing.Size(0, 18);
-            this.lblMovementCount.TabIndex = 10;
-            // 
             // ExamFormView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1159, 741);
+            this.ClientSize = new System.Drawing.Size(1159, 733);
             this.Controls.Add(this.pnlExam);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimizeBox = false;

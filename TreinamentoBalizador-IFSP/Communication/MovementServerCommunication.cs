@@ -17,20 +17,15 @@ namespace TreinamentoBalizador_IFSP.Communication
         public Boolean VerifyMovement(FormatedCoordinatesModel formatedCoordinates)
         {
             String endPoint = "verify-movement";
-
-            Console.WriteLine("comunication" + endPoint);
+            
             var request = (HttpWebRequest)WebRequest.Create(Utils.Constant.URL + endPoint);
             request.ContentType = "application/json";
             request.Method = "POST";
 
             bool result = false;
-            Console.Write("fazendo request");
             using (var streamWriter = new StreamWriter(request.GetRequestStream()))
             {
                 var json = new JavaScriptSerializer().Serialize(formatedCoordinates);
-
-                Console.Write(json);
-
                 streamWriter.Write(json);
                 streamWriter.Flush();
                 streamWriter.Close();
@@ -50,20 +45,15 @@ namespace TreinamentoBalizador_IFSP.Communication
         public Boolean SaveMovement(FormatedCoordinatesModel formatedCoordinates)
         {
             String endPoint = "save-movement";
-
-            Console.WriteLine("comunication" + endPoint);
+            
             var request = (HttpWebRequest)WebRequest.Create(Utils.Constant.URL + endPoint);
             request.ContentType = "application/json";
             request.Method = "POST";
 
             bool result = false;
-            Console.Write("fazendo request");
             using (var streamWriter = new StreamWriter(request.GetRequestStream()))
             {
                 var json = new JavaScriptSerializer().Serialize(formatedCoordinates);
-
-                Console.Write(json);
-
                 streamWriter.Write(json);
                 streamWriter.Flush();
                 streamWriter.Close();
@@ -75,7 +65,6 @@ namespace TreinamentoBalizador_IFSP.Communication
             using (var streamReader = new StreamReader(response.GetResponseStream()))
             {
                 HttpStatusCode statusCode = ((HttpWebResponse)response).StatusCode;
-                Console.WriteLine(statusCode.ToString());
                 if (statusCode.ToString() == "OK")
                 {
                     result = true;

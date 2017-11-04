@@ -57,7 +57,7 @@
             this.pnlMovementsList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMovementsList.Location = new System.Drawing.Point(0, 0);
             this.pnlMovementsList.Name = "pnlMovementsList";
-            this.pnlMovementsList.Size = new System.Drawing.Size(1159, 741);
+            this.pnlMovementsList.Size = new System.Drawing.Size(1159, 733);
             this.pnlMovementsList.TabIndex = 0;
             // 
             // lblFormName
@@ -200,6 +200,7 @@
             // bgdProgressStatus
             // 
             this.bgdProgressStatus.WorkerReportsProgress = true;
+            this.bgdProgressStatus.WorkerSupportsCancellation = true;
             this.bgdProgressStatus.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgdProgressStatus_DoWork_1);
             this.bgdProgressStatus.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgdProgressStatus_ProgressChanged_1);
             this.bgdProgressStatus.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgdProgressStatus_RunWorkerCompleted_1);
@@ -208,7 +209,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1159, 741);
+            this.ClientSize = new System.Drawing.Size(1159, 733);
             this.Controls.Add(this.pnlMovementsList);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimizeBox = false;

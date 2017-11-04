@@ -19,8 +19,6 @@ namespace TreinamentoBalizador_IFSP.Services
             FormatedCoordinatesModel formated = new FormatedCoordinatesModel();
             List<String> movements = new List<string>();
 
-            Console.WriteLine("Count on format" + jointsInMoment.Count);
-
             try
             {
                 int first = int.Parse(jointsInMoment.First().Key);
@@ -28,10 +26,6 @@ namespace TreinamentoBalizador_IFSP.Services
 
                 formated.Coordinates = movements;
                 formated.Movement = movement;
-
-
-                Console.WriteLine("formated antes");
-                Console.WriteLine(formated.Coordinates.Count);
 
                 for (int i = first; i < last; i++)
                 {
@@ -48,9 +42,6 @@ namespace TreinamentoBalizador_IFSP.Services
                         break;
                     }
                 }
-
-                Console.WriteLine("formated depois");
-                Console.WriteLine(formated.Coordinates.Count);
 
                 return formated;
             }

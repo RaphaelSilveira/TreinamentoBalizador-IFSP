@@ -27,6 +27,7 @@ namespace TreinamentoBalizador_IFSP.View
         CaptureKinectServiceNew captureService;
         CommunicationService communicationService = new CommunicationService();
         private FormatedCoordinatesModel formatedCoordinates;
+        private bool shouldCancel = false;
 
 
         public TrainingFormView(bool trainingFile, String formName)
@@ -46,6 +47,8 @@ namespace TreinamentoBalizador_IFSP.View
             if (cbxSelectMovement.SelectedValue != null) {
                 movementText = cbxSelectMovement.Text;
                 movementKey = cbxSelectMovement.SelectedValue.ToString();
+                btnTrainingMove.Enabled = true;
+                lblMovement.Text = "";
             }
 
             String originalPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);
@@ -87,8 +90,14 @@ namespace TreinamentoBalizador_IFSP.View
 
         private void btnStopCapture_Click(object sender, EventArgs e)
         {
-            captureService.StopSaveCoordinates();
+            shouldCancel = true;
+            captureService.StopAll();
             btnStopCapture.Enabled = false;
+            bgdProgressStatus.CancelAsync();
+            btnTrainingMove.Enabled = true;
+            cbxSelectMovement.Enabled = true;
+            lblMovement.Text = "";
+            lblSensorReady.Text = "";
         }
 
         private void btnTrainingMove_Click(object sender, EventArgs e)
@@ -103,6 +112,8 @@ namespace TreinamentoBalizador_IFSP.View
             {
                 captureService = new CaptureKinectServiceNew(this, movementKey, this.trainingFile);
                 captureService.StartKinectSensor();
+                btnTrainingMove.Enabled = false;
+                shouldCancel = false;
             }
         }
 
@@ -112,6 +123,11 @@ namespace TreinamentoBalizador_IFSP.View
             {
                 Thread.Sleep(500);
                 bgdProgressStatus.ReportProgress((100 / 16) * i);
+                if (shouldCancel)
+                {
+                    bgdProgressStatus.ReportProgress(0);
+                    break;
+                }
             }
 
             bgdProgressStatus.ReportProgress(100);
@@ -134,11 +150,8 @@ namespace TreinamentoBalizador_IFSP.View
 
         public void FinishCapture()
         {
-            Console.WriteLine("finish");
             movementText = "";
             movementKey = "";
-
-            bgdProgressStatus.ReportProgress(0);
 
             btnStopCapture.BeginInvoke(
                 new Action(() => { btnStopCapture.Enabled = false; })
@@ -157,9 +170,11 @@ namespace TreinamentoBalizador_IFSP.View
                 new Action(() => { lblMovement.Text = ""; })
             );
 
-            formatedCoordinates = captureService.formatedCoordinates;
-
-            communicationService.Communicate(formatedCoordinates, trainingFile);
+            if (!shouldCancel)
+            {
+                formatedCoordinates = captureService.formatedCoordinates;
+                communicationService.Communicate(formatedCoordinates, trainingFile);
+            }
 
             if (trainingFile)
             {
@@ -173,6 +188,12 @@ namespace TreinamentoBalizador_IFSP.View
                     cbxSelectMovement.Enabled = true;
                 })
             );
+
+            btnTrainingMove.BeginInvoke(
+                new Action(() => { btnTrainingMove.Enabled = true; })
+            );
+
+            bgdProgressStatus.ReportProgress(0);
         }
 
         public void BodyDetected()

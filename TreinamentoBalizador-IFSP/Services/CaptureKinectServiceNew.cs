@@ -34,6 +34,7 @@ namespace TreinamentoBalizador_IFSP.Services
         private String movement;
         private bool trainingFile;
         private bool bodyDeceted = false;
+        private bool shouldCancel = false;
         public FormatedCoordinatesModel formatedCoordinates { get; set; }
         private Dictionary<string, List<KinectJoint>> jointsInMoment =
             new Dictionary<string, List<KinectJoint>>();
@@ -86,8 +87,8 @@ namespace TreinamentoBalizador_IFSP.Services
         public void StopAll()
         {
             kinectSensor.Stop();
-            temporal.Abort();
             StopSaveCoordinates();
+            shouldCancel = true;
 
         }
 
@@ -111,8 +112,7 @@ namespace TreinamentoBalizador_IFSP.Services
         private void KeepCapturing()
         {
             while (temporal.IsAlive);
-            Console.WriteLine("passou no finish aqui deoi");
-            Console.WriteLine(kinectSensor.IsRunning);
+
             if (kinectSensor != null)
             {
                 PlaySound();
@@ -121,9 +121,11 @@ namespace TreinamentoBalizador_IFSP.Services
                 formatService = new FormatCoordinatesService();
                 StopSaveCoordinates();
 
-                formatedCoordinates = formatService.Format(jointsInMoment, movement);
-
-                form.FinishCapture();
+                if (!shouldCancel)
+                {
+                    formatedCoordinates = formatService.Format(jointsInMoment, movement);
+                    form.FinishCapture();
+                }
             }
         }
         
