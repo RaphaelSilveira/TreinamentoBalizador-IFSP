@@ -328,6 +328,7 @@
             // bgdProgressStatus
             // 
             this.bgdProgressStatus.WorkerReportsProgress = true;
+            this.bgdProgressStatus.WorkerSupportsCancellation = true;
             this.bgdProgressStatus.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgdProgressStatus_DoWork);
             this.bgdProgressStatus.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgdProgressStatus_ProgressChanged);
             this.bgdProgressStatus.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgdProgressStatus_RunWorkerCompleted);

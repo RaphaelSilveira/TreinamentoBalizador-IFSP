@@ -28,6 +28,7 @@ namespace TreinamentoBalizador_IFSP.View
         private Movements movementData = Movements.Instance;
         private List<ActiveMovement> activeMovements;
         private int movementCount = 0;
+        private bool shouldCancel = false;
         private ActiveMovement currentMovement;
 
 
@@ -117,11 +118,9 @@ namespace TreinamentoBalizador_IFSP.View
   
         private void btnStartKinect_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("start");
+            shouldCancel = false;
             captureService = new CaptureKinectServiceNew(this, currentMovement.Key, false);
-            Console.WriteLine("start");
             captureService.StartKinectSensor();
-            Console.WriteLine("start");
         }
 
         public void SetMovementLabel()
@@ -148,19 +147,21 @@ namespace TreinamentoBalizador_IFSP.View
                 new Action(() => { btnStopCapture.Enabled = false; })
             ); ;
 
-            formatedCoordinates = captureService.formatedCoordinates;
 
-            Console.WriteLine(formatedCoordinates.Movement.Length + "length");
+            if (!shouldCancel)
+            {
+                formatedCoordinates = captureService.formatedCoordinates;
 
-            bool success = communicationService.CommunicateExam(formatedCoordinates);
+                bool success = communicationService.CommunicateExam(formatedCoordinates);
 
-            ExamResult result = new ExamResult(currentMovement.Name, success);
+                ExamResult result = new ExamResult(currentMovement.Name, success);
 
-            examResults.Add(result);
-            UpdateGrid();
-            movementCount++;
+                examResults.Add(result);
+                UpdateGrid();
+                movementCount++;
 
-            HasNextMovement();
+                HasNextMovement();
+            }
         }
 
         private void btnExamCancel_Click(object sender, EventArgs e)
@@ -290,8 +291,12 @@ namespace TreinamentoBalizador_IFSP.View
 
         private void btnStopCapture_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("stop all");
+            shouldCancel = true;
             captureService.StopAll();
+            bgdProgressStatus.CancelAsync();
+            btnStartKinect.Enabled = true;
+            btnStopCapture.Enabled = false;
+            lblSensorReady.Text = "";
         }
     }
 }

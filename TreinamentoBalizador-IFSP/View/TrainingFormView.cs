@@ -63,7 +63,6 @@ namespace TreinamentoBalizador_IFSP.View
         {
 
             var dataSource = new List<MovementItem>();
-            Console.WriteLine(activeMovements.Count);
             foreach (ActiveMovement movement in activeMovements)
             {
                 dataSource.Add(new MovementItem() { Text = movement.Name, Key = movement.Key });

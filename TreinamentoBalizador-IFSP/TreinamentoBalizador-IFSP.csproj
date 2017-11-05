@@ -91,7 +91,6 @@
     <Compile Include="Services\FormatCoordinatesService.cs" />
     <Compile Include="Interfaces\FormInterface.cs" />
     <Compile Include="Services\TemporalService.cs" />
-    <Compile Include="Services\TestControlService.cs" />
     <Compile Include="Utils\Constant.cs" />
     <Compile Include="Utils\DateUtils.cs" />
     <Compile Include="View\BalanceFormView.cs">
