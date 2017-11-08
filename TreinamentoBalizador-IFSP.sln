@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.15
+VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreinamentoBalizador-IFSP", "TreinamentoBalizador-IFSP\TreinamentoBalizador-IFSP.csproj", "{16D7D188-2FB5-4B76-9BAE-BAF2E8CDAB54}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "TreinamentoBalizadorSetup", "TreinamentoBalizadorSetup\TreinamentoBalizadorSetup.vdproj", "{140668FD-A344-4580-9E23-FF4082999DA5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,8 @@ Global
 		{16D7D188-2FB5-4B76-9BAE-BAF2E8CDAB54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16D7D188-2FB5-4B76-9BAE-BAF2E8CDAB54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16D7D188-2FB5-4B76-9BAE-BAF2E8CDAB54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{140668FD-A344-4580-9E23-FF4082999DA5}.Debug|Any CPU.ActiveCfg = Debug
+		{140668FD-A344-4580-9E23-FF4082999DA5}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
