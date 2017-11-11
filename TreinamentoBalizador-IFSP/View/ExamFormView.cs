@@ -137,7 +137,7 @@ namespace TreinamentoBalizador_IFSP.View
 
         public void FinishCapture()
         {
-            bgdProgressStatus.ReportProgress(0);
+            // bgdProgressStatus.ReportProgress(0);
 
             lblSensorReady.BeginInvoke(
                 new Action(() => { lblSensorReady.Text = ""; })

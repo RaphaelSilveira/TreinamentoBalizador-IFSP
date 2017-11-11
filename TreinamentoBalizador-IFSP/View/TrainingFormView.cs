@@ -198,7 +198,7 @@ namespace TreinamentoBalizador_IFSP.View
                 new Action(() => { btnTrainingMove.Enabled = true; })
             );
 
-            bgdProgressStatus.ReportProgress(0);
+            // bgdProgressStatus.ReportProgress(0);
         }
 
         public void BodyDetected()
