@@ -51,17 +51,23 @@ namespace TreinamentoBalizador_IFSP.View
                 lblMovement.Text = "";
             }
 
-            String originalPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);
-            String finalPath = originalPath.Replace("bin\\Debug", "Videos");
 
-            wmpMovement.URL = finalPath + "\\" + cbxSelectMovement.SelectedValue + ".mp4";
-            wmpMovement.Ctlcontrols.play();
+            try
+            {
+                String path = Application.StartupPath;
+                wmpMovement.URL = path + "\\Videos\\" + cbxSelectMovement.SelectedValue + ".mp4";
+                wmpMovement.Ctlcontrols.play();
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show("Arquivi não encontrado", "Ops!",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
         private void PopulateCombobox()
         {
-
             var dataSource = new List<MovementItem>();
             foreach (ActiveMovement movement in activeMovements)
             {

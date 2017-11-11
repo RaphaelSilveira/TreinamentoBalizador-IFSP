@@ -100,13 +100,20 @@ namespace TreinamentoBalizador_IFSP.Services
             kinectSensor.AllFramesReady += Sensor_AllFramesReady;
             form.SetMovementLabel();
         }
+ 
         private void PlaySound()
         {
-            String originalPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);
-            String finalPath = originalPath.Replace("bin\\Debug", "Assets") + "\\beep.wav";
-
-            SoundPlayer simpleSound = new SoundPlayer(finalPath);
-            simpleSound.Play();
+            try
+            {
+                String path = Application.StartupPath;
+                SoundPlayer simpleSound = new SoundPlayer(path + "\\Assets\\beep.wav");
+                simpleSound.Play();
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show("Arquivi não encontrado", "Ops!",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void KeepCapturing()
