@@ -8,6 +8,6 @@ namespace TreinamentoBalizador_IFSP.Utils
 {
     class Constant
     {
-        public const String URL = "http://192.168.100.9:8080/";
+        public const String URL = "http://ec2-18-217-16-72.us-east-2.compute.amazonaws.com:8080/";
     }
 }
