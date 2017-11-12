@@ -163,6 +163,16 @@
     <Content Include="Assets\favicon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Videos\22-AFIRMATIVO-TUDO-LIVRE.mp4" />
+    <Content Include="Videos\23-FOGO.mp4" />
+    <Content Include="Videos\24-MANTER-POSIÇÃO-AGUARDAR.mp4" />
+    <Content Include="Videos\25-DESPACHO-DE-AERONAVE.mp4" />
+    <Content Include="Videos\26-NÃO-TOQUE-NOS-COMANDOS.mp4" />
+    <Content Include="Videos\27-CONECTAR-ALIMENTAÇÃO-ELÉTRICA-DE-SOLO.mp4" />
+    <Content Include="Videos\28-DESCONECTAR-ALIMENTAÇÃO-ELÉTRICA.mp4" />
+    <Content Include="Videos\29-NEGATIVO.mp4" />
+    <Content Include="Videos\30-ESTABELECER-COMUNICAÇÃO-POR-INTERFONE.mp4" />
+    <Content Include="Videos\31-ABRIR-OU-FECHAR-ESCADAS.mp4" />
     <Content Include="Videos\ReduzirVelocidadeMotorDireito.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
